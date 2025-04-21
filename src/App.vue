@@ -21,8 +21,5 @@ import HelloWorld from './components/HelloWorld.vue'
 </template>
 
 <style lang="scss">
-$primary: red;
-div {
-  color: $primary;
-}
+@import './assets/all.scss';
 </style>
