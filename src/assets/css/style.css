@@ -1,0 +1,324 @@
+
+/* ----------------------  content  ------------------------- */
+.content_container{
+    display: flex;
+    
+    padding: 120px 20px 40px 20px;
+}
+
+.main_form{
+    display: flex;
+    flex-direction: column;
+
+    padding: 20px 0px;
+}
+
+.main_form .form{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* --- 標語 --- */
+
+.vertical-wrapper{
+    display: flex;
+    gap: 25px;
+    font-size: 26px;
+    font-weight: bold;
+
+    padding: 40px 36px;
+
+    background-color: #FFFFFF;
+}
+
+.vertical-text{
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+
+    letter-spacing: 10px;
+}
+
+.vertical-wrapper p:last-child{
+    text-indent: 40px;
+}
+
+/* --- 圖片 --- */
+
+.content img{
+    width: 100%;
+    max-width: 450px;
+    margin: 0px 160px 0px 50px;
+}
+
+/* --- 表單 --- */
+.main_form h2{
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+
+    margin-bottom: 30px;
+}
+
+/* textbox */
+.main_form .form_txtbox{
+    width: 360px;
+    padding: 15px 40px;
+
+    background-color: #F2F2F2;
+    border: 2px solid #D4D4D4;
+    border-radius: 10px;
+
+    font-size: 16px;
+}
+
+.main_form .form_txtbox:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px #F2F2F2 inset !important;
+    box-shadow: 0 0 0 1000px #F2F2F2 inset !important;
+    -webkit-text-fill-color: #000 !important; /* 文字顏色可自訂 */
+}
+
+/* icon、icon 按鈕 */
+.main_form .form_item{
+    position: relative;
+}
+
+.form_item i:first-child{
+    position: absolute;
+    top: 16px;
+    left: 15px;
+}
+
+.form_item i:last-child{
+    position: absolute;
+    top: 18px;
+    right: 15px;
+
+    cursor: pointer;
+}
+
+/* error-msg */
+.main_form .error_msg{
+    width: 350px;
+    min-height: 30px;
+    font-weight: bold;
+    color: #F48282;
+
+    visibility: hidden;
+
+    font-size: 13px;
+    line-height: 30px;
+}
+
+.main_form .visibility{
+    visibility: visible;
+}
+
+/* 按鈕 */
+.main_form .submit_btn{
+    width: 350px;
+    padding: 12px 18px;
+    margin-top: 15px;
+
+    font-size: 14px;
+    color: #FFFFFF;
+
+    border-radius: 100px;
+    font-weight: bold;
+    border: 2px solid transparent;
+    background-color : #333333;
+
+    transition: background-color 0.5s ease;
+
+    cursor: pointer;
+}
+
+.submit_btn:hover,
+.submit_btn:active{
+    color: #FFFFFF;
+    background-color: #5B5B5B;
+}
+
+/* ----------------------  註冊  ------------------------- */
+/* 偏好設定 */
+.form_preference{
+    display: flex;
+    gap: 4px;
+}
+
+.select-wrap {
+    position: relative;
+    display: inline-block;
+}
+
+.select-wrap::after {
+    content: '▼';
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    font-size: 12px;
+    color: #555;
+}
+
+.form_preference .select-box{
+    appearance: none;
+    cursor: pointer;
+    padding: 10px 30px 10px 20px;
+
+    background-color: #F2F2F2;
+    border: 2px solid #D4D4D4;
+    border-radius: 10px;
+
+    font-size: 16px;
+}
+
+.select-box option:disabled{
+    color: #D4D4D4;
+}
+
+/* ----------------------  登入  ------------------------- */
+/* 核取方塊 */
+.list_item{
+    display: flex;
+    justify-content: space-between;
+}
+
+input[type=checkbox] {
+    display: none;
+}
+
+.check-box span{
+    padding-left: 24px;
+    cursor: pointer;
+}
+
+.check-box span::before{
+    content:"";
+    left: 0;
+    top:2px;
+    position: absolute;
+    outline: 1px solid #333333;
+    border-radius: 5px;
+    width: 15px;
+    height: 15px;
+
+    cursor: pointer;
+}
+
+.check-box span::after{
+    display:none; 
+    content: "";
+    left: 5px;
+    top:2px;
+    position: absolute;
+    width: 7px;
+    height: 14px;
+    border-right: 2px solid #9DBEB3;
+    border-bottom: 2px solid #9DBEB3;
+    transform: rotate(40deg);
+
+    cursor: pointer;
+}
+
+input[type=checkbox]:checked+span::before{
+    display:none; 
+}
+input[type=checkbox]:checked+span::after{
+    display:block; 
+}
+
+/* 連結項目 */
+.link_item{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    font-size: 16px;
+}
+
+.link_item a{
+    font-weight: bold;
+}
+
+.link_item a:hover{
+    text-decoration: underline;
+    color: #9DBEB3;
+}
+
+/* 分隔線 */
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    margin: 20px 0;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #888;
+}
+
+.divider-text {
+    padding: 0 10px;
+    background-color: #eee; /* 灰底 */
+    color: #555;
+    font-weight: bold;
+}
+
+/* 第三方登入按鈕 */
+.socialLogin{
+    display: flex;
+    gap: 60px;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 30px;
+    color: #5B5B5B;
+}
+
+.icon-circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: background-color 0.5s ease, transform 0.5s ease;
+}
+
+.icon-circle:hover {
+    background-color: #e0e0e0; /* 淺灰色圓背景 */
+    cursor: pointer;
+
+    transform: translateY(-2px); /* 微微上移一點 */
+}
+  
+/* ----------------------  修改密碼  ------------------------- */
+.captcha_item{
+    display: flex;
+    gap: 15px;
+}
+
+.captcha_item #captchaInput{
+    width: 190px;
+    border: 2px solid #D4D4D4;
+    padding: 15px 0px 15px 15px;
+    border-radius: 5px;
+    font-size: 16px;
+
+    background-color: #F2F2F2;
+}
+
+.captcha_item #captcha{
+    margin: 0px;
+    border: 2px solid #D4D4D4;
+
+    border-radius: 5px;
+    cursor: pointer;
+}
