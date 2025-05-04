@@ -37,7 +37,7 @@ export function post_user_SignUp(signUpName_txt,signUpEmail_txt,signUpPwd_txt,si
 }
 
 // [POST] 編號 02 : 使用者登入 - Email 登入
-export function post_user_LoginEmail(signUpEmail_txt,signUpPwd_txt){
+export function post_user_LoginEmail(signUpEmail_txt,signUpPwd_txt, onSuccess){
   axios.post(`${apiUrl}/login/email`,{
       "email": signUpEmail_txt,
       "password": signUpPwd_txt
@@ -53,8 +53,13 @@ export function post_user_LoginEmail(signUpEmail_txt,signUpPwd_txt){
         name: res.data.data.user.name,
         avatar_url: res.data.data.user.avatar_url,
         level: res.data.data.level.name
-      })
-    //func.checkLoginStatus();
+    })
+
+    // 🟢 清空欄位 callback
+    if (typeof onSuccess === 'function') {
+        onSuccess();
+      }
+
     Swal.fire({
         icon: "success",
         title: res.data.status,

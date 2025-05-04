@@ -141,8 +141,10 @@
             if(func.validateEmail(emailInput,errorTxt)) return;
             if(func.validatePassword(passwordInput,errorTxt)) return;
 
-            api.post_user_LoginEmail(this.email, this.password)
-
+            api.post_user_LoginEmail(this.email, this.password, () => {
+                this.email = '';
+                this.password = '';
+            })
         },
         async GoogleAPI() {
             const googleClientId = '148755362421-us8l17s3ukf88mj23kbs5vj2i8lgu8nk.apps.googleusercontent.com';
