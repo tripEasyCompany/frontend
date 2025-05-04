@@ -1,4 +1,5 @@
 import * as func from './function.js';
+import { userStore } from '@/stores/userStore.js'
 import Swal from 'sweetalert2'
 import axios from 'axios'
 
@@ -47,6 +48,12 @@ export function post_user_LoginEmail(signUpEmail_txt,signUpPwd_txt){
     localStorage.setItem("userPicture", res.data.data.user.avatar_url || new URL('@/assets/img/default_people.png', import.meta.url).href)
     localStorage.setItem("levelName", res.data.data.level.name);
 
+    userStore.login({
+        token: res.data.data.token,
+        name: res.data.data.user.name,
+        avatar_url: res.data.data.user.avatar_url,
+        level: res.data.data.level.name
+      })
     //func.checkLoginStatus();
     Swal.fire({
         icon: "success",
