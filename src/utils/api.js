@@ -93,6 +93,13 @@ export function post_user_LoginGoogle(code){
     localStorage.setItem("userPicture", res.data.data.user.avatar_url ? res.data.data.user.avatar_url : "img/default_people.png");
     localStorage.setItem("levelName", res.data.data.level.name);
 
+    userStore.login({
+        token: res.data.data.token,
+        name: res.data.data.user.name,
+        avatar_url: res.data.data.user.avatar_url,
+        level: res.data.data.level.name
+    })
+
     //func.checkLoginStatus();
     Swal.fire({
         icon: "success",
