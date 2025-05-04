@@ -37,7 +37,7 @@ export function post_user_SignUp(signUpName_txt,signUpEmail_txt,signUpPwd_txt,si
 }
 
 // [POST] 編號 02 : 使用者登入 - Email 登入
-export function post_user_LoginEmail(signUpEmail_txt,signUpPwd_txt, onSuccess){
+export function post_user_LoginEmail(signUpEmail_txt,signUpPwd_txt, onComplete){
   axios.post(`${apiUrl}/login/email`,{
       "email": signUpEmail_txt,
       "password": signUpPwd_txt
@@ -54,11 +54,6 @@ export function post_user_LoginEmail(signUpEmail_txt,signUpPwd_txt, onSuccess){
         avatar_url: res.data.data.user.avatar_url,
         level: res.data.data.level.name
     })
-
-    // 🟢 清空欄位 callback
-    if (typeof onSuccess === 'function') {
-        onSuccess();
-      }
 
     Swal.fire({
         icon: "success",
@@ -78,7 +73,12 @@ export function post_user_LoginEmail(signUpEmail_txt,signUpPwd_txt, onSuccess){
         title: error.response.data.status,
         text: error.response.data.message,
         scrollbarPadding: false
-    });
+    })
+  })
+  .finally(() => {
+    if (typeof onComplete === 'function') {
+      onComplete(); // ✅ 無論成功或失敗都清空
+    }
   });
 }
 
