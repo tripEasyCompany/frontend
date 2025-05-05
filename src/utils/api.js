@@ -2,8 +2,9 @@ import { userStore } from '@/stores/userStore.js'
 import Swal from 'sweetalert2'
 import axios from 'axios'
 
+const baseUrl = import.meta.env.VITE_API_BASE
 const version = 'v1';
-const apiUrl = `https://tripeasy-backend.onrender.com/api/${version}/auth/userinfo`;
+const apiUrl = `${baseUrl}/api/${version}/auth/userinfo`;
 
 // [POST] 編號 01 : 使用者註冊、個人偏好設定
 export function post_user_SignUp(signUpName_txt,signUpEmail_txt,signUpPwd_txt,signUpPrefer_Array,onComplete){
