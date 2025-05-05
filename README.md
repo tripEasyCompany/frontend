@@ -94,3 +94,43 @@ git push origin feature/xxx
 
 > 如果成員擔心發生衝突且無法解決可使用PR的方式
 > 如果不擔心可以自行處理衝突，可直接`git merge`
+
+### 其他指令
+
+```
+git status   #確認自己當前的分支
+```
+
+### 檔案結構說明
+
+```
+src/
+│
+├── router/
+│   └── index.js         # Vue Router 路由配置
+│
+└── views/
+    ├── HomeView.vue     # 首頁視圖容器
+    │
+    ├── AboutView.vue    # 關於頁面
+    │
+    ├── front/
+    │   ├── searchPage.vue   # 搜索頁面
+    │   └── shopping.vue     # 購物專區頁面 (目前被註釋掉)
+    │
+    └── admin/
+        ├── memberPage.vue   # 會員中心頁面
+        ├── loginPage.vue    # 登入頁面
+        ├── registerPage.vue # 註冊頁面
+        ├── forgotPage.vue   # 忘記密碼頁面
+        ├── resetPage.vue    # 修改密碼頁面
+        ├── collectPage.vue  # 收藏頁面
+        ├── personalOrder.vue # 個人旅遊訂單頁面
+        │
+        └── manage/
+            ├── websiteSetting.vue    # 網站管理頁面
+            ├── dashboardPage.vue     # 儀表板分析頁面
+            ├── roleSetting.vue       # 權限設定頁面
+            ├── serviceSetting.vue    # 客服頁面
+            └── automaticSetting.vue  # 自動化設定頁面
+```
