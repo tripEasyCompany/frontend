@@ -62,7 +62,9 @@ export default {
 
       if (func.validateEmail(emailInput, errorTxt)) return;
 
-      await api.post_user_forgetPW(this.email.trim());
+      await api.post_user_forgetPW(this.email.trim(),() => {
+              this.email = '';
+          });
     }
   }
 }

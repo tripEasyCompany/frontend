@@ -115,8 +115,13 @@ export default {
         this.name.trim(),
         this.email.trim(),
         this.password.trim(),
-        this.preferences
-      );
+        this.preferences,
+        () => {
+          this.name = '';
+          this.email = '';
+          this.password = '';
+          this.preferences = ['', '', ''];
+      });
     }
   }
 }

@@ -3,10 +3,10 @@ import Swal from 'sweetalert2'
 import axios from 'axios'
 
 const version = 'v1';
-const apiUrl = `https://tripeasy-84np.onrender.com/api/${version}/auth/userinfo`;
+const apiUrl = `https://tripeasy-backend.onrender.com/api/${version}/auth/userinfo`;
 
 // [POST] 編號 01 : 使用者註冊、個人偏好設定
-export function post_user_SignUp(signUpName_txt,signUpEmail_txt,signUpPwd_txt,signUpPrefer_Array){
+export function post_user_SignUp(signUpName_txt,signUpEmail_txt,signUpPwd_txt,signUpPrefer_Array,onComplete){
     axios.post(`${apiUrl}/signup`,{
         "name": signUpName_txt,
         "email": signUpEmail_txt,
@@ -32,6 +32,11 @@ export function post_user_SignUp(signUpName_txt,signUpEmail_txt,signUpPwd_txt,si
           text: error.response.data.message,
           scrollbarPadding: false
       });
+    })
+    .finally(() => {
+      if (typeof onComplete === 'function') {
+        onComplete(); // ✅ 無論成功或失敗都清空
+      }
     });
 }
 
@@ -122,7 +127,7 @@ export function post_user_LoginGoogle(code){
 }
 
 // [POST] 編號 05 : 使用者忘記密碼
-export function post_user_forgetPW(signUpEmail_txt){
+export function post_user_forgetPW(signUpEmail_txt,onComplete){
   axios.post(`${apiUrl}/forgetpw`,{
       "email": signUpEmail_txt
   })
@@ -141,11 +146,16 @@ export function post_user_forgetPW(signUpEmail_txt){
         text: error.response.data.message,
         scrollbarPadding: false
     });
+  })
+  .finally(() => {
+    if (typeof onComplete === 'function') {
+      onComplete(); // ✅ 無論成功或失敗都清空
+    }
   });
 }
 
 // [PATCH] 編號 06 : 使用者密碼修改
-export function post_user_resetPW(token,signUpNewPwd_txt,signUpNewaginPwd_txt,captchaInput_txt){
+export function post_user_resetPW(token,signUpNewPwd_txt,signUpNewaginPwd_txt,captchaInput_txt,onComplete){
   axios.patch(`${apiUrl}/resetpw`,{
       "token":token,
 	    "new_password": signUpNewPwd_txt,
@@ -163,7 +173,7 @@ export function post_user_resetPW(token,signUpNewPwd_txt,signUpNewaginPwd_txt,ca
     });
 
     setTimeout(() => {
-      window.location.href = "/login.html";
+      window.location.href = "/admin/login";
     },3000);
   })
   .catch(error => {
@@ -173,6 +183,11 @@ export function post_user_resetPW(token,signUpNewPwd_txt,signUpNewaginPwd_txt,ca
         text: error.response.data.message,
         scrollbarPadding: false
     });
+  })
+  .finally(() => {
+    if (typeof onComplete === 'function') {
+      onComplete(); // ✅ 無論成功或失敗都清空
+    }
   });
 }
 
