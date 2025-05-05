@@ -53,15 +53,15 @@ const router = createRouter({
         },
         //忘記密碼
         {
-          path: 'forgot',
-          name: 'forgot',
-          component: () => import('../views/admin/forgotPage.vue'),
+          path: 'forgotpw',
+          name: 'forgotpw',
+          component: () => import('../views/admin/forgotpwPage.vue'),
         },
         //忘記密碼
         {
-          path: 'reset',
-          name: 'reset',
-          component: () => import('../views/admin/resetPage.vue'),
+          path: 'resetpw',
+          name: 'resetpw',
+          component: () => import('../views/admin/resetpwPage.vue'),
         },
         //收藏
         {

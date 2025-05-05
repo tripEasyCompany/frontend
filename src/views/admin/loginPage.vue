@@ -51,9 +51,9 @@
                 <span>記住我的 Email</span>
               </label>
               <div class="link_item">
-                <span><router-link to="/Register">立即註冊</router-link></span>
+                <span><router-link to="/admin/register">立即註冊</router-link></span>
                 <span>|</span>
-                <span><router-link to="/Forgot-password">忘記密碼</router-link></span>
+                <span><router-link to="/admin/forgotpw">忘記密碼</router-link></span>
               </div>
             </div>
 
@@ -84,7 +84,7 @@ import * as api from '@/utils/api.js';
 
 
 export default {
-  name: 'LoginView',
+  name: 'login',
   components: { HeaderComponent, FooterComponent },
   data() {
       return {

@@ -22,7 +22,7 @@ export function post_user_SignUp(signUpName_txt,signUpEmail_txt,signUpPwd_txt,si
       });
 
       setTimeout(() => {
-        window.location.href = "/login.html";
+        window.location.href = "/admin/login";
       },3000);
     })
     .catch(error => {

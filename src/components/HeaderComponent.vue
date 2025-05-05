@@ -27,7 +27,7 @@
             <li><router-link to="#">購物車</router-link></li>
           </ul>
   
-          <router-link v-if="!userStore.isLoggedIn" to="/login" class="login_btn">註冊/登入</router-link>
+          <router-link v-if="!userStore.isLoggedIn" to="/admin/login" class="login_btn">註冊/登入</router-link>
   
           <div class="user-dropdown" v-else>
             <div class="user-toggle" @click="dropdownOpen = !dropdownOpen">
