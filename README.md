@@ -94,3 +94,9 @@ git push origin feature/xxx
 
 > 如果成員擔心發生衝突且無法解決可使用PR的方式
 > 如果不擔心可以自行處理衝突，可直接`git merge`
+
+### 其他指令
+
+```
+git status   #確認自己當前的分支
+```
