@@ -51,9 +51,9 @@
                   <span>記住我的 Email</span>
                 </label>
                 <div class="link_item">
-                  <span><router-link to="/register">立即註冊</router-link></span>
+                  <span><router-link to="/Register">立即註冊</router-link></span>
                   <span>|</span>
-                  <span><router-link to="/forgot-password">忘記密碼</router-link></span>
+                  <span><router-link to="/Forgot-password">忘記密碼</router-link></span>
                 </div>
               </div>
   
@@ -149,7 +149,7 @@
         },
         async GoogleAPI() {
             const googleClientId = '148755362421-us8l17s3ukf88mj23kbs5vj2i8lgu8nk.apps.googleusercontent.com';
-            const redirectUri = 'http://localhost:5500/frontend/login'; // 請依照你的 Vue 環境調整
+            const redirectUri = 'http://localhost:5500/login'; // 請依照你的 Vue 環境調整
 
             const url = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${googleClientId}&redirect_uri=${redirectUri}&response_type=code&scope=openid%20email%20profile`;
             window.location.href = url;

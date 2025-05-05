@@ -1,4 +1,3 @@
-import * as func from './function.js';
 import { userStore } from '@/stores/userStore.js'
 import Swal from 'sweetalert2'
 import axios from 'axios'
@@ -22,7 +21,7 @@ export function post_user_SignUp(signUpName_txt,signUpEmail_txt,signUpPwd_txt,si
           scrollbarPadding: false
       });
 
-      const timeout = setTimeout(() => {
+      setTimeout(() => {
         window.location.href = "/login.html";
       },3000);
     })
@@ -62,7 +61,7 @@ export function post_user_LoginEmail(signUpEmail_txt,signUpPwd_txt, onComplete){
         scrollbarPadding: false
     });
 
-    const timeout = setTimeout(() => {
+    setTimeout(() => {
       window.location.href = "https://sumaoxiong.github.io/tripeasy-memberarea/info/userinfo.html";
     },3000);
   })
@@ -108,7 +107,7 @@ export function post_user_LoginGoogle(code){
         scrollbarPadding: false
     });
 
-    const timeout = setTimeout(() => {
+    setTimeout(() => {
       window.location.href = "https://sumaoxiong.github.io/tripeasy-memberarea/info/userinfo.html";
     },3000);
   })
@@ -163,7 +162,7 @@ export function post_user_resetPW(token,signUpNewPwd_txt,signUpNewaginPwd_txt,ca
         scrollbarPadding: false
     });
 
-    const timeout = setTimeout(() => {
+    setTimeout(() => {
       window.location.href = "/login.html";
     },3000);
   })
