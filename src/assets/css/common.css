@@ -37,7 +37,7 @@ a {
 }
 
 .container {
-    max-width: 1296px;
+    max-width: 1200px;
     margin: 0 auto;
     width: 100%;
 }
@@ -62,7 +62,7 @@ a {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 135px;
+    gap: 130px;
     padding: 20px 0px;
 }
 
@@ -162,7 +162,7 @@ a {
 
 .nav_link a{
     display: block;
-    padding: 8px 12px;
+    padding: 8px 3px;
 
     border: 1px solid transparent;
     color: #5B5B5B;
@@ -391,7 +391,7 @@ a {
 .chat-widget {
     position: fixed;
     bottom: 35px;
-    right: 35px;
+    right: 30px;
     text-align: center;
     z-index: 1000;
   }
@@ -407,7 +407,7 @@ a {
     color: #222;
     padding: 8px 16px;
     border-radius: 30px;
-    font-size: 18px;
+    font-size: 14px;
     font-weight: bold;
     position: absolute;
     bottom: 100%; /* 放在圖片正上方 */

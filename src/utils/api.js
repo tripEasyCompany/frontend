@@ -67,11 +67,11 @@ export function post_user_LoginEmail(signUpEmail_txt,signUpPwd_txt, onComplete){
         scrollbarPadding: false
     });
 
-    /*
+    
     setTimeout(() => {
-      window.location.href = "https://sumaoxiong.github.io/tripeasy-memberarea/info/userinfo.html";
+      window.location.href = "/";
     },3000);
-    */
+    
   })
   .catch(error => {
     console.log(error)
@@ -115,11 +115,9 @@ export function post_user_LoginGoogle(code){
         scrollbarPadding: false
     });
 
-    /*
     setTimeout(() => {
-      window.location.href = "https://sumaoxiong.github.io/tripeasy-memberarea/info/userinfo.html";
+      window.location.href = "/";
     },3000);
-    */
   })
   .catch(error => {
     Swal.fire({
