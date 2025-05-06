@@ -10,7 +10,6 @@ const router = createRouter({
       component: HomeView,
       children: [
         //首頁
-
         {
           path: '',
           name: 'index',
@@ -54,11 +53,16 @@ const router = createRouter({
         },
         //忘記密碼
         {
-          path: 'forgot',
-          name: 'forgot',
-          component: () => import('../views/admin/forgotPage.vue'),
+          path: 'forgotpw',
+          name: 'forgotpw',
+          component: () => import('../views/admin/forgotpwPage.vue'),
         },
-
+        //忘記密碼
+        {
+          path: 'resetpw',
+          name: 'resetpw',
+          component: () => import('../views/admin/resetpwPage.vue'),
+        },
         //收藏
         {
           path: 'collect',

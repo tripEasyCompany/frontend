@@ -123,6 +123,7 @@ src/
         ├── loginPage.vue    # 登入頁面
         ├── registerPage.vue # 註冊頁面
         ├── forgotPage.vue   # 忘記密碼頁面
+        ├── resetPage.vue    # 修改密碼頁面
         ├── collectPage.vue  # 收藏頁面
         ├── personalOrder.vue # 個人旅遊訂單頁面
         │
