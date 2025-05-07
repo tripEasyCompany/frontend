@@ -1,54 +1,63 @@
 <template>
-  <div class="wrap">
+  <div class="wrap" v-if="checkedToken">
     <!-- Header -->
     <HeaderComponent />
 
-    <!-- Main Content -->
     <div class="content">
       <div class="container content_container">
-        <div class="vertical-wrapper">
-          <p class="vertical-text">走吧!</p>
-          <p class="vertical-text">讓每段旅程都有溫度</p>
-        </div>
-
-        <div>
-          <img src="@/assets/img/reset-password.png" alt="reset_password_img">
-        </div>
-
-        <div class="main_form">
-          <h2>修改密碼</h2>
-          <div class="form">
-            <div class="form_item">
-              <i class="fa-solid fa-lock"></i>
-              <input
-                class="form_txtbox"
-                :type="showPassword1 ? 'text' : 'password'"
-                v-model="newPassword"
-                placeholder="請輸入新密碼"
-                required
-              />
-              <i class="fa-solid" :class="showPassword1 ? 'fa-eye' : 'fa-eye-slash'" @click="showPassword1 = !showPassword1"></i>
-            </div>
-            <div class="form_item">
-              <i class="fa-solid fa-lock"></i>
-              <input
-                class="form_txtbox"
-                :type="showPassword2 ? 'text' : 'password'"
-                v-model="confirmPassword"
-                placeholder="請再次輸入新密碼"
-                required
-              />
-              <i class="fa-solid" :class="showPassword2 ? 'fa-eye' : 'fa-eye-slash'" @click="showPassword2 = !showPassword2"></i>
-            </div>
-            <div class="form_item captcha_item">
-              <input type="text" id="captchaInput"  v-model="captchaInput" placeholder="請輸入驗證碼" />
-              <div id="captcha"></div>
-            </div>
-
-            <p class="error_msg">{{ errorMsg }}</p>
-            <input class="submit_btn" type="submit" value="送出" @click="handleSubmit" />
+        <template v-if="tokenValid">
+          <!-- 只有驗證成功才顯示表單 -->
+          <div class="vertical-wrapper">
+            <p class="vertical-text">走吧!</p>
+            <p class="vertical-text">讓每段旅程都有溫度</p>
           </div>
-        </div>
+
+          <div>
+            <img src="@/assets/img/reset-password.png" alt="reset_password_img">
+          </div>
+
+          <div class="main_form">
+            <h2>修改密碼</h2>
+            <div class="form">
+              <div class="form_item">
+                <i class="fa-solid fa-lock"></i>
+                <input
+                  class="form_txtbox"
+                  :type="showPassword1 ? 'text' : 'password'"
+                  v-model="newPassword"
+                  placeholder="請輸入新密碼"
+                  required
+                />
+                <i class="fa-solid" :class="showPassword1 ? 'fa-eye' : 'fa-eye-slash'" @click="showPassword1 = !showPassword1"></i>
+              </div>
+              <div class="form_item">
+                <i class="fa-solid fa-lock"></i>
+                <input
+                  class="form_txtbox"
+                  :type="showPassword2 ? 'text' : 'password'"
+                  v-model="confirmPassword"
+                  placeholder="請再次輸入新密碼"
+                  required
+                />
+                <i class="fa-solid" :class="showPassword2 ? 'fa-eye' : 'fa-eye-slash'" @click="showPassword2 = !showPassword2"></i>
+              </div>
+              <div class="form_item captcha_item">
+                <input type="text" id="captchaInput"  v-model="captchaInput" placeholder="請輸入驗證碼" />
+                <div id="captcha"></div>
+              </div>
+
+              <p class="error_msg">{{ errorMsg }}</p>
+              <input class="submit_btn" type="submit" value="送出" @click="handleSubmit" />
+            </div>
+          </div>
+        </template>
+
+        <!-- Token 驗證失敗顯示錯誤訊息 -->
+        <template v-else>
+          <div class="error-page">
+            <h2>錯誤的連結或連結已過期</h2>
+          </div>
+        </template>
       </div>
     </div>
 
@@ -74,13 +83,24 @@ export default {
       token: '',
       errorMsg: '',
       showPassword1: false,
-      showPassword2: false
+      showPassword2: false,
+      tokenValid: false,
+      checkedToken: false,
     }
   },
   mounted() {
     const params = new URLSearchParams(window.location.search);
     this.token = params.get('token');
     api.get_user_captcha();
+
+    if (!this.token) {
+      this.checkedToken = true;
+      this.tokenValid = false;
+      return;
+    }else{
+      this.checkedToken = true;
+      this.tokenValid = true;
+    }
 
     // captcha refresh handler
     const captchaDiv = document.getElementById('captcha');
