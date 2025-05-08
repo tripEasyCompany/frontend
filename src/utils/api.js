@@ -239,3 +239,23 @@ export function get_user_captcha() {
       });
     });
 }
+
+// [GET] 編號 09 : 驗證使用者登入狀態
+export async function get_user_status() {
+  try {
+    const res = await axios.get(`${apiUrl}/login/status`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('authToken')}`
+    }});
+
+    return {
+      isLoggedIn: true,
+      user: res.data.data.user,
+    };
+  } catch (err) {
+    return {
+      isLoggedIn: false,
+      user: null,
+    };
+  }
+}
