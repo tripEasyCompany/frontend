@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from '../views/HomeView.vue';
+import * as api from '../utils/api';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -122,6 +123,22 @@ const router = createRouter({
       component: () => import('../views/AboutView.vue'),
     },
   ],
+});
+
+router.beforeEach(async (to, from, next) => {
+  const authPages = ['/admin/login', '/admin/register', '/admin/forgotpw', '/admin/resetpw'];
+
+  if (authPages.includes(to.path)) {
+      const result = await api.get_user_status();
+
+      console.log(result.isLoggedIn)
+      if (result.isLoggedIn) {
+        return next('/');
+      }
+
+  }
+
+  return next();
 });
 
 export default router;
