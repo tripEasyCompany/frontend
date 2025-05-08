@@ -41,7 +41,7 @@
               <i
                 :class="showPassword ? 'fa-solid fa-eye' : 'fa-solid fa-eye-slash'"
                 @click="showPassword = !showPassword"
-                style="cursor:pointer"
+                style="cursor: pointer"
               ></i>
             </div>
 
@@ -64,7 +64,9 @@
           <div class="divider"><span class="divider-text">或</span></div>
 
           <div class="socialLogin">
-            <div class="icon-circle google" @click="GoogleAPI"><i class="fa-brands fa-google"></i></div>
+            <div class="icon-circle google" @click="GoogleAPI">
+              <i class="fa-brands fa-google"></i>
+            </div>
             <div class="icon-circle fb"><i class="fa-brands fa-facebook-f"></i></div>
           </div>
         </div>
@@ -77,87 +79,87 @@
 </template>
 
 <script>
-import HeaderComponent from '@/components/HeaderComponent.vue'
-import FooterComponent from '@/components/FooterComponent.vue'
+import HeaderComponent from '@/components/HeaderComponent.vue';
+import FooterComponent from '@/components/FooterComponent.vue';
 import * as func from '@/utils/function.js';
 import * as api from '@/utils/api.js';
 
-
 export default {
-  name: 'login',
+  name: 'loginPage',
   components: { HeaderComponent, FooterComponent },
   data() {
-      return {
-          email: '',
-          password: '',
-          rememberMe: false,
-          showPassword: false,
-          errorMsg: ''
-      }
+    return {
+      email: '',
+      password: '',
+      rememberMe: false,
+      showPassword: false,
+      errorMsg: '',
+    };
   },
   mounted() {
-      const savedEmail = localStorage.getItem('savedEmail')
-      const remembered = localStorage.getItem('rememberMe') === 'true'
-      if (savedEmail && remembered) {
-          this.email = savedEmail
-          this.rememberMe = true
-      }
+    const savedEmail = localStorage.getItem('savedEmail');
+    const remembered = localStorage.getItem('rememberMe') === 'true';
+    if (savedEmail && remembered) {
+      this.email = savedEmail;
+      this.rememberMe = true;
+    }
 
-      // 處理 Google 登入回傳 code
-      const params = new URLSearchParams(window.location.search);
-      const code = params.get('code');
+    // 處理 Google 登入回傳 code
+    const params = new URLSearchParams(window.location.search);
+    const code = params.get('code');
 
-      if (code) {
-          api.post_user_LoginGoogle(code);
-          // 清除網址上的 code 參數
-          window.history.replaceState({}, document.title, window.location.pathname);
-      }
+    if (code) {
+      api.post_user_LoginGoogle(code);
+      // 清除網址上的 code 參數
+      window.history.replaceState({}, document.title, window.location.pathname);
+    }
   },
   watch: {
-      rememberMe(newVal) {
-          if (newVal) {
-              localStorage.setItem('savedEmail', this.email)
-              localStorage.setItem('rememberMe', 'true')
-          } else {
-              localStorage.removeItem('savedEmail')
-              localStorage.setItem('rememberMe', 'false')
-              this.email = ""
-          }
-      },
-      email(newVal) {
-          if (this.rememberMe) {
-              localStorage.setItem('savedEmail', newVal)
-          }
+    rememberMe(newVal) {
+      if (newVal) {
+        localStorage.setItem('savedEmail', this.email);
+        localStorage.setItem('rememberMe', 'true');
+      } else {
+        localStorage.removeItem('savedEmail');
+        localStorage.setItem('rememberMe', 'false');
+        this.email = '';
       }
+    },
+    email(newVal) {
+      if (this.rememberMe) {
+        localStorage.setItem('savedEmail', newVal);
+      }
+    },
   },
   methods: {
-      async LoginAPI() {
-          // 找到錯誤訊息 DOM 節點
-          const errorTxt = document.querySelector('.error_msg')
+    async LoginAPI() {
+      // 找到錯誤訊息 DOM 節點
+      const errorTxt = document.querySelector('.error_msg');
 
-          // 建立假的 input DOM 給驗證用
-          const emailInput = { value: this.email, focus: () => {} }
-          const passwordInput = { value: this.password, focus: () => {} }
+      // 建立假的 input DOM 給驗證用
+      const emailInput = { value: this.email, focus: () => {} };
+      const passwordInput = { value: this.password, focus: () => {} };
 
-          if(func.validateEmail(emailInput,errorTxt)) return;
-          if(func.validatePassword(passwordInput,errorTxt)) return;
+      if (func.validateEmail(emailInput, errorTxt)) return;
+      if (func.validatePassword(passwordInput, errorTxt)) return;
 
-          api.post_user_LoginEmail(this.email, this.password, () => {
-              this.password = '';
-              if (!this.rememberMe) {this.email = '';}
-          });
-      },
-      async GoogleAPI() {
-          const googleClientId = '148755362421-us8l17s3ukf88mj23kbs5vj2i8lgu8nk.apps.googleusercontent.com';
-          const redirectUri = import.meta.env.VITE_Redirect_BASE; // 請依照你的 Vue 環境調整
+      api.post_user_LoginEmail(this.email, this.password, () => {
+        this.password = '';
+        if (!this.rememberMe) {
+          this.email = '';
+        }
+      });
+    },
+    async GoogleAPI() {
+      const googleClientId =
+        '148755362421-us8l17s3ukf88mj23kbs5vj2i8lgu8nk.apps.googleusercontent.com';
+      const redirectUri = import.meta.env.VITE_Redirect_BASE; // 請依照你的 Vue 環境調整
 
-          const url = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${googleClientId}&redirect_uri=${redirectUri}&response_type=code&scope=openid%20email%20profile`;
-          window.location.href = url;
-      }
-  }
-}
+      const url = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${googleClientId}&redirect_uri=${redirectUri}&response_type=code&scope=openid%20email%20profile`;
+      window.location.href = url;
+    },
+  },
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

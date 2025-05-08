@@ -1,28 +1,24 @@
 <template>
-    <div class="wrap">
-        <!-- Header -->
-        <HeaderComponent />
+  <div class="wrap">
+    <!-- Header -->
+    <HeaderComponent />
 
-        <!-- Content -->
-        <div class="content">
-            
-        </div>
+    <!-- Content -->
+    <div class="content"></div>
 
-        <!-- Footer -->
+    <!-- Footer -->
     <FooterComponent />
   </div>
 </template>
 
 <script>
-import HeaderComponent from '@/components/HeaderComponent.vue'
-import FooterComponent from '@/components/FooterComponent.vue'
+import HeaderComponent from '@/components/HeaderComponent.vue';
+import FooterComponent from '@/components/FooterComponent.vue';
 
 export default {
-  name: 'login',
-  components: { HeaderComponent, FooterComponent }
-}
+  name: 'homePage',
+  components: { HeaderComponent, FooterComponent },
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
