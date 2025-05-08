@@ -12,7 +12,7 @@
         </div>
 
         <div>
-          <img src="@/assets/img/forgot-password.png" alt="forgot_password_img">
+          <img src="@/assets/img/forgot-password.png" alt="forgot_password_img" />
         </div>
 
         <div class="main_form">
@@ -41,19 +41,19 @@
 </template>
 
 <script>
-import HeaderComponent from '@/components/HeaderComponent.vue'
-import FooterComponent from '@/components/FooterComponent.vue'
-import * as func from '@/utils/function.js'
-import * as api from '@/utils/api.js'
+import HeaderComponent from '@/components/HeaderComponent.vue';
+import FooterComponent from '@/components/FooterComponent.vue';
+import * as func from '@/utils/function.js';
+import * as api from '@/utils/api.js';
 
 export default {
-  name: 'forgotpw',
+  name: 'forgotpwPage',
   components: { HeaderComponent, FooterComponent },
   data() {
     return {
       email: '',
-      errorMsg: ''
-    }
+      errorMsg: '',
+    };
   },
   methods: {
     async handleSubmit() {
@@ -62,14 +62,12 @@ export default {
 
       if (func.validateEmail(emailInput, errorTxt)) return;
 
-      await api.post_user_forgetPW(this.email.trim(),() => {
-              this.email = '';
-          });
-    }
-  }
-}
+      await api.post_user_forgetPW(this.email.trim(), () => {
+        this.email = '';
+      });
+    },
+  },
+};
 </script>
 
-<style scoped>
-</style>
-
+<style scoped></style>

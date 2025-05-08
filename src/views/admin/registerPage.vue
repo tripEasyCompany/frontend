@@ -12,7 +12,7 @@
         </div>
 
         <div>
-          <img src="@/assets/img/register.png" alt="register_img">
+          <img src="@/assets/img/register.png" alt="register_img" />
         </div>
 
         <div class="main_form">
@@ -20,11 +20,23 @@
           <div class="form">
             <div class="form_item">
               <i class="fa-regular fa-user"></i>
-              <input class="form_txtbox" v-model="name" type="text" placeholder="請輸入姓名" required>
+              <input
+                class="form_txtbox"
+                v-model="name"
+                type="text"
+                placeholder="請輸入姓名"
+                required
+              />
             </div>
             <div class="form_item">
               <i class="fa-regular fa-envelope"></i>
-              <input class="form_txtbox" v-model="email" type="email" placeholder="請輸入 Email" required>
+              <input
+                class="form_txtbox"
+                v-model="email"
+                type="email"
+                placeholder="請輸入 Email"
+                required
+              />
             </div>
             <div class="form_item">
               <i class="fa-solid fa-lock"></i>
@@ -38,21 +50,33 @@
               <i
                 :class="showPassword ? 'fa-solid fa-eye' : 'fa-solid fa-eye-slash'"
                 @click="showPassword = !showPassword"
-                style="cursor:pointer"
+                style="cursor: pointer"
               ></i>
             </div>
 
             <div class="form_preference">
               <div v-for="(pref, index) in preferences" :key="index" class="select-wrap">
-                <select class="select-box" v-model="preferences[index]" @change="updateOptions" required>
+                <select
+                  class="select-box"
+                  v-model="preferences[index]"
+                  @change="updateOptions"
+                  required
+                >
                   <option value="" disabled hidden>請選擇</option>
-                  <option v-for="option in preferenceOptions" :key="option" :value="option" :disabled="isOptionDisabled(option, index)">{{ option }}</option>
+                  <option
+                    v-for="option in preferenceOptions"
+                    :key="option"
+                    :value="option"
+                    :disabled="isOptionDisabled(option, index)"
+                  >
+                    {{ option }}
+                  </option>
                 </select>
               </div>
             </div>
 
             <p class="error_msg">{{ errorMsg }}</p>
-            <input class="submit_btn" type="submit" value="加入會員" @click="handleRegister">
+            <input class="submit_btn" type="submit" value="加入會員" @click="handleRegister" />
           </div>
         </div>
       </div>
@@ -60,18 +84,17 @@
 
     <!-- Footer -->
     <FooterComponent />
-
   </div>
 </template>
 
 <script>
-import HeaderComponent from '@/components/HeaderComponent.vue'
-import FooterComponent from '@/components/FooterComponent.vue'
+import HeaderComponent from '@/components/HeaderComponent.vue';
+import FooterComponent from '@/components/FooterComponent.vue';
 import * as func from '@/utils/function.js';
 import * as api from '@/utils/api.js';
 
 export default {
-  name: 'register',
+  name: 'registerPage',
   components: { HeaderComponent, FooterComponent },
   data() {
     return {
@@ -80,17 +103,22 @@ export default {
       password: '',
       preferences: ['', '', ''],
       preferenceOptions: [
-        '探索冒險', '放鬆療癒', '文化體驗', '美食探索',
-        '都市感官', '自然療癒', '親子家庭', '拍照打卡',
-        '懶人輕鬆', '特殊主題'
+        '探索冒險',
+        '放鬆療癒',
+        '文化體驗',
+        '美食探索',
+        '都市感官',
+        '自然療癒',
+        '親子家庭',
+        '拍照打卡',
+        '懶人輕鬆',
+        '特殊主題',
       ],
       errorMsg: '',
-      showPassword: false
-    }
+      showPassword: false,
+    };
   },
-  mounted() {
-
-  },
+  mounted() {},
   methods: {
     togglePassword() {
       this.showPassword = !this.showPassword;
@@ -108,7 +136,7 @@ export default {
       if (func.validateName(nameInput, errorTxt)) return;
       if (func.validateEmail(emailInput, errorTxt)) return;
       if (func.validatePassword(passwordInput, errorTxt)) return;
-      
+
       if (func.checkSelections(selectNodes, errorTxt)) return;
 
       await api.post_user_SignUp(
@@ -121,13 +149,11 @@ export default {
           this.email = '';
           this.password = '';
           this.preferences = ['', '', ''];
-      });
-    }
-  }
-}
+        }
+      );
+    },
+  },
+};
 </script>
 
-<style scoped>
-
-</style>
-
+<style scoped></style>
