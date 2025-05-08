@@ -11,7 +11,7 @@
           <p class="vertical-text">走吧!</p>
           <p class="vertical-text">讓每段旅程都有溫度</p>
         </div>
-        <div><img src="@/assets/img/login.png" alt="login_img" /></div>
+        <div><img :src="imgUrl" loading="lazy" alt="login_img" /></div>
 
         <!-- 表單 -->
         <div class="main_form">
@@ -88,7 +88,9 @@ export default {
   name: 'loginPage',
   components: { HeaderComponent, FooterComponent },
   data() {
+    const firebaseUrl = import.meta.env.VITE_FIREBASE_PATH;
     return {
+      imgUrl:`${firebaseUrl}img%2Flogin.png?alt=media&token=bb53ee0c-d473-45a9-9a77-ba7c58d64541`,
       email: '',
       password: '',
       rememberMe: false,
