@@ -128,10 +128,9 @@ const router = createRouter({
 router.beforeEach(async (to, from, next) => {
   const authPages = ['/admin/login', '/admin/register', '/admin/forgotpw', '/admin/resetpw'];
 
-  if (authPages.includes(to.path)) {
+  if (authPages.includes(to.path) && localStorage.getItem('authToken')) {
       const result = await api.get_user_status();
 
-      console.log(result.isLoggedIn)
       if (result.isLoggedIn) {
         return next('/');
       }
