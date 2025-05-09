@@ -13,7 +13,7 @@
           </div>
 
           <div>
-            <img src="@/assets/img/reset-password.webp" alt="reset_password_img" />
+            <img src="@/assets/img/reset-password.webp" loading="lazy" alt="reset_password_img" />
           </div>
 
           <div class="main_form">

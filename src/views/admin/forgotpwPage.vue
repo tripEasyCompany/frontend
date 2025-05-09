@@ -12,7 +12,7 @@
         </div>
 
         <div>
-          <img src="@/assets/img/forgot-password.webp" alt="forgot_password_img" />
+          <img src="@/assets/img/forgot-password.webp" loading="lazy" alt="forgot_password_img" />
         </div>
 
         <div class="main_form">
