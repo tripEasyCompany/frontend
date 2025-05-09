@@ -11,7 +11,7 @@
           <p class="vertical-text">走吧!</p>
           <p class="vertical-text">讓每段旅程都有溫度</p>
         </div>
-        <div><img src="@/assets/img/login.png" alt="login_img" /></div>
+        <div><img src="@/assets/img/login.webp" loading="lazy" alt="login_img" /></div>
 
         <!-- 表單 -->
         <div class="main_form">

@@ -12,7 +12,7 @@
         </div>
 
         <div>
-          <img src="@/assets/img/register.png" alt="register_img" />
+          <img src="@/assets/img/register.webp" loading="lazy" alt="register_img" />
         </div>
 
         <div class="main_form">

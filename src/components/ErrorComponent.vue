@@ -1,7 +1,7 @@
 <template>
   <div class="error-page">
     <h2>Oops! 你來到了一個不存在的地方</h2>
-    <img id="error_img" src="@/assets/img/Error.png" alt="Error_img" />
+    <img id="error_img" src="@/assets/img/Error.webp" loading="lazy" alt="Error_img" />
   </div>
 </template>
 
