@@ -1,6 +1,18 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from '../views/HomeView.vue';
 import * as api from '../utils/api';
+import { userStore } from '../stores/userStore';
+
+const requireAuth = async (to, from, next) => {
+    const res = await api.get_user_status();
+    console.log(res)
+    if (res.isLoggedIn) {
+      userStore.isLoggedIn = true; // 更新 store 狀態
+      next();
+    } else{
+      next('/admin/login');
+    }
+};
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -58,11 +70,12 @@ const router = createRouter({
           name: 'forgotpw',
           component: () => import('../views/admin/forgotpwPage.vue'),
         },
-        //忘記密碼
+        //個人會員
         {
           path: 'userprofile',
           name: 'userprofile',
           component: () => import('../views/admin/userprofilePage.vue'),
+          beforeEnter: requireAuth
         },
         //會員資料
         {
@@ -138,7 +151,7 @@ router.beforeEach(async (to, from, next) => {
     const result = await api.get_user_status();
 
     if (result.isLoggedIn) {
-      return next('/');
+      return next('/admin/userprofile');
     }
   }
 

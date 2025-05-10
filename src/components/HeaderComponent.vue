@@ -56,7 +56,7 @@
             <img class="img_dropdown" src="@/assets/img/Vector (Stroke).png" alt="下拉式按鈕" />
           </div>
 
-          <div class="dropdown-menu" v-show="dropdownOpen" :class="{ active: dropdownOpen }">
+          <div class="custom-dropdown-menu" v-show="dropdownOpen" :class="{ active: dropdownOpen }">
             <div class="dropdown-header">
               <img :src="levelIcon" alt="等級圖示" />
               <span>{{ userStore.levelName }}</span>
@@ -88,10 +88,6 @@ function setLanguage(lang) {
   language.value = lang;
 }
 
-function search() {
-  alert(`搜尋關鍵字：${searchText.value}`);
-}
-
 function logout() {
   userStore.logout();
   dropdownOpen.value = false;
@@ -101,5 +97,7 @@ function logout() {
 </script>
 
 <style scoped>
-/* 你可加上 header 樣式或使用共用 css 檔 */
+@import url('https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css');
+@import '@/assets/css/reset.css';
+@import '@/assets/css/common.css';
 </style>
