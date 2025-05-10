@@ -5,57 +5,57 @@
 
     <!-- Content -->
     <div class="content">
-    <div class="container">
-      <div class="row">
-        <!-- 側邊欄 -->
-        <div class="sidebar col-md-3 col-lg-2">
-          <div class="headimg"><i class="bi bi-person-circle fs-1"></i></div>
-          <div class="name">{{ user.name }}</div>
-          <div
-            class="sidebaritem"
-            :class="{ active: currentTab === tab }"
-            v-for="tab in tabs"
-            :key="tab"
-            @click="currentTab = tab"
-          >
-            <i :class="icons[tab] + ' me-2'"></i>{{ tab }}
-          </div>
-        </div>
-
-        <!-- 主要內容 -->
-        <div class="content col-md-9 col-lg-10">
-          <div class="title">
-            <i class="bi bi-person-circle me-2"></i>會員中心
+      <div class="container">
+        <div class="row">
+          <!-- 側邊欄 -->
+          <div class="sidebar col-md-3 col-lg-2">
+            <div class="headimg"><i class="bi bi-person-circle fs-1"></i></div>
+            <div class="name">{{ user.name }}</div>
+            <div
+              class="sidebaritem"
+              :class="{ active: currentTab === tab }"
+              v-for="tab in tabs"
+              :key="tab"
+              @click="currentTab = tab"
+            >
+              <i :class="icons[tab] + ' me-2'"></i>{{ tab }}
+            </div>
           </div>
 
-          <!-- 會員資訊表單 -->
-          <form v-if="currentTab === '會員資訊'" id="userinfo" @submit.prevent>
-            <div class="form-title">
-              <i class="bi bi-person-vcard me-2"></i>會員資訊
+          <!-- 主要內容 -->
+          <div class=" col-md-9 col-lg-10">
+            <div class="title">
+              <i class="bi bi-person-circle me-2"></i>會員中心
             </div>
-            <div class="form-group">
-              <label for="name" class="form-label">姓名</label>
-              <input type="text" class="form-control" id="name" v-model="user.name" />
-              <span class="edit-icon"><i class="bi bi-pencil-square"></i></span>
-            </div>
-            <div class="form-group">
-              <label for="email" class="form-label">信箱</label>
-              <input type="email" class="form-control" id="email" v-model="user.email" />
-              <span class="edit-icon"><i class="bi bi-pencil-square"></i></span>
-            </div>
-            <div class="form-group" v-for="(pref, idx) in preferences" :key="idx">
-              <label :for="'preference' + (idx + 1)" class="form-label">{{ pref.label }}</label>
-              <select class="form-select" :id="'preference' + (idx + 1)" v-model="user[pref.model]">
-                <option v-for="opt in options" :key="opt">{{ opt }}</option>
-              </select>
-            </div>
-            <button type="button" class="btn btn-primary save-button" @click="updateUserInfo">
-              <i class="bi bi-check-circle me-2"></i>儲存設定
-            </button>
-          </form>
+
+            <!-- 會員資訊表單 -->
+            <form v-if="currentTab === '會員資訊'" id="userinfo" @submit.prevent>
+              <div class="form-title">
+                <i class="bi bi-person-vcard me-2"></i>會員資訊
+              </div>
+              <div class="form-group">
+                <label for="name" class="form-label">姓名</label>
+                <input type="text" class="form-control" id="name" v-model="user.name" />
+                <span class="edit-icon"><i class="bi bi-pencil-square"></i></span>
+              </div>
+              <div class="form-group">
+                <label for="email" class="form-label">信箱</label>
+                <input type="email" class="form-control" id="email" v-model="user.email" />
+                <span class="edit-icon"><i class="bi bi-pencil-square"></i></span>
+              </div>
+              <div class="form-group" v-for="(pref, idx) in preferences" :key="idx">
+                <label :for="'preference' + (idx + 1)" class="form-label">{{ pref.label }}</label>
+                <select class="form-select" :id="'preference' + (idx + 1)" v-model="user[pref.model]">
+                  <option v-for="opt in options" :key="opt">{{ opt }}</option>
+                </select>
+              </div>
+              <button type="button" class="btn btn-primary save-button" @click="updateUserInfo">
+                <i class="bi bi-check-circle me-2"></i>儲存設定
+              </button>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
     </div>
     <!-- Footer -->
     <FooterComponent />
@@ -157,6 +157,8 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css');
+@import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css');
 /* 全局樣式 */
 :root {
     --primary-color: #4e73df;
@@ -182,12 +184,12 @@ body {
 
 /* 側邊欄樣式 */
 .sidebar {
-    background-color: var(--sidebar-bg);
-    color: var(--sidebar-text);
-    border-radius: var(--border-radius);
+    background-color: #4e73df;
+    color: #fff;
+    border-radius: 0.5rem;
     padding: 1.5rem 1rem;
     min-height: 100vh;
-    box-shadow: var(--box-shadow);
+    box-shadow:  0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
     position: relative;
     transition: all 0.3s;
 }
@@ -235,6 +237,7 @@ body {
 /* 主要內容區域 */
 .content {
     padding: 1.5rem 2rem;
+    padding-top: 100px
 }
 
 .title {
@@ -243,24 +246,24 @@ body {
     margin-bottom: 2rem;
     color: #333;
     padding-bottom: 0.5rem;
-    border-bottom: 2px solid var(--primary-color);
+    border-bottom: 2px solid #4e73df;
 }
 
 /* 表單樣式 */
 #userinfo,
 #password {
-    background-color: var(--form-bg);
-    border-radius: var(--border-radius);
+    background-color: #fff;
+    border-radius: 0.5rem;
     padding: 2rem;
     margin-bottom: 2rem;
-    box-shadow: var(--box-shadow);
+    box-shadow:  0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
 }
 
 .form-title {
     font-size: 1.3rem;
     font-weight: 600;
     margin-bottom: 1.5rem;
-    color: var(--primary-color);
+    color: #4e73df;
 }
 
 .form-group {
@@ -283,7 +286,7 @@ body {
 
 .form-control:focus,
 .form-select:focus {
-    border-color: var(--primary-color);
+    border-color: #4e73df;
     box-shadow: 0 0 0 0.25rem rgba(78, 115, 223, 0.25);
 }
 
@@ -298,7 +301,7 @@ body {
 }
 
 .edit-icon:hover {
-    color: var(--primary-color);
+    color: #4e73df;
 }
 
 /* 密碼區塊 */
@@ -331,12 +334,12 @@ body {
 }
 
 .password-toggle:hover {
-    color: var(--primary-color);
+    color: #4e73df;
 }
 
 /* 按鈕樣式 */
 .save-button {
-    background-color: var(--primary-color);
+    background-color: #4e73df;
     border: none;
     padding: 0.5rem 2rem;
     border-radius: 0.3rem;
