@@ -95,6 +95,8 @@ function search() {
 function logout() {
   userStore.logout();
   dropdownOpen.value = false;
+
+  window.location.href = '/';
 }
 </script>
 

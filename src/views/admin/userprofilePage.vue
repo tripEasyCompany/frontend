@@ -1,71 +1,78 @@
 <template>
   <div class="wrap">
-  <!-- Header -->
-  <HeaderComponent />
+    <!-- Header -->
+    <HeaderComponent />
 
-  <div class="container">
-    <div class="row">
-      <!-- 側邊欄 -->
-      <div class="sidebar col-md-3 col-lg-2">
-        <div class="headimg"><i class="bi bi-person-circle fs-1"></i></div>
-        <div class="name">{{ user.name }}</div>
-        <div
-          class="sidebaritem"
-          :class="{ active: currentTab === tab }"
-          v-for="tab in tabs"
-          :key="tab"
-          @click="currentTab = tab"
-        >
-          <i :class="icons[tab] + ' me-2'"></i>{{ tab }}
-        </div>
-      </div>
-
-      <!-- 主要內容 -->
-      <div class="content col-md-9 col-lg-10">
-        <div class="title">
-          <i class="bi bi-person-circle me-2"></i>會員中心
+    <!-- Content -->
+    <div class="content">
+    <div class="container">
+      <div class="row">
+        <!-- 側邊欄 -->
+        <div class="sidebar col-md-3 col-lg-2">
+          <div class="headimg"><i class="bi bi-person-circle fs-1"></i></div>
+          <div class="name">{{ user.name }}</div>
+          <div
+            class="sidebaritem"
+            :class="{ active: currentTab === tab }"
+            v-for="tab in tabs"
+            :key="tab"
+            @click="currentTab = tab"
+          >
+            <i :class="icons[tab] + ' me-2'"></i>{{ tab }}
+          </div>
         </div>
 
-        <!-- 會員資訊表單 -->
-        <form v-if="currentTab === '會員資訊'" id="userinfo" @submit.prevent>
-          <div class="form-title">
-            <i class="bi bi-person-vcard me-2"></i>會員資訊
+        <!-- 主要內容 -->
+        <div class="content col-md-9 col-lg-10">
+          <div class="title">
+            <i class="bi bi-person-circle me-2"></i>會員中心
           </div>
-          <div class="form-group">
-            <label for="name" class="form-label">姓名</label>
-            <input type="text" class="form-control" id="name" v-model="user.name" />
-            <span class="edit-icon"><i class="bi bi-pencil-square"></i></span>
-          </div>
-          <div class="form-group">
-            <label for="email" class="form-label">信箱</label>
-            <input type="email" class="form-control" id="email" v-model="user.email" />
-            <span class="edit-icon"><i class="bi bi-pencil-square"></i></span>
-          </div>
-          <div class="form-group" v-for="(pref, idx) in preferences" :key="idx">
-            <label :for="'preference' + (idx + 1)" class="form-label">{{ pref.label }}</label>
-            <select class="form-select" :id="'preference' + (idx + 1)" v-model="user[pref.model]">
-              <option v-for="opt in options" :key="opt">{{ opt }}</option>
-            </select>
-          </div>
-          <button type="button" class="btn btn-primary save-button" @click="updateUserInfo">
-            <i class="bi bi-check-circle me-2"></i>儲存設定
-          </button>
-        </form>
+
+          <!-- 會員資訊表單 -->
+          <form v-if="currentTab === '會員資訊'" id="userinfo" @submit.prevent>
+            <div class="form-title">
+              <i class="bi bi-person-vcard me-2"></i>會員資訊
+            </div>
+            <div class="form-group">
+              <label for="name" class="form-label">姓名</label>
+              <input type="text" class="form-control" id="name" v-model="user.name" />
+              <span class="edit-icon"><i class="bi bi-pencil-square"></i></span>
+            </div>
+            <div class="form-group">
+              <label for="email" class="form-label">信箱</label>
+              <input type="email" class="form-control" id="email" v-model="user.email" />
+              <span class="edit-icon"><i class="bi bi-pencil-square"></i></span>
+            </div>
+            <div class="form-group" v-for="(pref, idx) in preferences" :key="idx">
+              <label :for="'preference' + (idx + 1)" class="form-label">{{ pref.label }}</label>
+              <select class="form-select" :id="'preference' + (idx + 1)" v-model="user[pref.model]">
+                <option v-for="opt in options" :key="opt">{{ opt }}</option>
+              </select>
+            </div>
+            <button type="button" class="btn btn-primary save-button" @click="updateUserInfo">
+              <i class="bi bi-check-circle me-2"></i>儲存設定
+            </button>
+          </form>
+        </div>
       </div>
     </div>
-  </div>
-
+    </div>
     <!-- Footer -->
     <FooterComponent />
+
   </div>
 </template>
 
 <script>
+import HeaderComponent from '@/components/HeaderComponent.vue';
+import FooterComponent from '@/components/FooterComponent.vue';
 import * as func from '@/utils/function.js';
 import * as api from '@/utils/api.js';
 import Swal from 'sweetalert2';
 
 export default {
+  name: 'userprofilePage',
+  components: { HeaderComponent, FooterComponent },
   data() {
     return {
       currentTab: '會員資訊',
@@ -150,9 +157,6 @@ export default {
 </script>
 
 <style scoped>
-@import url('https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css');
-@import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css');
-
 /* 全局樣式 */
 :root {
     --primary-color: #4e73df;

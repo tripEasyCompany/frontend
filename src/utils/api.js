@@ -247,8 +247,9 @@ export async function get_user_status() {
   try {
     const res = await axios.get(`${apiUrl}/login/status`, {
       headers: {
-        Authorization: `Bearer ${localStorage.getItem('authToken')}`
-    }});
+        Authorization: `Bearer ${localStorage.getItem('authToken')}`,
+      },
+    });
 
     return {
       isLoggedIn: true,
@@ -267,8 +268,9 @@ export async function get_user_Profile() {
   try {
     const res = await axios.get(`${apiUrl_userprofile}/info`, {
       headers: {
-        Authorization: `Bearer ${localStorage.getItem('authToken')}`
-    }});
+        Authorization: `Bearer ${localStorage.getItem('authToken')}`,
+      },
+    });
 
     return res.data;
   } catch (err) {
@@ -281,9 +283,10 @@ export async function patch_user_Profile(payload) {
   try {
     const res = await axios.patch(`${apiUrl_userprofile}/info`, payload, {
       headers: {
-        Authorization: `Bearer ${localStorage.getItem('authToken')}`
-    }});
-    
+        Authorization: `Bearer ${localStorage.getItem('authToken')}`,
+      },
+    });
+
     Swal.fire({
       icon: 'success',
       title: res.data.status,

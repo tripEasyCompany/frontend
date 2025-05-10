@@ -135,12 +135,11 @@ router.beforeEach(async (to, from, next) => {
   const authPages = ['/admin/login', '/admin/register', '/admin/forgotpw', '/admin/resetpw'];
 
   if (authPages.includes(to.path) && localStorage.getItem('authToken')) {
-      const result = await api.get_user_status();
+    const result = await api.get_user_status();
 
-      if (result.isLoggedIn) {
-        return next('/');
-      }
-
+    if (result.isLoggedIn) {
+      return next('/');
+    }
   }
 
   return next();
