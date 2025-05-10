@@ -164,6 +164,7 @@ export default {
 
     async fetchUserInfo() {
       const data = await api.get_user_Profile();
+      
       this.user = {
         name: data.data.user.name,
         email: data.data.user.email,

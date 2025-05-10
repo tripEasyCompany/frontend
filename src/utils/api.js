@@ -271,6 +271,7 @@ export async function get_user_Profile() {
         Authorization: `Bearer ${localStorage.getItem('authToken')}`,
       },
     });
+    userStore.status(res.data);
 
     return res.data;
   } catch (err) {
@@ -293,7 +294,7 @@ export async function patch_user_Profile(payload) {
       text: res.data.message,
       scrollbarPadding: false,
     });
-
+    userStore.status(res.data);
     return res.data;
   } catch (error) {
     Swal.fire({

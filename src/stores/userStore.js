@@ -25,6 +25,12 @@ export const userStore = reactive({
     this.levelName = user.level;
   },
 
+  status(user){
+    localStorage.setItem('userName',user.data.user.name);
+
+    this.userName = user.data.user.name;
+  },
+
   logout() {
     localStorage.clear();
     this.isLoggedIn = false;
