@@ -36,9 +36,9 @@
                   class="form-control"
                   id="name"
                   v-model="user.name"
-                  :disabled="!isEditable"
+                  :disabled="!isEditable.name"
                 />
-                <span class="edit-icon" @click="toggleEdit"
+                <span class="edit-icon" @click="toggleEdit('name')"
                   ><i class="bi bi-pencil-square"></i
                 ></span>
               </div>
@@ -76,6 +76,46 @@
               </div>
               
             </form>
+
+            <!-- 修改密碼表單 -->
+            <form id="password">
+              <div class="form-title">
+                <i class="bi bi-shield-lock me-2"></i>密碼管理
+              </div>
+              <div class="password-container">
+                <div class="password-inputs">
+                  <div class="form-group">
+                    <input type="password" v-model="password.current" class="form-control password-input" id="currentPassword"
+                      placeholder="請輸入舊密碼">
+                  </div>
+                  <div class="form-group">
+                    <div class="password-input-group">
+                      <input :type="passwordVisible.new ? 'text' : 'password'" :disabled="!isEditable.new" v-model="password.new.value" class="form-control password-input" id="newPassword"
+                        placeholder="請輸入新密碼">
+                      <span class="password-toggle"  @click="togglePassword('new')">
+                        <i :class="passwordVisible.new ? 'bi bi-eye-slash' : 'bi bi-eye'"></i>
+                      </span>
+                      <span class="edit-icon pw-edit-icon"  @click="toggleEdit('new')"><i class="bi bi-pencil-square"></i></span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="password-input-group">
+                      <input :type="passwordVisible.confirm ? 'text' : 'password'" :disabled="!isEditable.confirm" v-model="password.new.confirm" class="form-control password-input" id="confirmNewPassword"
+                        placeholder="再次輸入新密碼">
+                      <span class="password-toggle"  @click="togglePassword('confirm')">
+                        <i :class="passwordVisible.confirm ? 'bi bi-eye-slash' : 'bi bi-eye'"></i>
+                      </span>
+                      <span class="edit-icon pw-edit-icon"  @click="toggleEdit('confirm')"><i class="bi bi-pencil-square"></i></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="btn_saveBtn">
+                <button type="button" class="btn btn-primary save-button" @click="updateUserPassword">
+                  <i class="bi bi-check-circle me-2"></i>更新密碼
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
@@ -101,7 +141,11 @@ export default {
   components: { HeaderComponent, FooterComponent },
   data() {
     return {
-      isEditable: false,
+      isEditable: {
+        name: false,
+        new: false,
+        confirm:false
+      },
       currentTab: '會員資訊',
       tabs: ['會員資訊', '會員等級', '個人偏好設定', '個人訂單查看'],
       icons: {
@@ -143,7 +187,7 @@ export default {
         },
       },
       passwordVisible: {
-        value: false,
+        new: false,
         confirm: false,
       },
     };
@@ -152,8 +196,12 @@ export default {
     this.fetchUserInfo();
   },
   methods: {
-    toggleEdit() {
-      this.isEditable = !this.isEditable;
+    togglePassword(key) {
+      this.passwordVisible[key] = !this.passwordVisible[key];
+    },
+
+    toggleEdit(key) {
+      this.isEditable[key] = !this.isEditable[key];
     },
 
     isOptionDisabled(option, currentModel) {
@@ -183,8 +231,25 @@ export default {
         preference: [this.user.preference1, this.user.preference2, this.user.preference3],
       };
       await api.patch_user_Profile(payload);
-      this.isEditable = false;
+      this.isEditable.name = false;
     },
+
+    async updateUserPassword(){
+      console.log(this.password.current);
+
+      await api.post_user_resetProfilePW( this.password.current,
+        this.password.new.value,
+        this.password.new.confirm,
+        () => {
+          this.password.current = '';
+          this.password.new.value = '';
+          this.password.new.confirm = '';
+          this.isEditable.password = false;
+        });
+
+        this.isEditable.new = false;
+        this.isEditable.confirm = false;
+    }
   },
 };
 </script>
@@ -346,6 +411,11 @@ select option:disabled {
   color: #9dbeb3;
 }
 
+.pw-edit-icon {
+  top: 8px;
+}
+
+
 /* 密碼區塊 */
 .password-container {
   display: flex;
@@ -359,7 +429,7 @@ select option:disabled {
 }
 
 .password-inputs {
-  width: 80%;
+  width: 100%;
 }
 
 .password-input-group {

@@ -306,3 +306,45 @@ export async function patch_user_Profile(payload) {
     throw err; // ✅ 讓呼叫端也可以 catch 到錯誤
   }
 }
+
+//  [PATCH] 編號 06-2 : 使用者密碼修改 (會員中心)
+export function post_user_resetProfilePW(
+  Pwd_txt,
+  NewPwd_txt,
+  NewaginPwd_txt,
+  onComplete
+) {
+  axios
+    .patch(
+      `${apiUrl}/resetprofilepw`,
+      {
+        password: Pwd_txt,
+        new_password: NewPwd_txt,
+        confirm_password: NewaginPwd_txt,
+      },{
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('authToken')}`,
+      }}
+    )
+    .then((res) => {
+      Swal.fire({
+        icon: 'success',
+        title: res.data.status,
+        text: res.data.message,
+        scrollbarPadding: false,
+      });
+    })
+    .catch((error) => {
+      Swal.fire({
+        icon: 'error',
+        title: error.response.data.status,
+        text: error.response.data.message,
+        scrollbarPadding: false,
+      });
+    })
+    .finally(() => {
+      if (typeof onComplete === 'function') {
+        onComplete(); // ✅ 無論成功或失敗都清空
+      }
+    });
+}
