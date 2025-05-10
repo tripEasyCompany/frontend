@@ -6,6 +6,8 @@ const baseUrl = import.meta.env.VITE_API_BASE;
 const version = 'v1';
 const apiUrl = `${baseUrl}/api/${version}/auth/userinfo`;
 
+const apiUrl_userprofile = `${baseUrl}/api/${version}/user/userinfo`;
+
 // [POST] 編號 01 : 使用者註冊、個人偏好設定
 export function post_user_SignUp(
   signUpName_txt,
@@ -80,7 +82,7 @@ export function post_user_LoginEmail(signUpEmail_txt, signUpPwd_txt, onComplete)
       });
 
       setTimeout(() => {
-        window.location.href = '/';
+        window.location.href = '/admin/userprofile';
       }, 3000);
     })
     .catch((error) => {
@@ -130,7 +132,7 @@ export function post_user_LoginGoogle(code) {
       });
 
       setTimeout(() => {
-        window.location.href = '/';
+        window.location.href = '/admin/userprofile';
       }, 3000);
     })
     .catch((error) => {
@@ -257,5 +259,46 @@ export async function get_user_status() {
       isLoggedIn: false,
       user: null,
     };
+  }
+}
+
+// [GET] 編號 10 : 使用者用戶資料呈現
+export async function get_user_Profile() {
+  try {
+    const res = await axios.get(`${apiUrl_userprofile}/info`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('authToken')}`
+    }});
+
+    return res.data;
+  } catch (err) {
+    throw err; // ✅ 讓呼叫端也可以 catch 到錯誤
+  }
+}
+
+// [PATCH] 編號 11 : 使用者用戶資料修改
+export async function patch_user_Profile(payload) {
+  try {
+    const res = await axios.patch(`${apiUrl_userprofile}/info`, payload, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('authToken')}`
+    }});
+    
+    Swal.fire({
+      icon: 'success',
+      title: res.data.status,
+      text: res.data.message,
+      scrollbarPadding: false,
+    });
+
+    return res.data;
+  } catch (error) {
+    Swal.fire({
+      icon: 'error',
+      title: error.response.data.status,
+      text: error.response.data.message,
+      scrollbarPadding: false,
+    });
+    throw err; // ✅ 讓呼叫端也可以 catch 到錯誤
   }
 }

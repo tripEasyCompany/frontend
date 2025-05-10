@@ -1,4 +1,8 @@
 <template>
+  <div class="wrap">
+  <!-- Header -->
+  <HeaderComponent />
+
   <div class="container">
     <div class="row">
       <!-- 側邊欄 -->
@@ -43,16 +47,24 @@
               <option v-for="opt in options" :key="opt">{{ opt }}</option>
             </select>
           </div>
-          <button type="button" class="btn btn-primary save-button">
+          <button type="button" class="btn btn-primary save-button" @click="updateUserInfo">
             <i class="bi bi-check-circle me-2"></i>儲存設定
           </button>
         </form>
       </div>
     </div>
   </div>
+
+    <!-- Footer -->
+    <FooterComponent />
+  </div>
 </template>
 
 <script>
+import * as func from '@/utils/function.js';
+import * as api from '@/utils/api.js';
+import Swal from 'sweetalert2';
+
 export default {
   data() {
     return {
@@ -77,7 +89,18 @@ export default {
         { label: '次要偏好', model: 'preference2' },
         { label: '第三偏好', model: 'preference3' }
       ],
-      options: ['', '', ''],
+      options: [
+        '探索冒險',
+        '放鬆療癒',
+        '文化體驗',
+        '美食探索',
+        '都市感官',
+        '自然療癒',
+        '親子家庭',
+        '拍照打卡',
+        '懶人輕鬆',
+        '特殊主題',
+      ],
       password: {
         current: '',
         new: {
@@ -91,9 +114,36 @@ export default {
       }
     };
   },
+  mounted() {
+    this.fetchUserInfo();
+  },
   methods: {
     togglePassword(key) {
       this.passwordVisible[key] = !this.passwordVisible[key];
+    },
+
+    async fetchUserInfo () {
+      const data = await api.get_user_Profile();
+
+      this.user = {
+        name: data.data.user.name,
+        email: data.data.user.email,
+        preference1: data.data.user.preferences[0],
+        preference2: data.data.user.preferences[1],
+        preference3: data.data.user.preferences[2]
+      };
+    },
+
+    async updateUserInfo() {
+      const payload = {
+        name: this.user.name,
+        preference: [
+          this.user.preference1,
+          this.user.preference2,
+          this.user.preference3
+        ]
+      };
+      await api.patch_user_Profile(payload);
     }
   }
 };
