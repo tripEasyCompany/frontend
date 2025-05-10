@@ -162,4 +162,31 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+@import url('https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css');
+@import '@/assets/css/style.css';
+
+a {
+  text-decoration: none;
+  color: #212121;
+}
+
+/* icon、icon 按鈕 */
+.main_form .form_item {
+  position: relative;
+}
+
+.form_item i:first-child {
+  position: absolute;
+  top: 20px;
+  left: 15px;
+}
+
+.form_item i:last-child {
+  position: absolute;
+  top: 20px;
+  right: 15px;
+
+  cursor: pointer;
+}
+</style>

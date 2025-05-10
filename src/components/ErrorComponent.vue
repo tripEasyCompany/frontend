@@ -11,6 +11,4 @@ export default {
 };
 </script>
 
-<style scoped>
-/* 建議直接使用 common.css 中既有樣式 */
-</style>
+<style scoped></style>
