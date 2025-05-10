@@ -175,6 +175,7 @@
 
 .select-box option:disabled {
   color: #d4d4d4;
+  background-color: #f8f9fa;
 }
 
 /* ----------------------  登入  ------------------------- */

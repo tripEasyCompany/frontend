@@ -1,3 +1,4 @@
+
 *,
 *:after,
 *:before {
@@ -85,7 +86,6 @@ a {
   border: 1px solid #d4d4d4;
   border-radius: 100px;
 
-  letter-spacing: 9%;
 }
 
 .navbar_left .search_txtbox::placeholder {
@@ -113,14 +113,14 @@ a {
   background-repeat: no-repeat;
 
   position: absolute;
-  top: 6px;
+  top: 10px;
   right: 16px;
 }
 
 .navbar_left .lang_toggle {
   display: flex;
   gap: 4px;
-  padding: 4px 8px;
+  padding: 5px 8px;
 
   border: 1px solid #d4d4d4;
   border-radius: 100px;
@@ -130,7 +130,7 @@ a {
 }
 
 .lang_toggle .lang_option {
-  padding: 8px;
+  padding: 5.5px 8px;
 
   text-align: center;
   color: #939393;
@@ -220,7 +220,7 @@ a {
   border-radius: 50%;
 }
 
-.user-dropdown .dropdown-menu {
+.user-dropdown .custom-dropdown-menu {
   position: absolute;
   top: 100%;
   right: 0;
@@ -239,7 +239,7 @@ a {
   pointer-events: none;
 }
 
-.dropdown-menu.active {
+.custom-dropdown-menu.active {
   max-height: 500px; /* 足夠容納整個選單 */
   opacity: 1;
   transform: translateY(0);
@@ -369,6 +369,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-top: 5px;
 
   transition:
     background-color 0.5s ease,

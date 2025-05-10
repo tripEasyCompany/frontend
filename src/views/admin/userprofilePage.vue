@@ -9,7 +9,7 @@
         <div class="row">
           <!-- 側邊欄 -->
           <div class="sidebar col-md-3 col-lg-2">
-            <div class="headimg"><i class="bi bi-person-circle fs-1"></i></div>
+            <img class="headimg" :src="userStore.userPicture" alt="頭像" />
             <div class="name">{{ user.name }}</div>
             <div
               class="sidebaritem"
@@ -35,18 +35,26 @@
               </div>
               <div class="form-group">
                 <label for="name" class="form-label">姓名</label>
-                <input type="text" class="form-control" id="name" v-model="user.name" />
-                <span class="edit-icon"><i class="bi bi-pencil-square"></i></span>
+                <input type="text" class="form-control" id="name" v-model="user.name" :disabled="!isEditable" />
+                <span class="edit-icon" @click="toggleEdit"><i class="bi bi-pencil-square"></i></span>
               </div>
               <div class="form-group">
                 <label for="email" class="form-label">信箱</label>
-                <input type="email" class="form-control" id="email" v-model="user.email" />
-                <span class="edit-icon"><i class="bi bi-pencil-square"></i></span>
+                <input type="email" class="form-control" id="email" v-model="user.email"  disabled="false"/>
               </div>
               <div class="form-group" v-for="(pref, idx) in preferences" :key="idx">
                 <label :for="'preference' + (idx + 1)" class="form-label">{{ pref.label }}</label>
-                <select class="form-select" :id="'preference' + (idx + 1)" v-model="user[pref.model]">
-                  <option v-for="opt in options" :key="opt">{{ opt }}</option>
+                <select
+                  class="form-select"
+                  :id="'preference' + (idx + 1)"
+                  v-model="user[pref.model]"
+                >
+                  <option
+                    v-for="opt in options"
+                    :key="opt"
+                    :value="opt"
+                    :disabled="isOptionDisabled(opt, pref.model)"
+                  >{{ opt }}</option>
                 </select>
               </div>
               <button type="button" class="btn btn-primary save-button" @click="updateUserInfo">
@@ -59,9 +67,13 @@
     </div>
     <!-- Footer -->
     <FooterComponent />
-
   </div>
 </template>
+
+
+<script setup>
+import { userStore } from '@/stores/userStore.js';
+</script>
 
 <script>
 import HeaderComponent from '@/components/HeaderComponent.vue';
@@ -75,6 +87,7 @@ export default {
   components: { HeaderComponent, FooterComponent },
   data() {
     return {
+      isEditable: false,
       currentTab: '會員資訊',
       tabs: ['會員資訊', '會員等級', '個人偏好設定', '個人訂單查看'],
       icons: {
@@ -125,13 +138,21 @@ export default {
     this.fetchUserInfo();
   },
   methods: {
-    togglePassword(key) {
-      this.passwordVisible[key] = !this.passwordVisible[key];
+    toggleEdit() {
+      this.isEditable = !this.isEditable;
+    },
+
+    isOptionDisabled(option, currentModel) {
+      const selected = [
+        { key: 'preference1', val: this.user.preference1 },
+        { key: 'preference2', val: this.user.preference2 },
+        { key: 'preference3', val: this.user.preference3 }
+      ];
+      return selected.some(sel => sel.key !== currentModel && sel.val === option);
     },
 
     async fetchUserInfo () {
       const data = await api.get_user_Profile();
-
       this.user = {
         name: data.data.user.name,
         email: data.data.user.email,
@@ -151,6 +172,7 @@ export default {
         ]
       };
       await api.patch_user_Profile(payload);
+      this.isEditable = false;
     }
   }
 };
@@ -159,12 +181,13 @@ export default {
 <style scoped>
 @import url('https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css');
 @import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css');
+
 /* 全局樣式 */
 :root {
-    --primary-color: #4e73df;
+    --primary-color: #C1E9DC;
     --secondary-color: #1cc88a;
     --background-color: #f8f9fc;
-    --sidebar-bg: #4e73df;
+    --sidebar-bg: #C1E9DC;
     --sidebar-text: #fff;
     --form-bg: #fff;
     --border-radius: 0.5rem;
@@ -184,7 +207,7 @@ body {
 
 /* 側邊欄樣式 */
 .sidebar {
-    background-color: #4e73df;
+    background-color: #9DBEB3;
     color: #fff;
     border-radius: 0.5rem;
     padding: 1.5rem 1rem;
@@ -236,6 +259,9 @@ body {
 
 /* 主要內容區域 */
 .content {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
     padding: 1.5rem 2rem;
     padding-top: 100px
 }
@@ -246,7 +272,7 @@ body {
     margin-bottom: 2rem;
     color: #333;
     padding-bottom: 0.5rem;
-    border-bottom: 2px solid #4e73df;
+    border-bottom: 2px solid #9DBEB3;
 }
 
 /* 表單樣式 */
@@ -263,7 +289,7 @@ body {
     font-size: 1.3rem;
     font-weight: 600;
     margin-bottom: 1.5rem;
-    color: #4e73df;
+    color: #9DBEB3;
 }
 
 .form-group {
@@ -286,22 +312,27 @@ body {
 
 .form-control:focus,
 .form-select:focus {
-    border-color: #4e73df;
+    border-color: #9DBEB3;
     box-shadow: 0 0 0 0.25rem rgba(78, 115, 223, 0.25);
+}
+
+select option:disabled {
+  color: #d4d4d4 !important;
+  background-color: #f8f9fa !important;
 }
 
 /* 編輯圖標 */
 .edit-icon {
     position: absolute;
     right: 10px;
-    top: calc(50% + 8px);
+    top: calc(50% + 4px);
     color: #6c757d;
     cursor: pointer;
     transition: all 0.2s;
 }
 
 .edit-icon:hover {
-    color: #4e73df;
+    color: #9DBEB3;
 }
 
 /* 密碼區塊 */
@@ -334,12 +365,12 @@ body {
 }
 
 .password-toggle:hover {
-    color: #4e73df;
+    color: #9DBEB3;
 }
 
 /* 按鈕樣式 */
 .save-button {
-    background-color: #4e73df;
+    background-color: #9DBEB3;
     border: none;
     padding: 0.5rem 2rem;
     border-radius: 0.3rem;
@@ -348,7 +379,7 @@ body {
 }
 
 .save-button:hover {
-    background-color: #3a5ccc;
+    background-color: #B1D6CA;
     transform: translateY(-2px);
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
 }
@@ -384,4 +415,5 @@ body {
         padding: 1.5rem;
     }
 }
+
 </style>

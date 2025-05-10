@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from '../views/HomeView.vue';
 import * as api from '../utils/api';
+import { userStore } from '../stores/userStore';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -58,11 +59,18 @@ const router = createRouter({
           name: 'forgotpw',
           component: () => import('../views/admin/forgotpwPage.vue'),
         },
-        //忘記密碼
+        //個人會員
         {
           path: 'userprofile',
           name: 'userprofile',
           component: () => import('../views/admin/userprofilePage.vue'),
+          beforeEnter: (to, from, next) => {
+            if (!userStore.isLoggedIn) {
+              next('/'); // 導回登入頁
+            } else {
+              next(); // 通過
+            }
+          }
         },
         //會員資料
         {
