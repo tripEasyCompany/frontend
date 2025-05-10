@@ -69,9 +69,12 @@
                   </option>
                 </select>
               </div>
-              <button type="button" class="btn btn-primary save-button" @click="updateUserInfo">
-                <i class="bi bi-check-circle me-2"></i>儲存設定
-              </button>
+              <div class="btn_saveBtn">
+                <button type="button" class="btn btn-primary save-button" @click="updateUserInfo">
+                  <i class="bi bi-check-circle me-2"></i>儲存設定
+                </button>
+              </div>
+              
             </form>
           </div>
         </div>
@@ -377,6 +380,11 @@ select option:disabled {
 }
 
 /* 按鈕樣式 */
+.btn_saveBtn{
+  display: flex;
+  justify-content: end;
+}
+
 .save-button {
   background-color: #9dbeb3;
   border: none;
