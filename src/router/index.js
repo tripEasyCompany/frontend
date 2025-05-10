@@ -60,6 +60,12 @@ const router = createRouter({
         },
         //忘記密碼
         {
+          path: 'userprofile',
+          name: 'userprofile',
+          component: () => import('../views/admin/userprofilePage.vue'),
+        },
+        //會員資料
+        {
           path: 'resetpw',
           name: 'resetpw',
           component: () => import('../views/admin/resetpwPage.vue'),
