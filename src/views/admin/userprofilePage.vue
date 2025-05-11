@@ -78,7 +78,7 @@
             </form>
 
             <!-- 修改密碼表單 -->
-            <form id="password">
+            <form  v-if="currentTab === '會員資訊'"  id="password">
               <div class="form-title">
                 <i class="bi bi-shield-lock me-2"></i>密碼管理
               </div>
