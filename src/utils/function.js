@@ -79,7 +79,7 @@ export function validatePassword(passwordTxt, errorTxt) {
 
   if (trimmed.length < 8 || trimmed.length > 32) {
     errorTxt.classList.add('visibility');
-    errorTxt.textContent = '「密碼」長度需為 8 到 32 字元';
+    errorTxt.textContent = '「密碼」長度需為 8 到 16 字元';
     passwordTxt.focus();
     return true;
   }
