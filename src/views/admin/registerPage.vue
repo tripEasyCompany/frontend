@@ -185,8 +185,5 @@ a {
   cursor: pointer;
 }
 */
-@media (max-width: 990px) {
-
-}
 
 </style>
