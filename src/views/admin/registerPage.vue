@@ -11,7 +11,7 @@
           <p class="vertical-text">讓每段旅程都有溫度</p>
         </div>
 
-        <div>
+        <div class="main_img">
           <img src="@/assets/img/register.webp" alt="register_img" />
         </div>
 
@@ -158,7 +158,7 @@ export default {
 
 <style scoped>
 @import url('https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css');
-@import '@/assets/css/style.css';
+@import '@/assets/css/user_register.css';
 
 a {
   text-decoration: none;
@@ -170,6 +170,7 @@ a {
   position: relative;
 }
 
+/*
 .form_item i:first-child {
   position: absolute;
   top: 20px;
@@ -183,4 +184,9 @@ a {
 
   cursor: pointer;
 }
+*/
+@media (max-width: 990px) {
+
+}
+
 </style>
