@@ -4,7 +4,7 @@
       <!-- 左側 -->
       <div class="navbar_left">
         <h1>
-          <router-link to="/"><img src="@/assets/img/logo-main.png" alt="TripEasy" /></router-link>
+          <router-link to="/"><img src="@/assets/img/Logo-main.png" alt="TripEasy" /></router-link>
         </h1>
 
         <form class="search"  @submit.prevent="search">
