@@ -1,32 +1,32 @@
-/* ----------------------  content  ------------------------- */
+/* ----------------------  content  ------------------------- *//* ----------------------  content  ------------------------- */
 .content_container {
   display: flex;
   justify-content: center;
-  padding: 120px 20px 40px 20px;
+  padding: 7.5rem 1.25rem 2.5rem 1.25rem;
 }
 
 .main_form {
   display: flex;
   flex-direction: column;
 
-  padding: 20px 0px;
+  padding: 1.25rem 0;
 }
 
 .main_form .form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 0.9375rem; /* 15px */
 }
 
 /* --- 標語 --- */
 
 .vertical-wrapper {
   display: flex;
-  gap: 25px;
-  font-size: 26px;
+  gap: 1.5625rem; /* 25px */
+  font-size: 1.625rem; /* 26px */
   font-weight: bold;
 
-  padding: 40px 36px;
+  padding: 2.5rem 2.25rem;
 
   background-color: #ffffff;
 }
@@ -35,40 +35,39 @@
   writing-mode: vertical-rl;
   text-orientation: upright;
 
-  letter-spacing: 10px;
+  letter-spacing: 0.625rem; /* 10px */
 }
 
 .vertical-wrapper p:last-child {
-  text-indent: 40px;
+  text-indent: 2.5rem; /* 40px */
 }
 
 /* --- 圖片 --- */
 
 .content img {
-  width: 100%;
   max-width: 450px;
-  margin: 0px 120px 0px 20px;
+  margin: 0 7.5rem 0 1.25rem;
 }
 
 /* --- 表單 --- */
 .main_form h2 {
-  font-size: 32px;
+  font-size: 2rem;
   font-weight: bold;
   text-align: center;
 
-  margin-bottom: 30px;
+  margin-bottom: 1.875rem; /* 30px */
 }
 
 /* textbox */
 .main_form .form_txtbox {
-  width: 360px;
-  padding: 15px 40px;
+  width: 22.5rem; /* 360px */
+  padding: 0.9375rem 2.5rem; /* 15px 40px */
 
   background-color: #f2f2f2;
   border: 2px solid #d4d4d4;
   border-radius: 10px;
 
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 .main_form .form_txtbox:-webkit-autofill {
@@ -84,13 +83,13 @@
 
 .form_item i:first-child {
   position: absolute;
-  top: 16px;
+  top: 35%;
   left: 15px;
 }
 
 .form_item i:last-child {
   position: absolute;
-  top: 18px;
+  top: 36%;
   right: 15px;
 
   cursor: pointer;
@@ -98,15 +97,15 @@
 
 /* error-msg */
 .main_form .error_msg {
-  width: 350px;
-  min-height: 30px;
+  width: 21.875rem;
+  min-height: 1.875rem; /* 30px */
   font-weight: bold;
   color: #f48282;
 
   visibility: hidden;
 
-  font-size: 13px;
-  line-height: 30px;
+  font-size: 0.8125rem; /* 13px */
+  line-height: 1.875rem; /* 30px */
 }
 
 .main_form .visibility {
@@ -115,11 +114,11 @@
 
 /* 按鈕 */
 .main_form .submit_btn {
-  width: 350px;
-  padding: 12px 18px;
-  margin-top: 15px;
+  width: 21.875rem; /* 350px */
+  padding: 0.75rem 1.125rem; /* 12px 18px */
+  margin-top: 0.9375rem; /* 15px */
 
-  font-size: 14px;
+  font-size: 0.875rem; /* 14px */
   color: #ffffff;
 
   border-radius: 100px;
@@ -142,7 +141,7 @@
 /* 偏好設定 */
 .form_preference {
   display: flex;
-  gap: 4px;
+  gap: 0.25rem; /* 4px */
 }
 
 .select-wrap {
@@ -157,20 +156,20 @@
   top: 50%;
   transform: translateY(-50%);
   pointer-events: none;
-  font-size: 12px;
+  font-size: 0.75rem; /* 12px */
   color: #555;
 }
 
 .form_preference .select-box {
   appearance: none;
   cursor: pointer;
-  padding: 10px 30px 10px 20px;
+  padding: 0.625rem 1.875rem 0.625rem 1.25rem; /* 10px 30px 10px 20px */
 
   background-color: #f2f2f2;
   border: 2px solid #d4d4d4;
   border-radius: 10px;
 
-  font-size: 16px;
+  font-size: 1rem; /* 16px */
 }
 
 .select-box option:disabled {
@@ -190,7 +189,7 @@ input[type='checkbox'] {
 }
 
 .check-box span {
-  padding-left: 24px;
+  padding-left: 1.5rem; /* 24px */
   cursor: pointer;
 }
 
@@ -201,8 +200,8 @@ input[type='checkbox'] {
   position: absolute;
   outline: 1px solid #333333;
   border-radius: 5px;
-  width: 15px;
-  height: 15px;
+  width: 0.9375rem; /* 15px */
+  height: 0.9375rem; /* 15px */
 
   cursor: pointer;
 }
@@ -213,8 +212,8 @@ input[type='checkbox'] {
   left: 5px;
   top: 2px;
   position: absolute;
-  width: 7px;
-  height: 14px;
+  width: 0.4375rem; /* 7px */
+  height: 0.875rem; /* 14px */
   border-right: 2px solid #9dbeb3;
   border-bottom: 2px solid #9dbeb3;
   transform: rotate(40deg);
@@ -233,9 +232,9 @@ input[type='checkbox']:checked + span::after {
 .link_item {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 0.3125rem; /* 5px */
 
-  font-size: 16px;
+  font-size: 1rem; /* 16px */
 }
 
 .link_item a {
@@ -253,7 +252,7 @@ input[type='checkbox']:checked + span::after {
   align-items: center;
   text-align: center;
   width: 100%;
-  margin: 20px 0;
+  margin: 1.25rem 0;
 }
 
 .divider::before,
@@ -264,7 +263,7 @@ input[type='checkbox']:checked + span::after {
 }
 
 .divider-text {
-  padding: 0 10px;
+  padding: 0 0.625rem; /* 10px */
   background-color: #eee; /* 灰底 */
   color: #555;
   font-weight: bold;
@@ -277,13 +276,13 @@ input[type='checkbox']:checked + span::after {
   justify-content: center;
   align-items: center;
 
-  font-size: 30px;
+  font-size: 1.875rem; /* 30px */
   color: #5b5b5b;
 }
 
 .icon-circle {
-  width: 50px;
-  height: 50px;
+  width: 3.125rem; /* 50px */
+  height: 3.125rem; /* 50px */
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -304,15 +303,15 @@ input[type='checkbox']:checked + span::after {
 /* ----------------------  修改密碼  ------------------------- */
 .captcha_item {
   display: flex;
-  gap: 15px;
+  gap: 0.9375rem; /* 15px */
 }
 
 .captcha_item #captchaInput {
-  width: 190px;
+  width: 11.875rem; /* 190px */
   border: 2px solid #d4d4d4;
-  padding: 15px 0px 15px 15px;
+  padding: 0.9375rem 0 0.9375rem 0.9375rem;
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 1rem; /* 16px */
 
   background-color: #f2f2f2;
 }
@@ -323,4 +322,57 @@ input[type='checkbox']:checked + span::after {
 
   border-radius: 5px;
   cursor: pointer;
+}
+
+@media (max-width: 1440px) {
+  .content img{
+    max-width: 80%;
+  }
+}
+
+@media (max-width: 990px) {
+  .content_container{
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .vertical-wrapper {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem; 
+
+    padding: 1.2rem 0.8rem;
+  }
+
+  .vertical-wrapper p{
+    margin-bottom: 0;
+  }
+
+  .vertical-text {
+    writing-mode: horizontal-tb
+  }
+
+  .content .main_img{
+    text-align: center;
+  }
+
+  .content img {
+    max-width: 60%;
+    margin: 0;
+  }
+
+  .main_form .form_txtbox,
+  .main_form .submit_btn,
+  .form_preference .select-wrap,
+  .select-box {
+    width: 100%;
+  }
+
+}
+
+@media (max-width: 520px) {
+  .content img {
+    max-width: 70%;
+  }
 }

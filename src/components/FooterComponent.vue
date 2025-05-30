@@ -8,7 +8,7 @@
           <li>電話：02-1234-5678</li>
           <li>公司統編：12345678</li>
         </ul>
-        <p>© Copyright 2025 TripEasy</p>
+        <p class="m-none-left">© Copyright 2025 TripEasy</p>
       </div>
 
       <div class="footer_middle">
@@ -36,6 +36,12 @@
       </div>
 
       <div class="footer_right">
+        <ul class="contact_item">
+          <li>公司地址：台北市中山區忠孝東路二段211號</li>
+          <li>電話：02-1234-5678</li>
+          <li>公司統編：12345678</li>
+        </ul>
+
         <ul class="community_item">
           <li class="community-circle">
             <a href="#"><img src="@/assets/img/Vector.png" alt="facebook" /></a>
@@ -47,12 +53,17 @@
             <a href="#"><img src="@/assets/img/logo-X.png" alt="twitter" /></a>
           </li>
         </ul>
-        <p>
+        
+        <p class="m-none-right">
           走走停停都是風景 <br />
           Even the pauses are beautiful. <br />
           Every step, every pause— <br />
           it's all part of the view.
         </p>
+      </div>
+
+      <div class="footer_bottom">
+        <p>© Copyright 2025 TripEasy</p>
       </div>
     </div>
   </div>

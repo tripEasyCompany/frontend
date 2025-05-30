@@ -10,5 +10,4 @@
 /* 可保留 global CSS 引入或移除 */
 @import '@/assets/css/reset.css';
 @import '@/assets/css/common.css';
-@import '@/assets/css/style.css';
 </style>
