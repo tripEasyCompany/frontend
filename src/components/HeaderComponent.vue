@@ -4,10 +4,10 @@
       <!-- 左側 -->
       <div class="navbar_left">
         <h1>
-          <router-link to="/"><img src="@/assets/img/logo.png" alt="TripEasy" /></router-link>
+          <router-link to="/"><img src="@/assets/img/logo-main.png" alt="TripEasy" /></router-link>
         </h1>
 
-        <form @submit.prevent="search">
+        <form class="search"  @submit.prevent="search">
           <input
             class="search_txtbox"
             v-model="searchText"
@@ -71,7 +71,52 @@
           </div>
         </div>
       </div>
+
+      <div class="nav-dropdown">
+        <div class="nav-toggle" @click="navOpen = !navOpen">
+          <img src="@/assets/img/nav_toggle.png" alt="nav_toggle" />
+        </div>
+      </div>
     </div>
+
+    <div class="nav-dropdown-menu" v-show="navOpen" :class="{ active: navOpen }">
+        <div class="user-toggle" v-if="userStore.isLoggedIn" @click="dropdownOpen = !dropdownOpen">
+          <div class="user-info">
+            <img id="userPicture" :src="userStore.userPicture" alt="頭像" />
+            
+            <div class="user-detail">
+              <span>嗨！{{ userStore.userName }}</span>
+              <div class="dropdown-header">
+                <img :src="levelIcon" alt="等級圖示" />
+                <span class="levelName">{{ userStore.levelName }}</span>
+              </div>
+            </div>
+          </div>
+
+          <router-link to="#"><img class="img_dropdown" src="@/assets/img/arrow-right.png" alt="下拉式按鈕" /></router-link>
+        </div>
+      
+        <form class="search" @submit.prevent="search">
+          <input
+            class="search_txtbox"
+            v-model="searchText"
+            type="text"
+            placeholder="今天要去哪裡呢？"
+            required
+          />
+          <input class="search_btn" type="submit" value="" />
+        </form>
+      
+        <ul class="nav_link">
+          <li><router-link to="#">購物專區</router-link></li>
+          <li><router-link to="#">旅遊神器</router-link></li>
+          <li><router-link to="#">行事曆</router-link></li>
+          <li><router-link to="#">購物車</router-link></li>
+        </ul>
+
+        <router-link v-if="!userStore.isLoggedIn" to="/admin/login" class="login_btn">註冊/登入</router-link>
+        <a href="#"  v-if="userStore.isLoggedIn"  @click.prevent="logout"  class="logout_btn">登出</a>
+      </div>
   </div>
 </template>
 
@@ -81,6 +126,7 @@ import { userStore } from '@/stores/userStore.js';
 
 const searchText = ref('');
 const language = ref('zh');
+const navOpen = ref(false);
 const dropdownOpen = ref(false);
 const levelIcon = new URL('@/assets/img/badge01.png', import.meta.url).href;
 

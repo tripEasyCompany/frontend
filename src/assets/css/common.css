@@ -47,6 +47,23 @@ a {
   flex: 1;
 }
 
+
+@media (max-width: 1440px) {
+  html {
+    font-size: 14px; /* 調整字體大小 */
+  }
+}
+
+@media (max-width: 980px) {
+  html {
+    font-size: 13px; /* 調整字體大小 */
+  }
+}
+
+@media (max-width: 520px) {
+
+}
+
 /* ----------------------  header  ------------------------- */
 .header {
   position: fixed;
@@ -63,46 +80,50 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 130px;
-  padding: 20px 0px;
+  gap: 8.125rem;
+  padding: 1.25rem 0px;
 }
 
 .header .navbar_left {
   display: flex;
   align-items: center;
-  gap: 36px;
+  gap: 2.25rem;
 }
 
 .navbar_left h1 img {
-  width: 100%;
-  max-width: 138px;
+  max-width: 100%;
 }
 
+.nav-dropdown-menu .search_txtbox,
 .navbar_left .search_txtbox {
-  padding: 8px 40px 8px 20px;
+  padding: 0.5rem 2.5rem 0.5rem 1.25rem;
 
   background-color: #f2f2f2;
   border: 1px solid #d4d4d4;
   border-radius: 100px;
 }
 
+.nav-dropdown-menu .search_txtbox::placeholder,
 .navbar_left .search_txtbox::placeholder {
   color: #d4d4d4;
 }
 
+.nav-dropdown-menu .search_txtbox:-webkit-autofill
 .navbar_left .search_txtbox:-webkit-autofill {
   -webkit-box-shadow: 0 0 0 1000px #f2f2f2 inset !important;
   box-shadow: 0 0 0 1000px #f2f2f2 inset !important;
   -webkit-text-fill-color: #000 !important; /* 文字顏色可自訂 */
 }
 
+.nav-dropdown-menu form,
 .navbar_left form {
   position: relative;
 }
 
+.nav-dropdown-menu .search_btn,
 .navbar_left .search_btn {
-  width: 20px;
-  height: 20px;
+  width: 1.25rem;
+  height: 1.25rem;
 
   border: none;
   cursor: pointer;
@@ -111,24 +132,24 @@ a {
   background-repeat: no-repeat;
 
   position: absolute;
-  top: 10px;
-  right: 16px;
+  top: 27%;
+  right: 8%;
 }
 
 .navbar_left .lang_toggle {
   display: flex;
-  gap: 4px;
-  padding: 5px 8px;
+  gap: 0.25rem;
+  padding: 0.3125rem 0.5rem;
 
   border: 1px solid #d4d4d4;
   border-radius: 100px;
 
-  font-size: 12px;
+  font-size: 0.75rem; /* 12px */
   background-color: #f2f2f2;
 }
 
 .lang_toggle .lang_option {
-  padding: 5.5px 8px;
+  padding: 0.34rem 0.5rem;
 
   text-align: center;
   color: #939393;
@@ -149,38 +170,43 @@ a {
 .header .navbar_right {
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: 1.75rem;
 
   font-weight: bold;
-  font-size: 15px;
+  font-size: 0.9375rem; /* 15px */
 }
 
 .navbar_right .nav_link {
   display: flex;
-  gap: 30px;
+  gap: 1.875rem;
 }
 
-.nav_link a {
+.nav-dropdown-menu .nav_link a,
+.navbar_right .nav_link a {
   display: block;
-  padding: 8px 3px;
+  padding: 0.5rem 0.1875rem;
 
   border: 1px solid transparent;
   color: #5b5b5b;
+  font-weight: bold;
   transition: color 0.3s ease;
 }
 
-.nav_link a:hover {
+.nav-dropdown-menu .nav_link a:hover,
+.navbar_right .nav_link a:hover {
   color: #b1d6ca;
 }
 
-.nav_link a:focus {
+.nav-dropdown-menu .nav_link a:focus,
+.navbar_right .nav_link a:focus {
   border: 1px dashed #c1e9dc;
 }
 
-.login_btn {
-  padding: 12px 18px;
+.login_btn,
+.logout_btn {
+  padding: 0.75rem 1.125rem;
 
-  font-size: 14px;
+  font-size: 0.875rem;
   color: #5b5b5b;
 
   border-radius: 100px;
@@ -191,11 +217,14 @@ a {
 }
 
 .login_btn:hover,
-.login_btn:active {
+.login_btn:active,
+.logout_btn:hover,
+.logout_btn:active {
   color: #ffffff;
   background-color: #333333;
 }
 
+/* -------- user-dropdown -------- */
 .user-dropdown {
   position: relative;
   display: inline-block;
@@ -205,7 +234,7 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 4px;
+  gap: 0.25rem;
 
   color: #5b5b5b;
   transition: color 0.3s ease;
@@ -214,7 +243,7 @@ a {
 }
 
 #userPicture {
-  width: 48px;
+  max-width: 48px;
   border: 2px solid #5b5b5b;
   border-radius: 50%;
 }
@@ -223,7 +252,7 @@ a {
   position: absolute;
   top: 100%;
   right: 0;
-  width: 180px;
+  max-width: 180px;
   background: white;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -248,9 +277,9 @@ a {
 .user-dropdown .dropdown-header {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 0.5rem;
 
-  padding: 20px;
+  padding: 1.25rem;
   background-color: #edf6f3;
   color: #939393;
 }
@@ -258,13 +287,13 @@ a {
 .user-dropdown ul {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  padding: 20px;
+  gap: 0.75rem;
+  padding: 1.25rem;
   color: #5b5b5b;
 }
 
 .user-dropdown li {
-  padding: 4px 0px;
+  padding: 0.25rem 0px;
 }
 
 .user-dropdown a {
@@ -276,6 +305,126 @@ a {
   text-decoration: underline;
 }
 
+.nav-dropdown-menu .search,
+.nav-dropdown{
+  display: none;
+}
+
+@media (max-width: 1440px) {
+  .header_container{
+    gap: 4.375rem; /* 調整間距 */
+  }
+
+  .header .navbar_left {
+    gap: 2rem;
+  }
+
+  .navbar_right .nav_link {
+    gap: 1.25rem;
+  }
+
+  #userPicture {
+    max-width: 40px; /* 調整使用者圖片大小 */
+  }
+}
+
+@media (max-width: 1020px) {
+  .header .navbar_right{
+    display: none; /* 隱藏特定元素 */
+  }
+
+  .nav-dropdown{
+    display: block;
+  }
+
+  .header .navbar_left {
+    gap: 3rem;
+  }
+
+  .nav-dropdown-menu{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.2rem;
+
+    padding: 1.25rem 2.5rem;
+    font-size: 1.2rem;
+  }
+
+  .nav-dropdown-menu .nav_link{
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    text-align: center;
+  }
+
+  .nav-dropdown-menu .login_btn,
+  .nav-dropdown-menu .logout_btn{
+    width: 100%;
+    text-align: center;
+    font-size: 1rem;
+  }
+
+  .nav-dropdown-menu .user-toggle{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .nav-dropdown-menu .user-toggle #userPicture{
+    max-width: 60px; /* 調整使用者圖片大小 */
+  }
+
+  .nav-dropdown-menu .user-info{
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .nav-dropdown-menu .user-detail{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .nav-dropdown-menu .user-detail span{
+    font-weight: bold;
+  }
+
+  .levelName{
+    color: #939393;
+  }
+
+  .nav-dropdown-menu .user-detail .dropdown-header{
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .search{
+    display: none; /* 隱藏搜尋欄 */
+  }
+
+  .nav-dropdown-menu .search{
+    display: block;
+    width: 100%;
+  }
+
+  .nav-dropdown-menu .search_txtbox {
+    width: 100%;
+  }
+
+  .nav-dropdown-menu .search_btn {
+    right: 5%;
+    top: 25%;
+  }
+}
+
 /* ----------------------  footer  ------------------------- */
 .footer {
   background-color: #ffffff;
@@ -284,51 +433,53 @@ a {
 .footer_container {
   display: flex;
   justify-content: space-between;
-  padding: 50px 0px;
+  padding: 3.125rem 0;
 }
 
 .footer_left img {
-  width: 100%;
-  max-width: 160px;
+  max-width: 51%;
 }
 
+.footer_right .contact_item,
 .footer_left .contact_item {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 0.5rem;
 
-  margin-top: 32px;
-  margin-bottom: 40px;
+  margin-top: 2rem;
+  margin-bottom: 2.5rem;
 
   color: #212121;
 }
 
+.footer_bottom p,
 .footer_left p {
-  font-size: 14px;
+  font-size: 0.875rem;
   color: #939393;
 }
 
 .footer_middle {
   display: flex;
-  gap: 60px;
+  flex-wrap: wrap;
+  gap: 3.75rem;
 }
 
 .footer_middle ul {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 0.25rem;
 }
 
 .footer_middle h4 {
-  padding: 8px 12px;
+  padding: 0.5rem 0.75rem;
 
-  color: #5b5b5b;
+  color: #333333;
   font-weight: bold;
 }
 
 .footer_middle a {
   display: block;
-  padding: 8px 12px;
+  padding: 0.5rem 0.75rem;
 
   color: #212121;
   border: 1px solid transparent;
@@ -353,22 +504,22 @@ a {
 .footer_right .community_item {
   display: flex;
   justify-content: right;
-  gap: 12px;
+  gap: 0.75rem;
 }
 
 .community_item a {
   display: block;
-  padding: 8px;
+  padding: 0.5rem;
 }
 
 .community-circle {
-  width: 40px;
-  height: 40px;
+  width: 2.5rem; /* 40px */
+  height: 2.5rem; /* 40px */
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: 5px;
+  padding-top: 0.3125rem; 
 
   transition:
     background-color 0.5s ease,
@@ -384,8 +535,92 @@ a {
 
 .footer_right p {
   color: #939393;
-  font-size: 12px;
+  font-size: 0.75rem; /* 12px */
   line-height: 1.6;
+}
+
+.footer_right .contact_item,
+.footer_bottom{
+  display: none;
+}
+
+@media (max-width: 1440px) {
+  .container {
+    padding: 1.25rem; /* 調整容器內邊距 */
+  }
+
+  .m-none-right{
+    display: none; /* 隱藏特定元素 */
+  }
+}
+
+@media (max-width: 980px) {
+  .footer_left .contact_item,
+  .m-none-left{
+    display: none; /* 隱藏特定元素 */
+  }
+
+  .footer_right .contact_item,
+  .footer_bottom{
+    display: block;
+  }
+
+  .footer_left{
+    text-align: center;
+  }
+
+  .footer_left img {
+    max-width: 20%;
+  }
+
+  .footer_container{
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .footer_middle{
+    justify-content: space-around;
+  }
+
+  .footer_right{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer_right .contact_item{
+    text-align: left;
+  }
+
+  .footer_bottom{
+    text-align: center;
+  }
+}
+
+@media (max-width: 520px) {
+  .footer_left{
+    text-align: left;
+  }
+
+  .footer_left img {
+    max-width: 30%;
+  }
+
+  .footer_middle{
+    justify-content: flex-start;
+    gap: 2.5rem;
+  }
+
+  .footer_middle ul{
+    width: 45%;
+  }
+
+  .footer_right{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 /* 客服按鈕 */
@@ -398,7 +633,7 @@ a {
 }
 
 .chat-widget img {
-  width: 120px; /* 可依圖調整大小 */
+  max-width: 88%;
   cursor: pointer;
 }
 
@@ -406,15 +641,15 @@ a {
   display: inline-block;
   background-color: #bce0d5;
   color: #222;
-  padding: 8px 16px;
+  padding: 0.5rem 1rem;
   border-radius: 30px;
-  font-size: 14px;
+  font-size: 0.875rem; /* 14px */
   font-weight: bold;
   position: absolute;
   bottom: 100%; /* 放在圖片正上方 */
   left: 50%;
   transform: translateX(-50%);
-  margin-bottom: 10px;
+  margin-bottom: 0.625rem; /* 10px */
   white-space: nowrap;
 }
 
@@ -438,6 +673,39 @@ a {
   transform: translate(-5px, -5px) rotate(5deg); /* 往左上翹一點 */
 }
 
+@media (max-width: 1440px) {
+  .chat-widget img {
+    max-width: 70%;
+  }
+
+  .chat-widget {
+    bottom: 1px;
+    right: 1px;
+  }
+}
+
+@media (max-width: 980px) {
+  .chat-widget img {
+    max-width: 50%;
+  }
+
+  .speech-bubble {
+    padding: 0.3rem 0.8rem;
+  }
+
+  /* 小箭頭也要調整位置 */
+  .speech-bubble::after {
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 8px solid #bce0d5;
+  }
+}
+
+@media (max-width: 520px) {
+
+}
+
+/* ----------------------  error  ------------------------- */
 .error-page {
   max-width: 1200px;
   margin: auto;
