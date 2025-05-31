@@ -44,16 +44,16 @@
 
         <ul class="community_item">
           <li class="community-circle">
-            <a href="#"><img src="@/assets/img/Vector.png" alt="facebook" /></a>
+            <a href="#"><img src="@/assets/img/logo-facebook.svg" alt="facebook" /></a>
           </li>
           <li class="community-circle">
-            <a href="#"><img src="@/assets/img/logo-instagram.png" alt="instagram" /></a>
+            <a href="#"><img src="@/assets/img/logo-instagram.svg" alt="instagram" /></a>
           </li>
           <li class="community-circle">
-            <a href="#"><img src="@/assets/img/logo-X.png" alt="twitter" /></a>
+            <a href="#"><img src="@/assets/img/logo-X.svg" alt="twitter" /></a>
           </li>
         </ul>
-        
+
         <p class="m-none-right">
           走走停停都是風景 <br />
           Even the pauses are beautiful. <br />

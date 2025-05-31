@@ -1,4 +1,4 @@
-/* ----------------------  content  ------------------------- *//* ----------------------  content  ------------------------- */
+/* ----------------------  content  ------------------------- */ /* ----------------------  content  ------------------------- */
 .content_container {
   display: flex;
   justify-content: center;
@@ -325,13 +325,11 @@ input[type='checkbox']:checked + span::after {
 }
 
 @media (max-width: 1440px) {
-  .content img{
-    max-width: 80%;
-  }
+
 }
 
 @media (max-width: 990px) {
-  .content_container{
+  .content_container {
     flex-direction: column;
     justify-content: center;
     width: 100%;
@@ -340,20 +338,20 @@ input[type='checkbox']:checked + span::after {
   .vertical-wrapper {
     flex-direction: column;
     align-items: center;
-    gap: 0.3rem; 
+    gap: 0.3rem;
 
     padding: 1.2rem 0.8rem;
   }
 
-  .vertical-wrapper p{
+  .vertical-wrapper p {
     margin-bottom: 0;
   }
 
   .vertical-text {
-    writing-mode: horizontal-tb
+    writing-mode: horizontal-tb;
   }
 
-  .content .main_img{
+  .content .main_img {
     text-align: center;
   }
 
@@ -365,10 +363,11 @@ input[type='checkbox']:checked + span::after {
   .main_form .form_txtbox,
   .main_form .submit_btn,
   .form_preference .select-wrap,
-  .select-box {
+  .select-box,
+  #captchaInput,
+  #captcha {
     width: 100%;
   }
-
 }
 
 @media (max-width: 520px) {

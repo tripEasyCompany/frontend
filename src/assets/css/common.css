@@ -47,7 +47,6 @@ a {
   flex: 1;
 }
 
-
 @media (max-width: 1440px) {
   html {
     font-size: 14px; /* 調整字體大小 */
@@ -61,7 +60,6 @@ a {
 }
 
 @media (max-width: 520px) {
-
 }
 
 /* ----------------------  header  ------------------------- */
@@ -108,8 +106,7 @@ a {
   color: #d4d4d4;
 }
 
-.nav-dropdown-menu .search_txtbox:-webkit-autofill
-.navbar_left .search_txtbox:-webkit-autofill {
+.nav-dropdown-menu .search_txtbox:-webkit-autofill .navbar_left .search_txtbox:-webkit-autofill {
   -webkit-box-shadow: 0 0 0 1000px #f2f2f2 inset !important;
   box-shadow: 0 0 0 1000px #f2f2f2 inset !important;
   -webkit-text-fill-color: #000 !important; /* 文字顏色可自訂 */
@@ -250,7 +247,7 @@ a {
 
 .user-dropdown .custom-dropdown-menu {
   position: absolute;
-  top: 100%;
+  top: 120%;
   right: 0;
   max-width: 180px;
   background: white;
@@ -290,6 +287,8 @@ a {
   gap: 0.75rem;
   padding: 1.25rem;
   color: #5b5b5b;
+
+  width: 18.75rem;
 }
 
 .user-dropdown li {
@@ -305,13 +304,45 @@ a {
   text-decoration: underline;
 }
 
+  .nav-dropdown-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.2rem;
+
+    font-size: 1.2rem;
+
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 0.8s ease;
+  }
+
+  .nav-dropdown-menu.active {
+    max-height: 400px; /* 寫比內容大的高度就好 */
+    padding: 1.25rem 2.5rem;
+    opacity: 1;
+  }
+
 .nav-dropdown-menu .search,
-.nav-dropdown{
+.nav-dropdown {
   display: none;
 }
 
+.nav-dropdown .nav-toggle .nav-toggle-icon{
+  display: inline-block;
+  width: 24px; height: 24px;
+  background: url('../img/nav_toggle.svg') center/cover no-repeat;
+  transition: background 0.3s;
+}
+
+.nav-toggle.active .nav-toggle-icon {
+  background: url('../img/nav-close.svg') center/cover no-repeat;
+}
+
 @media (max-width: 1440px) {
-  .header_container{
+  .header_container {
     gap: 4.375rem; /* 調整間距 */
   }
 
@@ -329,11 +360,11 @@ a {
 }
 
 @media (max-width: 1020px) {
-  .header .navbar_right{
+  .header .navbar_right {
     display: none; /* 隱藏特定元素 */
   }
 
-  .nav-dropdown{
+  .nav-dropdown {
     display: block;
   }
 
@@ -341,18 +372,7 @@ a {
     gap: 3rem;
   }
 
-  .nav-dropdown-menu{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1.2rem;
-
-    padding: 1.25rem 2.5rem;
-    font-size: 1.2rem;
-  }
-
-  .nav-dropdown-menu .nav_link{
+  .nav-dropdown-menu .nav_link {
     display: flex;
     flex-direction: column;
     gap: 0.8rem;
@@ -360,13 +380,13 @@ a {
   }
 
   .nav-dropdown-menu .login_btn,
-  .nav-dropdown-menu .logout_btn{
+  .nav-dropdown-menu .logout_btn {
     width: 100%;
     text-align: center;
     font-size: 1rem;
   }
 
-  .nav-dropdown-menu .user-toggle{
+  .nav-dropdown-menu .user-toggle {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -374,31 +394,31 @@ a {
     gap: 2rem;
   }
 
-  .nav-dropdown-menu .user-toggle #userPicture{
+  .nav-dropdown-menu .user-toggle #userPicture {
     max-width: 60px; /* 調整使用者圖片大小 */
   }
 
-  .nav-dropdown-menu .user-info{
+  .nav-dropdown-menu .user-info {
     display: flex;
     gap: 1.5rem;
   }
 
-  .nav-dropdown-menu .user-detail{
+  .nav-dropdown-menu .user-detail {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 0.5rem;
   }
 
-  .nav-dropdown-menu .user-detail span{
+  .nav-dropdown-menu .user-detail span {
     font-weight: bold;
   }
 
-  .levelName{
+  .levelName {
     color: #939393;
   }
 
-  .nav-dropdown-menu .user-detail .dropdown-header{
+  .nav-dropdown-menu .user-detail .dropdown-header {
     display: flex;
     align-items: center;
     gap: 0.8rem;
@@ -406,11 +426,11 @@ a {
 }
 
 @media (max-width: 520px) {
-  .search{
+  .search {
     display: none; /* 隱藏搜尋欄 */
   }
 
-  .nav-dropdown-menu .search{
+  .nav-dropdown-menu .search {
     display: block;
     width: 100%;
   }
@@ -519,7 +539,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: 0.3125rem; 
+  padding-top: 0.3125rem;
 
   transition:
     background-color 0.5s ease,
@@ -540,7 +560,7 @@ a {
 }
 
 .footer_right .contact_item,
-.footer_bottom{
+.footer_bottom {
   display: none;
 }
 
@@ -551,23 +571,23 @@ a {
 }
 
 @media (max-width: 1439px) {
-  .m-none-right{
+  .m-none-right {
     display: none; /* 隱藏特定元素 */
   }
 }
 
 @media (max-width: 980px) {
   .footer_left .contact_item,
-  .m-none-left{
+  .m-none-left {
     display: none; /* 隱藏特定元素 */
   }
 
   .footer_right .contact_item,
-  .footer_bottom{
+  .footer_bottom {
     display: block;
   }
 
-  .footer_left{
+  .footer_left {
     text-align: center;
   }
 
@@ -575,33 +595,33 @@ a {
     max-width: 20%;
   }
 
-  .footer_container{
+  .footer_container {
     flex-direction: column;
     gap: 1.5rem;
   }
 
-  .footer_middle{
+  .footer_middle {
     justify-content: space-around;
   }
 
-  .footer_right{
+  .footer_right {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
   }
 
-  .footer_right .contact_item{
+  .footer_right .contact_item {
     text-align: left;
   }
 
-  .footer_bottom{
+  .footer_bottom {
     text-align: center;
   }
 }
 
 @media (max-width: 520px) {
-  .footer_left{
+  .footer_left {
     text-align: left;
   }
 
@@ -609,16 +629,16 @@ a {
     max-width: 30%;
   }
 
-  .footer_middle{
+  .footer_middle {
     justify-content: flex-start;
     gap: 2.5rem;
   }
 
-  .footer_middle ul{
+  .footer_middle ul {
     width: 45%;
   }
 
-  .footer_right{
+  .footer_right {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -704,7 +724,6 @@ a {
 }
 
 @media (max-width: 520px) {
-
 }
 
 /* ----------------------  error  ------------------------- */
@@ -732,7 +751,7 @@ a {
 }
 
 @media (max-width: 990px) {
-  .error-page{
+  .error-page {
     padding: 1.5rem;
   }
 
@@ -743,7 +762,7 @@ a {
 
 @media (max-width: 520px) {
   .error-page h2 {
-    font-size: 2rem; 
+    font-size: 2rem;
   }
 
   .error-page #error_img {

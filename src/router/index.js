@@ -4,14 +4,14 @@ import * as api from '../utils/api';
 import { userStore } from '../stores/userStore';
 
 const requireAuth = async (to, from, next) => {
-    const res = await api.get_user_status();
-    console.log(res)
-    if (res.isLoggedIn) {
-      userStore.isLoggedIn = true; // 更新 store 狀態
-      next();
-    } else{
-      next('/admin/login');
-    }
+  const res = await api.get_user_status();
+  console.log(res);
+  if (res.isLoggedIn) {
+    userStore.isLoggedIn = true; // 更新 store 狀態
+    next();
+  } else {
+    next('/admin/login');
+  }
 };
 
 const router = createRouter({
@@ -75,7 +75,7 @@ const router = createRouter({
           path: 'userprofile',
           name: 'userprofile',
           component: () => import('../views/admin/userprofilePage.vue'),
-          beforeEnter: requireAuth
+          beforeEnter: requireAuth,
         },
         //會員資料
         {
