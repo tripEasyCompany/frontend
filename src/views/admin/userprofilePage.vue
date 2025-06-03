@@ -282,6 +282,8 @@ export default {
 @import url('https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css');
 @import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css');
 
+@import '@/assets/css/common.css';
+
 /* 全局樣式 */
 :root {
   --primary-color: #c1e9dc;

@@ -325,7 +325,6 @@ input[type='checkbox']:checked + span::after {
 }
 
 @media (max-width: 1440px) {
-
 }
 
 @media (max-width: 990px) {
