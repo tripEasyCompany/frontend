@@ -1338,7 +1338,7 @@ svg.arc-path {
 
   text-align: center;
   letter-spacing: 6px;
-  line-height: 33.6px;
+  line-height: 38px;
 
   padding: 32px 48px;
 }
