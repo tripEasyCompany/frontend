@@ -101,63 +101,21 @@
                 </ul>
 
                 <ul class="product_item">
-                  <li class="i_list">
+                  <li class="i_list" v-for="(item) in productList" :key="item.id" @mouseover="hoveredMainImage = item.mainImage">
                     <div class="i_container">
                       <div class="product_left">
                         <ul>
-                          <li><span>探索冒險</span></li>
-                          <li><span>文化體驗</span></li>
-                          <li><span>放鬆療癒</span></li>
+                          <li v-for="(tag, tIdx) in item.tags" :key="tIdx">
+                            <span>{{ tag }}</span>
+                          </li>
                         </ul>
-                        <h3>台灣 | 高雄承億酒店</h3>
+                        <h3>{{ item.title }}</h3>
                       </div>
 
                       <div class="product_right">
                         <div class="right_info">
-                          <p>出發日 : 自由選擇</p>
-                          <p><span>NT$</span><span>7,000</span></p>
-                        </div>
-                        
-                        <span class="favorite"><img src="@/assets/img/icon/favorite-line.svg" alt=""></span>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="i_list">
-                    <div class="i_container">
-                      <div class="product_left">
-                        <ul>
-                          <li><span>美食探索</span></li>
-                          <li><span>特殊主題</span></li>
-                          <li><span>親子主題</span></li>
-                        </ul>
-                        <h3>日本 | 東京青年商旅</h3>
-                      </div>
-
-                      <div class="product_right">
-                        <div class="right_info">
-                          <p>出發日 : 自由選擇</p>
-                          <p><span>NT$</span><span>5,500</span></p>
-                        </div>
-                        
-                        <span class="favorite"><img src="@/assets/img/icon/favorite-line.svg" alt=""></span>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="i_list">
-                    <div class="i_container">
-                      <div class="product_left">
-                        <ul>
-                          <li><span>拍照打卡</span></li>
-                          <li><span>文化體驗</span></li>
-                          <li><span>都市感官</span></li>
-                        </ul>
-                        <h3>美國 | 洛杉磯豪華酒店</h3>
-                      </div>
-
-                      <div class="product_right">
-                        <div class="right_info">
-                          <p>出發日 : 自由選擇</p>
-                          <p><span>NT$</span><span>12,000</span></p>
+                          <p>出發日 : {{ item.departure || '自由選擇' }}</p>
+                          <p><span>NT$</span><span>{{ item.price }}</span></p>
                         </div>
                         
                         <span class="favorite"><img src="@/assets/img/icon/favorite-line.svg" alt=""></span>
@@ -177,13 +135,15 @@
               
               <div class="content_right">
                 <div class="main_item">
-                  <img src="@/assets/img/product/Shopping-img.svg" alt="">
+                  <img :src="hoveredMainImage" alt="產品主圖" />
                   <div class="illustration">
                     <span><img class="l_first" src="@/assets/img/illustration/deco-img01.svg" alt="" /></span>
                     <span><img class="l_last" src="@/assets/img/illustration/deco-img03.svg" alt="" /></span>
                   </div>
                 </div>
               </div>
+
+              
             </div>
             
             <div class="more">
@@ -192,6 +152,68 @@
             </div>
           </div>
           
+          <div class="travel_tool">
+            <div class="travel_title">
+              <h2>旅遊神器</h2>
+            </div>
+
+            <div class="travel_content">
+              <div class="travel_left">
+                <!-- 圖片 -->
+                <div class="main_item">
+                  <img :src="tools[toolIndex].image" alt="">
+                </div>
+
+                <!-- 功能按鈕 -->
+                <ul class="travel_function">
+                  <li
+                    v-for="(tool, index) in tools"
+                    :key="index"
+                    :class="['func', 'func' + (index + 1)]"
+                  >
+                    <a
+                      href="#"
+                      :class="{ active: index === toolIndex }"
+                      @click.prevent="handleClick(index)"
+                    >
+                      {{ tool.name }}
+                    </a>
+                  </li>
+                </ul>
+
+                <!-- 對應點點 -->
+                <ul class="travel_dot">
+                  <li
+                    v-for="(tool, index) in tools"
+                    :key="'dot-' + index"
+                    :class="['dot', 'dot' + (index + 1), { active: index === toolIndex }]"
+                  ></li>
+                </ul>
+
+                <!-- 弧形路徑 -->
+                <svg class="arc-path" width="650" height="695" viewBox="0 0 650 695">
+                  <path d="M190,-45 C470,220 430,475 250,670" stroke="#D4D4D4" stroke-width="3" fill="none" />
+                </svg>
+              </div>
+
+              <div class="travel_right">
+                <div class="main_content">
+                  <div class="travel_new">
+                    {{ tools[toolIndex].content }}
+                  </div>
+                  <div class="illustration">
+                    <span><img class="l_first" src="@/assets/img/illustration/deco-img02.svg" alt="" /></span>
+                    <span><img class="l_last" src="@/assets/img/illustration/deco-img06.svg" alt="" /></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="more">
+              <span>開始體驗</span>
+              <span><img src="@/assets/img/icon/arrow-right-long.svg" alt="" /></span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -213,6 +235,16 @@ import world_02 from '@/assets/img/home_page/viewpoint-img-4.svg';
 import world_03 from '@/assets/img/home_page/viewpoint-img-5.svg';
 import world_04 from '@/assets/img/home_page/viewpoint-img-6.svg';
 
+import productImg1 from '@/assets/img/product/Shopping-img.svg';
+import productImg2 from '@/assets/img/product/Shopping-img-2.svg';
+import productImg3 from '@/assets/img/product/Shopping-img-1.svg';
+
+import tool_img01 from '@/assets/img/home_page/travel-img01.svg';
+import tool_img02 from '@/assets/img/home_page/travel-img02.svg';
+import tool_img03 from '@/assets/img/home_page/travel-img03.svg';
+import tool_img04 from '@/assets/img/home_page/travel-img04.svg';
+import tool_img05 from '@/assets/img/home_page/travel-img05.svg';
+
 export default {
   name: 'HomePage',
   components: {
@@ -229,6 +261,66 @@ export default {
       currentIndex: 0,
       interval: null,
       autoMode: true,
+      productList: [
+      {
+        id: 1,
+        title: '高雄承億酒店',
+        tags: ['探索冒險', '文化體驗', '放鬆療癒'],
+        price: 7000,
+        mainImage: productImg1  // 對應右側大圖
+      },
+      {
+        id: 2,
+        title: '東京青年商旅',
+        tags: ['美食探索', '特殊主題', '親子主題'],
+        price: 5500,
+        mainImage: productImg2
+      },
+      {
+        id: 3,
+        title: '洛杉磯豪華酒店',
+        tags: ['拍照打卡', '文化體驗', '都市感官'],
+        price: 12000,
+        mainImage: productImg3
+      }
+    ],
+    hoveredMainImage: productImg1,
+    selectedIndex: 0,
+    toolIndex: 0, // 輪播圖片 index
+    autoPlayTimer: null,
+    resumeTimer: null,
+    tools: [
+      {
+        id: 1,
+        name: '天氣查詢',
+        content: '隨時查詢即時天氣，提供溫度、降雨與風速資訊，讓你安心出門',
+        image: tool_img01
+      },
+      {
+        id: 2,
+        name: '匯率查詢',
+        content: '快速查詢各國匯率，幫助你即時掌握幣值變化，精打細算旅費',
+        image: tool_img02
+      },
+      {
+        id: 3,
+        name: '機票/租車查詢',
+        content: '結合多家平台資訊，提供最優惠的機票與租車選擇',
+        image: tool_img03
+      },
+      {
+        id: 4,
+        name: '互動地圖',
+        content: '探索景點、路線與交通資訊，讓你玩得更順更開心',
+        image: tool_img04
+      },
+      {
+        id: 5,
+        name: '文化介紹',
+        content: '深入了解目的地文化與風俗，讓旅程更有深度與樂趣',
+        image: tool_img05
+      },
+    ]
     };
   },
   methods: {
@@ -292,6 +384,27 @@ export default {
         this.startAutoSlide();
       }, 3000);
     },
+
+    startAutoPlay() {
+      this.autoPlayTimer = setInterval(() => {
+        this.toolIndex = (this.toolIndex + 1) % this.tools.length;
+      }, 4000);
+    },
+
+    stopAutoPlay() {
+      clearInterval(this.autoPlayTimer);
+    },
+
+    handleClick(index) {
+      this.toolIndex = index;
+      this.stopAutoPlay();
+
+      // 若之前有 delay 還沒執行，先清掉
+      clearTimeout(this.resumeTimer);
+      this.resumeTimer = setTimeout(() => {
+        this.startAutoPlay();
+      }, 5000); // 停 5 秒後恢復輪播
+    }
   },
 
   mounted() {
@@ -299,10 +412,15 @@ export default {
 
     this.currentImages = [...this.imagesTaiwan];
     this.startAutoSlide(); // 開始自動在 Taiwan/World 間切換
+
+    this.startAutoPlay();
   },
 
   beforeUnmount() {
     window.removeEventListener('scroll', this.handleScroll);
+
+    this.stopAutoPlay();
+    clearTimeout(this.resumeTimer);
   },
 };
 </script>
@@ -375,7 +493,7 @@ h2::after {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center;
+
 }
 
 /* --- header_country --- */
@@ -427,8 +545,12 @@ h2::after {
   width: 70px;
 }
 
+.header_img{
+  align-self: center;
+}
+
 .header_img img {
-  width: 450px;
+  width: 550px;
   margin: 0 100px 0 20px;
 }
 
@@ -439,20 +561,21 @@ h2::after {
 
 .header_country .illustration span:first-child {
   top: 0;
-  left: 0;
+  left: 20px;
 }
 
 .header_country .illustration span:last-child {
   bottom: 0;
-  right: 0;
+  right: 20px;
 }
 
 /* --- header_slogan --- */
 .header_slogan {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 
-  gap: 20px;
+  gap: 150px;
   font-size: 36px;
   font-weight: bold;
 
@@ -466,7 +589,7 @@ h2::after {
   writing-mode: vertical-rl;
   text-orientation: upright;
 
-  letter-spacing: 0.625rem; /* 10px */
+  letter-spacing: 12px; 
   line-height: 62.4px;
 }
 
@@ -568,6 +691,10 @@ h2::after {
 }
 
 /* --- product --- */
+.product{
+  margin-bottom: 180px;
+}
+
 .product_content{
   display: flex;
 
@@ -782,6 +909,7 @@ h2::after {
   align-items: center;
 }
 
+/* product main_item */
 .product_content .content_right .main_item img{
   width: 500px;
 }
@@ -790,6 +918,7 @@ h2::after {
   position: relative;
 }
 
+/* product illustration */
 .product_content .content_right .illustration img{
   width: 120px;
 
@@ -808,6 +937,7 @@ h2::after {
   left: 0;
 }
 
+/* product more */
 .product .more{
   display: flex;
   justify-content: flex-end;
@@ -827,6 +957,170 @@ h2::after {
 }
 
 .product .more span img{
+  margin-top: 4px;
+  animation: floatArrow_more 1.5s ease-in-out infinite;
+}
+
+/* 定義動畫 */
+@keyframes floatArrow_more {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-8px); 
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* --- travel_tool --- */
+.travel_title{
+  margin-bottom: 150px;
+}
+
+.travel_content{
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+
+  position: relative;
+}
+
+.travel_content .main_item img{
+  width: 500px;
+  border-radius: 600px;
+  border: 4px solid #FFFFFF;
+}
+
+.travel_content .travel_function li a{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 120px;
+  text-align: center;
+
+  color: #5B5B5B;
+  border: 2px solid #333333;
+  border-radius: 100px;
+
+  padding: 12px 20px;
+  font-weight: 700;
+
+  transition: 0.6s background-color ease,0.6s color ease ;
+}
+
+.travel_content .travel_function li a.active,
+.travel_content .travel_function li a:hover{
+  color: #FFFFFF;
+  background: #333333;
+}
+
+.travel_content .travel_function .func{
+  position: absolute;
+  z-index: 10; /* 提高層級 */
+}
+
+.travel_content .travel_function .func1{ top: -80px; left: 410px;}
+.travel_content .travel_function .func2{ top: 40px; left: 500px;}
+.travel_content .travel_function .func3{ top: 185px; left: 530px;}
+.travel_content .travel_function .func4{ top: 330px; left: 500px;}
+.travel_content .travel_function .func5{ top: 450px; left: 410px;}
+
+.travel_content .travel_dot li{
+  width: 15px;
+  height: 15px;
+  text-align: center;
+
+  background: #D4D4D4;
+  border-radius: 100px;
+}
+
+.travel_content .travel_dot li.active{
+  background: #333333;
+}
+
+.travel_content .travel_dot .dot{
+  position: absolute;
+  z-index: 10;
+}
+
+.travel_content .travel_dot .dot1{ top:-100px; left:530px; }
+.travel_content .travel_dot .dot2{ top:40px; left:633px; }
+.travel_content .travel_dot .dot3{ top:235px; left:685px; }
+.travel_content .travel_dot .dot4{ top:420px; left:643px; }
+.travel_content .travel_dot .dot5{ top:560px; left:545px; }
+
+svg.arc-path {
+  position: absolute;
+  top: -100px;
+  left: 300px;
+  z-index: 0;
+}
+
+.travel_right{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main_content .travel_new{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 450px;
+  height: 450px;
+  font-size: 28px;
+  font-weight: 700;
+  background: #FFFFFF;
+  border-radius: 420px;
+
+  text-align: center;
+  letter-spacing: 6px;
+
+  padding: 32px 48px;
+}
+
+/* travel_tool illustration */
+.main_content .illustration img{
+  width: 180px;
+
+  position: absolute;
+}
+
+.main_content  .illustration .l_first{
+    width: 90px;
+    top: 0px;
+    left: 730px;
+}
+
+.main_content  .illustration .l_last{
+  bottom: 0px;
+  right: 0;
+}
+
+/* travel_tool more */
+.travel_tool .more{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+
+  font-size: 20px;
+  font-weight: 400;
+
+  cursor: pointer;
+
+  margin-top: 100px;
+}
+
+.travel_tool .more span{
+  display: inline-block;
+}
+
+.travel_tool .more span img{
   margin-top: 4px;
   animation: floatArrow_more 1.5s ease-in-out infinite;
 }
