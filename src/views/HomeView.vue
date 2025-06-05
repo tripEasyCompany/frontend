@@ -846,6 +846,7 @@ h2::after {
   gap: 20px;
 
   color: #212121;
+  line-height: 30px;
 }
 
 .content_left .product_item .product_right p:first-child{
@@ -1000,6 +1001,7 @@ h2::after {
   width: 120px;
   height: 120px;
   text-align: center;
+  line-height: 25px;
 
   color: #5B5B5B;
   border: 2px solid #333333;
@@ -1079,6 +1081,7 @@ svg.arc-path {
 
   text-align: center;
   letter-spacing: 6px;
+  line-height: 33.6px;
 
   padding: 32px 48px;
 }
