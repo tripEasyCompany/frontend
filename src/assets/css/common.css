@@ -8,6 +8,9 @@ body {
   height: 100%;
   font-family: Verdana, sans-serif;
   background-image: url('../img/background.png');
+  background-repeat: no-repeat;
+  background-size: cover; /* 背景等比例填滿 */
+  background-position: center;
 }
 
 html,
