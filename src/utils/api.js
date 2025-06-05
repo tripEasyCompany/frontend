@@ -308,12 +308,7 @@ export async function patch_user_Profile(payload) {
 }
 
 //  [PATCH] 編號 06-2 : 使用者密碼修改 (會員中心)
-export function post_user_resetProfilePW(
-  Pwd_txt,
-  NewPwd_txt,
-  NewaginPwd_txt,
-  onComplete
-) {
+export function post_user_resetProfilePW(Pwd_txt, NewPwd_txt, NewaginPwd_txt, onComplete) {
   axios
     .patch(
       `${apiUrl}/resetprofilepw`,
@@ -321,10 +316,12 @@ export function post_user_resetProfilePW(
         password: Pwd_txt,
         new_password: NewPwd_txt,
         confirm_password: NewaginPwd_txt,
-      },{
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem('authToken')}`,
-      }}
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('authToken')}`,
+        },
+      }
     )
     .then((res) => {
       Swal.fire({
