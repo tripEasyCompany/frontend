@@ -274,8 +274,8 @@ export async function get_user_Profile() {
     userStore.status(res.data);
 
     return res.data;
-  } catch (err) {
-    throw err; // ✅ 讓呼叫端也可以 catch 到錯誤
+  } catch (error) {
+    throw error; // ✅ 讓呼叫端也可以 catch 到錯誤
   }
 }
 
@@ -303,7 +303,7 @@ export async function patch_user_Profile(payload) {
       text: error.response.data.message,
       scrollbarPadding: false,
     });
-    throw err; // ✅ 讓呼叫端也可以 catch 到錯誤
+    throw error; // ✅ 讓呼叫端也可以 catch 到錯誤
   }
 }
 
