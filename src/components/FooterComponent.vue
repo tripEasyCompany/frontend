@@ -18,7 +18,9 @@
         </ul>
         <ul>
           <li><h4>客戶服務</h4></li>
-          <li><a href="#">常見問題</a></li>
+          <li>
+            <router-link to="/admin/manage/service">常見問題</router-link>
+          </li>
           <li><a href="#">旅遊回饋</a></li>
           <li><a href="#">退款政策</a></li>
         </ul>
