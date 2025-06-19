@@ -35,7 +35,7 @@ const router = createRouter({
           path: 'shopping',
           name: 'shopping',
           component: () => import('../views/front/shopping.vue'),
-        },
+          },
         */
         //搜索頁面
         {
