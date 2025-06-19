@@ -175,9 +175,7 @@ export default {
 @import url('https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css');
 /* @import '@/assets/css/user_register.css'; */
 
-.row{
-  padding:50px opx;
-}
+
 
 .accordion-button::after {
   display: none !important;
