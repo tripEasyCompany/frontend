@@ -116,7 +116,7 @@ src/
     │
     ├── front/
     │   ├── searchPage.vue   # 搜索頁面
-    │   └── shopping.vue     # 購物專區頁面 (目前被註釋掉)
+    │   └── tourPage.vue     # 購物專區頁面 (目前被註釋掉)
     │
     └── admin/
         ├── memberPage.vue   # 會員中心頁面

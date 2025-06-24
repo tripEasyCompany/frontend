@@ -9,16 +9,18 @@
         <div class="row">
           <!-- 側邊欄 -->
           <div class="sidebar col-md-3 col-lg-2">
-            <img class="headimg" :src="userStore.userPicture" alt="頭像" />
-            <div class="name">{{ user.name }}</div>
-            <div
-              class="sidebaritem"
-              :class="{ active: currentTab === tab }"
-              v-for="tab in tabs"
-              :key="tab"
-              @click="currentTab = tab"
-            >
-              <i :class="icons[tab] + ' me-2'"></i>{{ tab }}
+            <div class="sidebar-content">
+              <img class="headimg" :src="userStore.userPicture" alt="頭像" />
+              <div class="name">{{ user.name }}</div>
+              <div
+                class="sidebaritem"
+                :class="{ active: currentTab === tab }"
+                v-for="tab in tabs"
+                :key="tab"
+                @click="currentTab = tab"
+              >
+                <i :class="icons[tab] + ' me-2'"></i>{{ tab }}
+              </div>
             </div>
           </div>
 
@@ -283,6 +285,7 @@ export default {
 @import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css');
 
 @import '@/assets/css/common.css';
+@import '/src/assets/css/common.css';
 
 /* 全局樣式 */
 :root {
@@ -308,6 +311,7 @@ body {
 }
 
 /* 側邊欄樣式 */
+/*
 .sidebar {
   background-color: #9dbeb3;
   color: #fff;
@@ -316,6 +320,17 @@ body {
   min-height: 100vh;
   box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
   position: relative;
+  transition: all 0.3s;
+}
+  */
+
+.sidebar-content {
+  background-color: #ffffff;
+  color: #5B5B5B;
+  border-radius: 0.5rem;
+  padding: 1rem 0.5rem 32px 0.5rem;
+
+  box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
   transition: all 0.3s;
 }
 
@@ -350,12 +365,14 @@ body {
 }
 
 .sidebaritem:hover {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: #5B5B5B;
+  color: #fff;
   transform: translateX(5px);
 }
 
 .sidebaritem.active {
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: #ffffff;
+  color: #5B5B5B;
   font-weight: 600;
 }
 

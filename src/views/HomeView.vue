@@ -1,4 +1,5 @@
 <template>
+  <router-view />
   <div class="wrap">
     <!-- 滑動後才出現的 nav -->
     <div class="nav" :class="{ show: isSticky }">
