@@ -39,13 +39,11 @@ const router = createRouter({
         },
 
         //產品細項頁面(假資料)
-
         {
           path: 'tourfake',
           name: 'tourfake',
           component: () => import('../views/front/tourPageFake.vue'),
           meta: { title: '產品細項(假資料)' }
-
         },
 
         //搜索頁面
