@@ -29,20 +29,23 @@ const router = createRouter({
           component: () => import('../views/HomeView.vue'),
         },
 
-        //購物專區(和搜索頁面功能上差異不大暫且保留)
-        /*
+        //產品細項頁面
+
         {
-          path: 'shopping',
-          name: 'shopping',
-          component: () => import('../views/front/shopping.vue'),
-          },
-        */
-        //搜索頁面
-        {
-          path: 'search',
-          name: 'search',
-          component: () => import('../views/front/searchPage.vue'),
+          path: 'tour',
+          name: 'tour',
+          component: () => import('../views/front/tourPage.vue'),
+          meta: { title: '產品細項' }
         },
+
+        //產品細項頁面(假資料)
+        {
+          path: 'tourfake',
+          name: 'tourfake',
+          component: () => import('../views/front/tourPageFake.vue'),
+          meta: { title: '產品細項(假資料)' }
+        },
+
       ],
     },
     //會員功能
@@ -141,11 +144,23 @@ const router = createRouter({
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/AboutView.vue'),
     },
+    //搜索頁面
+    {
+      path: '/search',
+      name: 'search',
+      component: () => import('../views/front/searchPage.vue'),
+    },
   ],
 });
 
 router.beforeEach(async (to, from, next) => {
   const authPages = ['/admin/login', '/admin/register', '/admin/forgotpw', '/admin/resetpw'];
+
+  if (to.meta.title) {
+    document.title = to.meta.title;
+  } else {
+    document.title = 'TripEasy 旅遊電商';
+  }
 
   if (authPages.includes(to.path) && localStorage.getItem('authToken')) {
     const result = await api.get_user_status();
