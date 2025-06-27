@@ -41,7 +41,7 @@
       <!-- 右側 -->
       <div class="navbar_right">
         <ul class="nav_link">
-          <li><router-link to="/front/search">購物專區</router-link></li>
+          <li><router-link to="/search">購物專區</router-link></li>
           <li><router-link to="#">旅遊神器</router-link></li>
           <li><router-link to="#">行事曆</router-link></li>
           <li><router-link to="#">購物車</router-link></li>
