@@ -151,6 +151,12 @@ const router = createRouter({
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/AboutView.vue'),
     },
+    //搜索頁面
+    {
+       path: '/search',
+       name: 'search',
+       component: () => import('../views/front/searchPage.vue'),
+     }, 
   ],
 });
 
