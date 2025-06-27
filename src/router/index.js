@@ -46,6 +46,13 @@ const router = createRouter({
           meta: { title: '產品細項(假資料)' }
         },
 
+        //搜索頁面
+        /*
+        {
+          path: 'search',
+          name: 'search',
+          component: () => import('../views/front/searchPage.vue'),
+        },*/
       ],
     },
     //會員功能
@@ -146,10 +153,10 @@ const router = createRouter({
     },
     //搜索頁面
     {
-      path: '/search',
-      name: 'search',
-      component: () => import('../views/front/searchPage.vue'),
-    },
+       path: '/search',
+       name: 'search',
+       component: () => import('../views/front/searchPage.vue'),
+     }, 
   ],
 });
 
