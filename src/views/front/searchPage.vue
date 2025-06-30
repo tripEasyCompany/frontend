@@ -26,114 +26,154 @@
         </div>
     </div>
 
+    <!-- 搜尋區+商品清單區+分頁器 -->
+  <div class="main-content">
     <!-- 搜尋區 -->
     <div class="bg-white py-4">
       <div class="container">
-        <div class="row g-3 align-items-end">
+  
+        <!-- 分類 -->
+        <div class="row g-3 align-items-end mb-3">
           <div class="col-6 col-md-3">
-            <label class="form-label">分類</label>
-            <select class="form-select" v-model="filters.category">
-              <option  disabled value="">旅行團</option>
-              <option>背包客</option>
-            </select>
-          </div>
-          <div class="col-6 col-md-3">
-            <label class="form-label">項目類別</label>
-            <select class="form-select" v-model="filters.category">
-              <option disabled value="">旅遊行程</option>
-              <option>美食專區</option>
-              <option>飯店專區</option>
-              <option>旅遊專區</option>
-            </select>
+            <div class="d-flex align-items-center">
+              <label class="form-label mb-0 me-5" style="white-space:nowrap;">分類</label>
+              <select class="form-select" v-model="filters.category" style="width:180px;">
+                <option disabled value="">旅行團</option>
+                <option>背包客</option>
+              </select>
+            </div>
           </div>
 
+          <!-- 項目類別 -->
+          <div class="col-6 col-md-3">
+            <div class="d-flex align-items-center">
+              <label class="form-label mb-0 me-3" style="white-space:nowrap;">項目類別</label>
+              <select class="form-select" v-model="filters.itemType" style="width:180px;">
+                <option disabled value="">旅遊行程</option>
+                <option>美食專區</option>
+                <option>飯店專區</option>
+                <option>旅遊專區</option>
+              </select>
+            </div>
+          </div>
           
+          <!-- 偏好分類 -->
           <div class="col-6 col-md-3">
-            <label class="form-label">偏好分類</label>
-            <select class="form-select" v-model="filters.category">
-              <option disabled value="">選擇分類</option>
-              <option>探索冒險系</option>
-              <option>放鬆療癒系</option>
-              <option>文化體驗系</option>
-              <option>美食探索系</option>
-              <option>都市感官系</option>
-              <option>自然療癒系</option>
-              <option>親子家庭系</option>
-              <option>拍照打卡系</option>
-              <option>懶人輕鬆系</option>
-              <option>特殊主題系</option>
-            </select>
+            <div class="d-flex align-items-center">
+              <label class="form-label mb-0 me-3" style="white-space:nowrap;">偏好分類</label>
+              <select class="form-select" v-model="filters.preference" style="width:180px;">
+                <option disabled value="">選擇分類</option>
+                <option>探索冒險系</option>
+                <option>放鬆療癒系</option>
+                <option>文化體驗系</option>
+                <option>美食探索系</option>
+                <option>都市感官系</option>
+                <option>自然療癒系</option>
+                <option>親子家庭系</option>
+                <option>拍照打卡系</option>
+                <option>懶人輕鬆系</option>
+                <option>特殊主題系</option>
+              </select>
+            </div>
           </div>
+        </div>
 
+        <div class="row g-3 align-items-end mb-3">
           <!-- 國家 -->
           <div class="col-6 col-md-3">
-            <label class="form-label">所在國家</label>
-            <select class="form-select" v-model="filters.country">
-              <option disabled value="">選擇國家</option>
-              <option>台灣</option>
-              <option>日本</option>
-              <option>韓國</option>
-              <option>泰國</option>
-              <option>新加坡</option>
-              <option>馬來西亞</option>
-              <option>美國</option>
-            </select>
+            <div class="d-flex align-items-center">
+              <label class="form-label mb-0 me-3" style="white-space:nowrap;">所在國家</label>
+              <select class="form-select" v-model="filters.country" style="width:180px;">
+                <option disabled value="">選擇國家</option>
+                <option>台灣</option>
+                <option>日本</option>
+                <option>韓國</option>
+                <option>泰國</option>
+                <option>新加坡</option>
+                <option>馬來西亞</option>
+                <option>美國</option>
+              </select>
+            </div>
           </div>
 
           <!-- 地區 -->
           <div class="col-6 col-md-3">
-            <label class="form-label">所在地區</label>
-            <select class="form-select" v-model="filters.country" >
-              <option disabled value="">選擇地區</option>
-              <option>台北市</option>
-              <option>新北市</option>
-              <option>宜蘭市</option>
-              <option>桃園市</option>
-              <option>新竹市</option>
-            </select>
+            <div class="d-flex align-items-center">
+              <label class="form-label mb-0 me-3" style="white-space:nowrap;">所在地區</label>
+              <select class="form-select" v-model="filters.area" style="width:180px;">
+                <option disabled value="">選擇地區</option>
+                <option>台北市</option>
+                <option>新北市</option>
+                <option>宜蘭市</option>
+                <option>桃園市</option>
+                <option>新竹市</option>
+              </select>
+            </div>
           </div>
+        </div>  
 
           <!-- 金額 -->
+        <div class="row g-3 align-items-end mb-3">
           <div class="col-6 col-md-3">
-            <label class="form-label">購買金額</label>
-            <input type="text" class="form-control" placeholder="最小金額" />
+            <div class="d-flex align-items-center">
+              <label class="form-label mb-0 me-3" style="white-space:nowrap;">購買金額</label>
+              <input type="text" class="form-control" placeholder="最小金額"  style="width:180px;"/>
+              <span class="mx-1"> – </span>
+              <input type="text" class="form-control" placeholder="最大金額"  style="width:180px;"/>
+            </div>
           </div>
-          <div class="col-6 col-md-3">
-            <input type="text" class="form-control mt-4" placeholder="最大金額" />
-          </div>
+        </div> 
 
           <!-- 日期區間 -->
+        <div class="row g-3 align-items-end mb-3">
           <div class="col-6 col-md-3">
-            <label class="form-label">旅遊日期</label>
-            <input type="date" class="form-control" placeholder="最早日期"/>
-            <span>-</span>
-            <input type="date" class="form-control" placeholder="最晚日期"/>
+            <div class="d-flex align-items-center">
+              <label class="form-label mb-0 me-3" style="white-space:nowrap;">旅遊日期</label>
+              <div class="flex-grow-1 me-0">
+                <input type="date" class="form-control" v-model="filters.startDate" style="width:180px;"/>
+              </div>
+              <span class="mx-1"> – </span>
+              <div class="flex-grow-1 ms-0">
+                <input type="date" class="form-control" v-model="filters.endDate" style="width:180px;"/>
+              </div>
+            </div>
           </div>
+        </div>
 
           <!-- 天數 -->
-          <label class="form-label">旅遊天數</label>
-            <select class="form-select" placeholder="選擇天數" v-model="filters.country" >
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-            </select>
+        <div class="row g-3 align-items-end mb-3" >
+          <div class="col-6 col-md-3">
+            <div class="d-flex align-items-center">
+              <label class="form-label mb-0 me-3" style="white-space:nowrap;">旅遊天數</label>
+              <select class="form-select" placeholder="選擇天數" v-model="filters.days" style="width:180px;">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+            </div>
           </div>
+        </div>
+        
 
           <!-- 關鍵字 -->
-          <div class="col-6 col-md-3">
-            <label class="form-label">關鍵字</label>
-            <input type="text" class="form-control" placeholder="請輸入關鍵字" v-model="filters.keyword" />
+        <div class="col-6 col-md-3">
+          <div class="d-flex align-items-center">
+            <label class="form-label mb-0 me-3" style="white-space:nowrap;">關鍵字</label>
+            <input type="text" class="form-control" placeholder="請輸入關鍵字" v-model="filters.keyword" style="width:180px;" />
           </div>
+        </div>
+
 
           <!-- 搜尋 -->
-          <div class="col-6 col-md-3">
-            <button class="btn btn-outline-dark w-100 mt-4">搜尋</button>
+          <div class="col-12 col-md-12 text-end">
+            <button class="btn btn-outline-dark mt-4">搜尋</button>
           </div>
         </div>
       </div>
     </div>
+    
     <!-- 商品清單區 -->
   <div class="container my-5">
       <div class="row gy-4">
@@ -141,42 +181,55 @@
           <div class="d-flex bg-white rounded shadow-sm overflow-hidden">
 
             <!-- 圖片 -->
-            <img :src="item.img" class="img-fluid" style="width: 160px; height: auto; object-fit: cover;" />
+            <img :src="item.img" class="img-fluid" style="object-fit: cover;" />
 
             <!-- 內容 -->
             <div class="p-3 flex-grow-1">
-              <div class="d-flex justify-content-between">
+              
                 <!-- 標籤 -->
                 <div>
                   <span v-if="item.tag1" class="badge bg-warning text-dark me-1">{{ item.tag1 }}</span>
                   <span v-if="item.tag2" class="badge bg-secondary text-white me-1">{{ item.tag2 }}</span>
                   <span v-if="item.tag3" class="badge bg-danger text-white">{{ item.tag3 }}</span>
                 </div>
-                <div class="text-end">
-                  <div>{{ item.date }}</div>
-                  <div class="fw-bold text-danger">NT${{ item.price.toLocaleString() }}</div>
-                  <small class="text-muted text-decoration-line-through">NT${{ item.original.toLocaleString() }}</small>
+
+              <!-- 主內容區塊：左側(title/desc) + 右側(日期/價格/按鈕) -->  
+              <div class="d-flex">
+                <!-- 左側：title + 收藏 + desc -->
+                <div class="flex-grow-1">
+                  <div class="d-flex align-items-center mb-1">
+                    <h5 class="mb-0">{{ item.title }}</h5>
+                    <span
+                      class="fs-5 favorite-icon ms-2"
+                      :class="{ active: item.isFavorite }"
+                      @click="toggleFavorite(item)"
+                      role="button"
+                      title="收藏"
+                    >
+                      {{ item.isFavorite ? '♥' : '♡' }}
+                    </span>
+                  </div>
+                  <p class="mb-2 small text-start">{{ item.desc }}</p>
                 </div>
+                
+                <!-- 右側：日期/價格/按鈕 -->
+                <div class="text-end ms-3" style="min-width: 210px;">
+                  <div>{{ item.date }}</div>
+                  <div class="price-custom mt-2 mb-1">
+                    NT${{ item.price.toLocaleString() }}
+                  </div>
+                  <small class="text-muted text-decoration-line-through d-block mb-2">
+                    NT${{ item.original.toLocaleString() }}
+                  </small>
+                  <button class="btn btn-outline-dark btn-sm">查看詳情</button>
+                </div>
+
               </div>
-              <h5 class="mt-2">{{ item.title }}</h5>
 
-              <!-- 收藏 -->
-              <span
-                class="fs-5 favorite-icon"
-                :class="{ active: item.isFavorite }"
-                @click="toggleFavorite(item)"
-                role="button"
-                title="收藏"
-              >
-                {{ item.isFavorite ? '♥' : '♡' }}
-              </span>
-
-              <p class="mb-2 small">{{ item.desc }}</p>
-              <button class="btn btn-outline-dark btn-sm">查看詳情</button>
             </div>
+
           </div>
         </div>
-      </div>
 
       <!-- 分頁器 -->
       <nav class="d-flex justify-content-center mt-4">
@@ -197,7 +250,9 @@
           </li>
         </ul>
       </nav>
+      </div>
     </div>
+  </div>
 
     <!-- Footer -->
     <FooterComponent />
@@ -211,9 +266,13 @@ import HeaderComponent from '@/components/HeaderComponent.vue';
 import { reactive, computed, ref } from 'vue';
 
 const filters = reactive({
-  category: '',
-  country: '',
-  keyword: '',
+  category: '',   //分類
+  itemType: '',   //項目類別
+  preference: '', //偏好分類
+  country: '',    //國家
+  area:'',        //地區
+  days:'',        //天數
+  keyword: '',    //關鍵字
 });
 
 const allItems = [
@@ -225,7 +284,7 @@ const allItems = [
     date: '2025.04.10 ~ 2025.04.12',
     tag1: '探索冒險',
     tag2: '自然療癒',
-    img: '@/assets/img/search/view1.png',
+    img: 'src/assets/img/search/view1.png',
     isFavorite: false,
   },
   {
@@ -236,7 +295,7 @@ const allItems = [
     date: '2025.04.10 ~ 2025.04.12',
     tag1: '懶人輕鬆',
     tag2: '自然療癒',
-    img: '@/assets/img/search/view2.png',
+    img: 'src/assets/img/search/view2.jpg',
     isFavorite: false,
   },
   {
@@ -247,7 +306,7 @@ const allItems = [
     date: '2025.04.10 ~ 2025.04.12',
     tag1: '文化體驗',
     tag2: '自然療癒',
-    img: '@/assets/Shopping.png',
+    img: 'src/assets/img/search/view3.jpg',
     isFavorite: false,
   },
   {
@@ -258,7 +317,7 @@ const allItems = [
     date: '2025.04.10 ~ 2025.04.12',
     tag1: '都市感官',
     tag2: '拍照打卡',
-    img: '@/assets/Shopping.png',
+    img: 'src/assets/img/search/view4.jpg',
     isFavorite: false,
   },
   {
@@ -269,35 +328,35 @@ const allItems = [
     date: '2025.04.10 ~ 2025.04.12',
     tag1: '探索冒險',
     tag2: '自然療癒',
-    img: '@/assets/Shopping.png',
+    img: 'src/assets/img/search/view5.jpg',
     isFavorite: false,
   },
   {
     title: '美國｜大峽谷',
-    desc: '美國大峽谷是世界上最壯觀的自然奇觀之一，深達1800米，長約446公里，寬度從6到29公里不等。這裡的岩石層顯示了地球數百萬年的地質歷史，色彩斑斕的岩壁在陽光下閃耀著迷人的光芒。遊客可以在觀景台欣賞壯麗的景色，或參加徒步旅行和漂流等冒險活動，體驗大峽谷的壯闊與神秘。每年吸引數百萬遊客前來探索這片壯麗的自然寶藏。',
+    desc: '美國大峽谷是世界上最壯觀的自然奇觀之一，深達1800米，長約446公里，寬度從6到29公里不等。這裡的岩石層顯示了地球數百萬年的地質歷史，色彩斑斕的岩壁在陽光下閃耀著迷人的光芒。遊客可以在觀景台欣賞壯麗的景色，或參加徒步旅行和漂流等冒險活動，體驗大峽谷的壯闊與神秘。每年吸引數百萬遊客前來探索這片壖麗的自然寶藏。',
     price: 18800,
     original: 20800,
     date: '2025.04.10 ~ 2025.04.12',
     tag1: '探索冒險',
     tag2: '自然療癒',
-    img: '@/assets/Shopping.png',
+    img: 'src/assets/img/search/view6.jpg',
     isFavorite: false,
   },
 ];
 
 // 愛心收藏
 // const favorites = ref([]);
-// function toggleFavorite(item) {
-//   item.isFavorite = !item.isFavorite;
+function toggleFavorite(item) {
+  item.isFavorite = !item.isFavorite;
 //   if (item.isFavorite) {
 //     favorites.value.push(item);
 //   } else {
 //     favorites.value = favorites.value.filter(i => i.title !== item.title);
 //   }
-// }
+}
 
 const currentPage = ref(1);
-const itemsPerPage = 3;
+const itemsPerPage = 4;
 
 const totalPages = computed(() => Math.ceil(allItems.length / itemsPerPage));
 
@@ -322,6 +381,12 @@ function goToPage(page) {
 <style scoped>
 body {
   background-color: #f9f9f9;
+}
+
+.main-content{
+  max-width: 1296px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .hero-banner {
@@ -350,18 +415,26 @@ body {
 .img-fluid{
   width: 332px;
   height: 192px;
-  background-image: url('@/assets/img/search/view1.png');
 }
 
 
 .favorite-icon {
   cursor: pointer;
   color: #aaa;
-  transition: color 0.3s ease;
+  transition: color 0.3s;
 }
 
-.favorite-icon .hover {
+.favorite-icon.active {
   color: red;
+}
+
+.price-custom {
+  font-size: 24px;
+  font-weight: 700;
+  font-family: 'Noto Serif TC', serif;
+  color: red;
+  letter-spacing: 1px;
+  text-align: right;
 }
 
 
