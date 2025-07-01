@@ -225,6 +225,22 @@
                 </div>
 
               </div>
+              <h5 class="mt-2">{{ item.title }}</h5>
+
+              <!-- 收藏 -->
+              <span
+                class="fs-5 favorite-icon"
+                :class="{ active: item.isFavorite }"
+                @click="toggleFavorite(item)"
+                role="button"
+                title="收藏"
+              >
+                {{ item.isFavorite ? '♥' : '♡' }}
+              </span>
+
+              <p class="mb-2 small">{{ item.desc }}</p>
+              <button class="btn btn-outline-dark btn-sm">查看詳情</button>
+
 
             </div>
 

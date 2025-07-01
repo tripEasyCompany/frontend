@@ -46,6 +46,14 @@ const router = createRouter({
           meta: { title: '產品細項(假資料)' }
         },
 
+        //產品細項頁面 (大峽谷假資料)
+        {
+          path: 'tourfakeUSA',
+          name: 'tourfakeUSA',
+          component: () => import('../views/front/tourFakeUSA.vue'),
+          meta: { title: '產品細項(USA假資料)' }
+        },
+
         //搜索頁面
         /*
         {
