@@ -4,19 +4,19 @@
     <HeaderComponent />
 
   <div class="container-fluid px-0">
-      <div class="hero-banner position-relative d-flex align-items-center justify-content-center">
-        <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-end px-4 px-md-5">
-            <h2 class="main-title text-white fw-bold text-end pe-5 pe-md-5 flex-grow-1 text-shadow-lg">
+      <div class="hero-banner d-flex align-items-center justify-content-center">
+        <div class="container top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-end px-4 px-md-5">
+            <h2 class="main-title text-white fw-bold text-center pe-5 pe-md-9 flex-grow-1 text-shadow-lg">
                 購物專區
             </h2>
             <div class="verse-container d-flex flex-row-reverse align-items-start pe-3">
-                <p class="right-text me-3">
+                <p class="right-text">
                 世界這麼大、<br />
                 不必走得太遠<br />
                 也能遇見<br />
                 讓你心動的風景
                 </p>
-                <p class="right-text">
+                <p class="right-text me-5">
                 跟著我們<br />
                 把每一次出走<br />
                 變成生活裡<br />
@@ -28,6 +28,7 @@
 
     <!-- 搜尋區+商品清單區+分頁器 -->
   <div class="main-content">
+    <a href="#" style="text-decoration:none; color:#5B5B5B;">首頁</a>/ <a href="#" style="text-decoration:none; color:#5B5B5B; font-weight:700;">購物專區</a>
     <!-- 搜尋區 -->
     <div class="bg-white py-4">
       <div class="container">
@@ -38,7 +39,8 @@
             <div class="d-flex align-items-center">
               <label class="form-label mb-0 me-5" style="white-space:nowrap;">分類</label>
               <select class="form-select" v-model="filters.category" style="width:180px;">
-                <option disabled value="">旅行團</option>
+                <option disabled value="">選擇分類</option>
+                <option>旅行團</option>
                 <option>背包客</option>
               </select>
             </div>
@@ -49,7 +51,8 @@
             <div class="d-flex align-items-center">
               <label class="form-label mb-0 me-3" style="white-space:nowrap;">項目類別</label>
               <select class="form-select" v-model="filters.itemType" style="width:180px;">
-                <option disabled value="">旅遊行程</option>
+                <option disabled value="">選擇項目類別</option>
+                <option>旅遊行程</option>
                 <option>美食專區</option>
                 <option>飯店專區</option>
                 <option>旅遊專區</option>
@@ -158,26 +161,54 @@
         
 
           <!-- 關鍵字 -->
-        <div class="col-6 col-md-3">
-          <div class="d-flex align-items-center">
-            <label class="form-label mb-0 me-3" style="white-space:nowrap;">關鍵字</label>
-            <input type="text" class="form-control" placeholder="請輸入關鍵字" v-model="filters.keyword" style="width:180px;" />
+          <div class="row g-3 align-items-end mb-3">
+            <div class="col-12 col-md-6">
+              <div class="d-flex align-items-center">
+                <label class="form-label mb-0" style="white-space:nowrap; margin-right: 2em;">關鍵字</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="請輸入關鍵字"
+                  v-model="filters.keyword"
+                  style="width:376px;"
+                />
+              </div>
+            </div>
           </div>
-        </div>
 
 
           <!-- 搜尋 -->
-          <div class="col-12 col-md-12 text-end">
-            <button class="btn btn-outline-dark mt-4">搜尋</button>
+            <div class="col-12 col-md-12 text-end">
+              <button class="btn btn-outline-dark mt-4 btn-oval">搜尋</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
     
+      <!-- 排序與每頁顯示數量控制列 -->
+      <div class="container d-flex justify-content-between align-items-center my-3">
+          <!-- 每頁顯示筆數選單 -->
+          <div class="d-flex align-items-center">
+            <select v-model="itemsPerPage" class="form-select form-select-lg" style="width: 180px;">
+              <option :value="2">筆數：2</option>
+              <option :value="4">筆數：4</option>
+              <option :value="6" selected>筆數</option>
+            </select>
+          </div>
+          <!-- 金額排序選單 -->
+          <div class="d-flex align-items-center">
+            <select v-model="sortOrder" @change="onSortOrderChange" class="form-select form-select-lg" style="width: 180px;">
+              <option value=null>金額排序</option>
+              <option value="asc">金額升序 ▲</option>
+              <option value="desc">金額降序 ▼</option>
+            </select>
+          </div>
+        </div>
+
     <!-- 商品清單區 -->
   <div class="container my-5">
       <div class="row gy-4">
-        <div class="col-12" v-for="(item, index) in paginatedItems" :key="index">
+        <div class="col-12" v-for="(item) in paginatedItems" :key="item.id">
           <div class="d-flex bg-white rounded shadow-sm overflow-hidden">
 
             <!-- 圖片 -->
@@ -263,6 +294,13 @@
 <script setup>
 import FooterComponent from '@/components/FooterComponent.vue';
 import HeaderComponent from '@/components/HeaderComponent.vue';
+import view1 from '@/assets/img/search/view1.png';
+import view2 from '@/assets/img/search/view2.jpg';
+import view3 from '@/assets/img/search/view3.jpg';
+import view4 from '@/assets/img/search/view4.jpg';
+import view5 from '@/assets/img/search/view5.jpg';
+import view6 from '@/assets/img/search/view6.jpg';
+
 import { reactive, computed, ref } from 'vue';
 
 const filters = reactive({
@@ -274,9 +312,12 @@ const filters = reactive({
   days:'',        //天數
   keyword: '',    //關鍵字
 });
+const sortOrder = ref(null) // null=沒排序, 'asc'=升序, 'desc'=降序
+const itemsPerPageOptions = [2, 4, 6]
 
-const allItems = [
+const allItems = ref([
   {
+    id: 1,
     title: '摩洛哥｜撒哈拉沙漠',
     desc: '薩哈拉沙漠是全球最大的熱帶沙漠，面積達到約940萬平方公里，橫跨多個國家，擁有壯麗的沙丘和多樣的生態系統。這裡的氣候極端，白天的氣溫可達50攝氏度，而夜晚則驟降至接近零度。沙漠中的生物適應了這種極端環境，形成了獨特的生態平衡。每年，無數探險者和攝影愛好者被這片神秘的土地所吸引，來此探索其壯觀的自然景觀和豐富的文化遺產。',
     price: 18800,
@@ -284,10 +325,11 @@ const allItems = [
     date: '2025.04.10 ~ 2025.04.12',
     tag1: '探索冒險',
     tag2: '自然療癒',
-    img: 'src/assets/img/search/view1.png',
+    img: view1,
     isFavorite: false,
   },
   {
+    id: 2,
     title: '秘魯｜馬丘比丘',
     desc: '馬丘比丘是秘魯最著名的古代遺址之一，坐落在安第斯山脈的高處，海拔約2430米。這座印加城市以其壯觀的石造建築和壯麗的自然景觀而聞名，周圍環繞著雲霧繚繞的山峰和翠綠的山谷。遊客可以在這裡欣賞到精美的梯田、神秘的神廟和壯觀的日出，感受印加文明的魅力。每年吸引著成千上萬的遊客前來探索這片歷史悠久的土地，體驗古代文化的獨特氛圍。',
     price: 120000,
@@ -295,10 +337,11 @@ const allItems = [
     date: '2025.04.10 ~ 2025.04.12',
     tag1: '懶人輕鬆',
     tag2: '自然療癒',
-    img: 'src/assets/img/search/view2.jpg',
+    img: view2,
     isFavorite: false,
   },
   {
+    id: 3,
     title: '土耳其｜熱氣球之旅',
     desc: '在土耳其，熱氣球飛行是一項令人驚嘆的體驗，尤其是在卡帕多奇亞地區。這裡的獨特地貌和壯麗的日出景色吸引了無數遊客。乘坐熱氣球，您可以俯瞰到奇特的岩石形成、古老的洞穴住宅和廣袤的葡萄園。飛行過程中，您會感受到微風拂面，並且能夠拍攝到壯觀的全景，這將成為您旅行中難忘的回憶。',
     price: 18800,
@@ -306,10 +349,11 @@ const allItems = [
     date: '2025.04.10 ~ 2025.04.12',
     tag1: '文化體驗',
     tag2: '自然療癒',
-    img: 'src/assets/img/search/view3.jpg',
+    img: view3,
     isFavorite: false,
   },
   {
+    id: 4,
     title: '義大利｜文藝復興巡禮',
     desc: '義大利的旅程充滿了迷人的景點和豐富的歷史。從羅馬的古老遺跡，如羅馬競技場和萬神殿，到威尼斯的浪漫運河，這裡每一個角落都散發著藝術的氣息。佛羅倫斯的烏菲茲美術館收藏了無數大師的作品，而比薩的斜塔則是建築奇蹟的象徵。無論是品嚐當地的美食，還是漫步在古老的街道上，義大利都會讓你流連忘返，感受到無與倫比的魅力。',
     price: 18800,
@@ -317,10 +361,11 @@ const allItems = [
     date: '2025.04.10 ~ 2025.04.12',
     tag1: '都市感官',
     tag2: '拍照打卡',
-    img: 'src/assets/img/search/view4.jpg',
+    img: view4,
     isFavorite: false,
   },
   {
+    id: 5,
     title: '加拿大｜洛磯山脈',
     desc: '加拿大洛磯山脈是自然愛好者的天堂，擁有壯觀的山脈、清澈的湖泊和茂密的森林。這裡的班夫國家公園以其壯麗的冰川湖泊和壯觀的山景而聞名，遊客可以在此進行徒步旅行、滑雪和野生動物觀賞。冰原大道則是通往洛磯山脈的絕佳路線，沿途可欣賞到壯觀的冰川和壯麗的山脈景色。無論是夏季的綠意盎然，還是冬季的白雪皚皚，洛磯山脈都展現出無與倫比的自然美。',
     price: 18800,
@@ -328,10 +373,11 @@ const allItems = [
     date: '2025.04.10 ~ 2025.04.12',
     tag1: '探索冒險',
     tag2: '自然療癒',
-    img: 'src/assets/img/search/view5.jpg',
+    img: view5,
     isFavorite: false,
   },
   {
+    id: 6,
     title: '美國｜大峽谷',
     desc: '美國大峽谷是世界上最壯觀的自然奇觀之一，深達1800米，長約446公里，寬度從6到29公里不等。這裡的岩石層顯示了地球數百萬年的地質歷史，色彩斑斕的岩壁在陽光下閃耀著迷人的光芒。遊客可以在觀景台欣賞壯麗的景色，或參加徒步旅行和漂流等冒險活動，體驗大峽谷的壯闊與神秘。每年吸引數百萬遊客前來探索這片壖麗的自然寶藏。',
     price: 18800,
@@ -339,31 +385,62 @@ const allItems = [
     date: '2025.04.10 ~ 2025.04.12',
     tag1: '探索冒險',
     tag2: '自然療癒',
-    img: 'src/assets/img/search/view6.jpg',
+    img: view6,
     isFavorite: false,
   },
-];
-
+]);
 // 愛心收藏
-// const favorites = ref([]);
 function toggleFavorite(item) {
   item.isFavorite = !item.isFavorite;
-//   if (item.isFavorite) {
-//     favorites.value.push(item);
-//   } else {
-//     favorites.value = favorites.value.filter(i => i.title !== item.title);
-//   }
+  allItems.value = [...allItems.value];
 }
 
+const displayStartDate = ref('')
+const displayEndDate = ref('')
+const realDateRef = ref(null)
+
+const openDatePicker = () => {
+  realDateRef.value?.click()
+}
+
+const onStartDateChange = (event) => {
+  displayStartDate.value = event.target.value
+}
+const onEndDateChange = (event) => {
+  displayEndDate.value = event.target.value
+}
+
+
+
 const currentPage = ref(1);
-const itemsPerPage = 4;
+const itemsPerPage = ref(6);
 
-const totalPages = computed(() => Math.ceil(allItems.length / itemsPerPage));
+function onSortOrderChange() {
+  currentPage.value = 1
+}
 
+// 每次筆數改變時，重置回第 1 頁
+function onItemsPerPageChange() {
+  currentPage.value = 1
+}
+
+// 加入排序邏輯
+const sortedItems = computed(() => {
+  const sorted = [...allItems.value]
+  return sorted.sort((a, b) =>
+    sortOrder.value === 'asc' ? a.price - b.price : b.price - a.price
+  )
+})
+
+// 排序後的 items 來做分頁
 const paginatedItems = computed(() => {
-  const start = (currentPage.value - 1) * itemsPerPage;
-  return allItems.slice(start, start + itemsPerPage);
-});
+  const start = (currentPage.value - 1) * itemsPerPage.value
+  return sortedItems.value.slice(start, start + itemsPerPage.value)
+})
+
+const totalPages = computed(() =>
+  Math.ceil(sortedItems.value.length / itemsPerPage.value)
+)
 
 function prevPage() {
   if (currentPage.value > 1) currentPage.value--;
