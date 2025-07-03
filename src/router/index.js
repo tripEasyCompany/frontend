@@ -46,6 +46,22 @@ const router = createRouter({
           meta: { title: '產品細項(假資料)' }
         },
 
+        //購物車頁面
+        {
+          path: 'cart',
+          name: 'cart',
+          component: () => import('../views/front/cart.vue'),
+          meta: { title: '產品細項(假資料)' }
+        },
+
+        //產品細項頁面(假資料)
+        {
+          path: 'pay',
+          name: 'pay',
+          component: () => import('../views/front/pay.vue'),
+          meta: { title: '產品細項(假資料)' }
+        },
+
         //產品細項頁面 (大峽谷假資料)
         {
           path: 'tourfakeUSA',
@@ -164,7 +180,7 @@ const router = createRouter({
        path: '/search',
        name: 'search',
        component: () => import('../views/front/searchPage.vue'),
-     }, 
+     },
   ],
 });
 
