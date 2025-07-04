@@ -44,7 +44,7 @@
           <li><router-link to="/search">購物專區</router-link></li>
           <li><router-link to="#">旅遊神器</router-link></li>
           <li><router-link to="#">行事曆</router-link></li>
-          <li><router-link to="#">購物車</router-link></li>
+          <li><router-link to="/cart">購物車</router-link></li>
         </ul>
 
         <router-link v-if="!userStore.isLoggedIn" to="/admin/login" class="login_btn"
