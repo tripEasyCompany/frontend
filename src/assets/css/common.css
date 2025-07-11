@@ -1,0 +1,65 @@
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+
+body {
+  height: 100%;
+  font-family: Verdana, sans-serif;
+  background-image: url('../img/background.png');
+  background-repeat: no-repeat;
+  background-size: cover; /* 背景等比例填滿 */
+  background-position: center;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: auto;
+  overflow: auto;
+
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none; /* Chrome / Safari / Edge */
+}
+
+a {
+  text-decoration: none;
+  color: #212121;
+}
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.content {
+  flex: 1;
+}
+
+@media (max-width: 1440px) {
+  html {
+    font-size: 14px; /* 調整字體大小 */
+  }
+}
+
+@media (max-width: 980px) {
+  html {
+    font-size: 13px; /* 調整字體大小 */
+  }
+}
+
+@media (max-width: 520px) {
+}

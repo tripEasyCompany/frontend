@@ -1,0 +1,376 @@
+/* ----------------------  content  ------------------------- */ /* ----------------------  content  ------------------------- */
+.content_container {
+  display: flex;
+  justify-content: center;
+  padding: 7.5rem 1.25rem 2.5rem 1.25rem;
+}
+
+.main_form {
+  display: flex;
+  flex-direction: column;
+
+  padding: 1.25rem 0;
+}
+
+.main_form .form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9375rem; /* 15px */
+}
+
+/* --- 標語 --- */
+
+.vertical-wrapper {
+  display: flex;
+  gap: 1.5625rem; /* 25px */
+  font-size: 1.625rem; /* 26px */
+  font-weight: bold;
+
+  padding: 2.5rem 2.25rem;
+
+  background-color: #ffffff;
+}
+
+.vertical-text {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+
+  letter-spacing: 0.625rem; /* 10px */
+}
+
+.vertical-wrapper p:last-child {
+  text-indent: 2.5rem; /* 40px */
+}
+
+/* --- 圖片 --- */
+
+.content img {
+  max-width: 450px;
+  margin: 0 7.5rem 0 1.25rem;
+}
+
+/* --- 表單 --- */
+.main_form h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+
+  margin-bottom: 1.875rem; /* 30px */
+}
+
+/* textbox */
+.main_form .form_txtbox {
+  width: 22.5rem; /* 360px */
+  padding: 0.9375rem 2.5rem; /* 15px 40px */
+
+  background-color: #f2f2f2;
+  border: 2px solid #d4d4d4;
+  border-radius: 10px;
+
+  font-size: 1rem;
+}
+
+.main_form .form_txtbox:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px #f2f2f2 inset !important;
+  box-shadow: 0 0 0 1000px #f2f2f2 inset !important;
+  -webkit-text-fill-color: #000 !important; /* 文字顏色可自訂 */
+}
+
+/* icon、icon 按鈕 */
+.main_form .form_item {
+  position: relative;
+}
+
+.form_item i:first-child {
+  position: absolute;
+  top: 35%;
+  left: 15px;
+}
+
+.form_item i:last-child {
+  position: absolute;
+  top: 36%;
+  right: 15px;
+
+  cursor: pointer;
+}
+
+/* error-msg */
+.main_form .error_msg {
+  width: 21.875rem;
+  min-height: 1.875rem; /* 30px */
+  font-weight: bold;
+  color: #f48282;
+
+  visibility: hidden;
+
+  font-size: 0.8125rem; /* 13px */
+  line-height: 1.875rem; /* 30px */
+}
+
+.main_form .visibility {
+  visibility: visible;
+}
+
+/* 按鈕 */
+.main_form .submit_btn {
+  width: 21.875rem; /* 350px */
+  padding: 0.75rem 1.125rem; /* 12px 18px */
+  margin-top: 0.9375rem; /* 15px */
+
+  font-size: 0.875rem; /* 14px */
+  color: #ffffff;
+
+  border-radius: 100px;
+  font-weight: bold;
+  border: 2px solid transparent;
+  background-color: #333333;
+
+  transition: background-color 0.5s ease;
+
+  cursor: pointer;
+}
+
+.submit_btn:hover,
+.submit_btn:active {
+  color: #ffffff;
+  background-color: #5b5b5b;
+}
+
+/* ----------------------  註冊  ------------------------- */
+/* 偏好設定 */
+.form_preference {
+  display: flex;
+  gap: 0.25rem; /* 4px */
+}
+
+.select-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.select-wrap::after {
+  content: '▼';
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  font-size: 0.75rem; /* 12px */
+  color: #555;
+}
+
+.form_preference .select-box {
+  appearance: none;
+  cursor: pointer;
+  padding: 0.625rem 1.875rem 0.625rem 1.25rem; /* 10px 30px 10px 20px */
+
+  background-color: #f2f2f2;
+  border: 2px solid #d4d4d4;
+  border-radius: 10px;
+
+  font-size: 1rem; /* 16px */
+}
+
+.select-box option:disabled {
+  color: #d4d4d4;
+  background-color: #f8f9fa;
+}
+
+/* ----------------------  登入  ------------------------- */
+/* 核取方塊 */
+.list_item {
+  display: flex;
+  justify-content: space-between;
+}
+
+input[type='checkbox'] {
+  display: none;
+}
+
+.check-box span {
+  padding-left: 1.5rem; /* 24px */
+  cursor: pointer;
+}
+
+.check-box span::before {
+  content: '';
+  left: 0;
+  top: 2px;
+  position: absolute;
+  outline: 1px solid #333333;
+  border-radius: 5px;
+  width: 0.9375rem; /* 15px */
+  height: 0.9375rem; /* 15px */
+
+  cursor: pointer;
+}
+
+.check-box span::after {
+  display: none;
+  content: '';
+  left: 5px;
+  top: 2px;
+  position: absolute;
+  width: 0.4375rem; /* 7px */
+  height: 0.875rem; /* 14px */
+  border-right: 2px solid #9dbeb3;
+  border-bottom: 2px solid #9dbeb3;
+  transform: rotate(40deg);
+
+  cursor: pointer;
+}
+
+input[type='checkbox']:checked + span::before {
+  display: none;
+}
+input[type='checkbox']:checked + span::after {
+  display: block;
+}
+
+/* 連結項目 */
+.link_item {
+  display: flex;
+  align-items: center;
+  gap: 0.3125rem; /* 5px */
+
+  font-size: 1rem; /* 16px */
+}
+
+.link_item a {
+  font-weight: bold;
+}
+
+.link_item a:hover {
+  text-decoration: underline;
+  color: #9dbeb3;
+}
+
+/* 分隔線 */
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  margin: 1.25rem 0;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #888;
+}
+
+.divider-text {
+  padding: 0 0.625rem; /* 10px */
+  background-color: #eee; /* 灰底 */
+  color: #555;
+  font-weight: bold;
+}
+
+/* 第三方登入按鈕 */
+.socialLogin {
+  display: flex;
+  gap: 60px;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 1.875rem; /* 30px */
+  color: #5b5b5b;
+}
+
+.icon-circle {
+  width: 3.125rem; /* 50px */
+  height: 3.125rem; /* 50px */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition:
+    background-color 0.5s ease,
+    transform 0.5s ease;
+}
+
+.icon-circle:hover {
+  background-color: #e0e0e0; /* 淺灰色圓背景 */
+  cursor: pointer;
+
+  transform: translateY(-2px); /* 微微上移一點 */
+}
+
+/* ----------------------  修改密碼  ------------------------- */
+.captcha_item {
+  display: flex;
+  gap: 0.9375rem; /* 15px */
+}
+
+.captcha_item #captchaInput {
+  width: 11.875rem; /* 190px */
+  border: 2px solid #d4d4d4;
+  padding: 0.9375rem 0 0.9375rem 0.9375rem;
+  border-radius: 5px;
+  font-size: 1rem; /* 16px */
+
+  background-color: #f2f2f2;
+}
+
+.captcha_item #captcha {
+  margin: 0px;
+  border: 2px solid #d4d4d4;
+
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+@media (max-width: 1440px) {
+}
+
+@media (max-width: 990px) {
+  .content_container {
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .vertical-wrapper {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+
+    padding: 1.2rem 0.8rem;
+  }
+
+  .vertical-wrapper p {
+    margin-bottom: 0;
+  }
+
+  .vertical-text {
+    writing-mode: horizontal-tb;
+  }
+
+  .content .main_img {
+    text-align: center;
+  }
+
+  .content img {
+    max-width: 60%;
+    margin: 0;
+  }
+
+  .main_form .form_txtbox,
+  .main_form .submit_btn,
+  .form_preference .select-wrap,
+  .select-box,
+  #captchaInput,
+  #captcha {
+    width: 100%;
+  }
+}
+
+@media (max-width: 520px) {
+  .content img {
+    max-width: 70%;
+  }
+}
