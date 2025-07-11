@@ -2,14 +2,14 @@
 
   <div class="wrap">
     <!-- Header -->
-    <HeaderComponent />
+    <!-- <HeaderComponent /> -->
 
     <!-- Content -->
     <div class="banner">
       <div class="banner-img">
         <img src="/src/assets/img/tour/banner.jpg" alt="banner" class="img-fluid object-fit-cover w-100 h-100">
       </div>
-      <marquee scrollamount="10">因受暴風雪影響，所有交通暫停，請留意最新通知。</marquee>
+      <marquee scrollamount="10">因受降雪影響，所有交通暫停，請留意最新通知。</marquee>
     </div>
      <div class="content">
 
@@ -136,7 +136,7 @@
                           </select>
                       </div>
 
-                      <button type="submit" class="btn btn-primary w-100">加入購物車</button>
+                      <button type="button" id="addToCartBtn" class="btn btn-primary w-100"  @click="addToCart">加入購物車</button>
                   </form>
               </div>
           </div>
@@ -153,6 +153,7 @@
 <script>
 import HeaderComponent from '@/components/HeaderComponent.vue';
 import FooterComponent from '@/components/FooterComponent.vue';
+import Swal from 'sweetalert2';
 
 export default {
   name: 'tourFakeUSA',
@@ -161,7 +162,16 @@ export default {
   mounted() {
     this.fetchUserInfo();
   },
-  methods: {}
+  methods: {
+    addToCart() {
+      Swal.fire({
+        icon: 'success',
+        title: '已加入購物車',
+        showConfirmButton: false,
+        timer: 1500
+      });
+    }
+  }
 }
 
 

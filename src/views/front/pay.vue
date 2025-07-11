@@ -59,9 +59,11 @@
                         同意接收促銷訊息與其他訊息通知
                     </label>
                 </div>
+                <RouterLink to="/cart">
                 <button type="submit" class="btn btn-dark mt-4 w-100">
                     確認付款
                 </button>
+                </RouterLink>
             </form>
           </div>
 

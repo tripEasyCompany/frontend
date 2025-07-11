@@ -3,6 +3,11 @@ import HomeView from '../views/HomeView.vue';
 import * as api from '../utils/api';
 import { userStore } from '../stores/userStore';
 
+//版型設置
+import HomeLayout from '../layouts/HomeLayout.vue';
+import CartLayout from '../layouts/CartLayout.vue';
+
+
 const requireAuth = async (to, from, next) => {
   const res = await api.get_user_status();
   console.log(res);
@@ -14,13 +19,194 @@ const requireAuth = async (to, from, next) => {
   }
 };
 
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
       name: 'home',
-      component: HomeView,
+      component: HomeLayout,
+      children: [
+        //首頁
+        {
+          path: '',
+          name: 'index',
+          component: () => import('../views/HomeView.vue'),
+        },
+
+        //產品細項頁面
+
+        {
+          path: 'tour',
+          name: 'tour',
+          component: () => import('../views/front/tourPage.vue'),
+          meta: { title: '產品細項' }
+        },
+
+        //產品細項頁面(假資料)
+        {
+          path: 'tourfake',
+          name: 'tourfake',
+          component: () => import('../views/front/tourPageFake.vue'),
+          meta: { title: '產品細項(假資料)' }
+        },
+
+        //產品細項頁面(假資料)
+        {
+          path: 'pay',
+          name: 'pay',
+          component: () => import('../views/front/pay.vue'),
+          meta: { title: '產品細項(假資料)' }
+        },
+
+        //產品細項頁面 (大峽谷假資料)
+        {
+          path: 'tourfakeUSA',
+          name: 'tourfakeUSA',
+          component: () => import('../views/front/tourFakeUSA.vue'),
+          meta: { title: '產品細項(USA假資料)' }
+        },
+
+        //搜索頁面
+
+        {
+          path: 'search',
+          name: 'search',
+          component: () => import('../views/front/searchPage.vue'),
+        },
+        //購物車頁面
+        {
+          path: '/cart',
+          name: 'cart',
+          component: CartLayout,
+          children:[
+            {
+              path: '',
+              name: 'cart1',
+              component: () => import('../views/front/cart.vue'),
+              meta: { title: '產品細項(假資料)' }
+            },
+          ],
+
+        },
+      ],
+    },
+
+
+
+    //會員功能
+    {
+      //會員中心(預設顯示會員資料)
+      path: '/admin',
+      name: 'member',
+      component: () => import('../views/admin/memberPage.vue'),
+      children: [
+        //登入
+        {
+          path: 'login',
+          name: 'login',
+          component: () => import('../views/admin/loginPage.vue'),
+        },
+        //註冊
+        {
+          path: 'register',
+          name: 'register',
+          component: () => import('../views/admin/registerPage.vue'),
+        },
+        //忘記密碼
+        {
+          path: 'forgotpw',
+          name: 'forgotpw',
+          component: () => import('../views/admin/forgotpwPage.vue'),
+        },
+        //個人會員
+        {
+          path: 'userprofile',
+          name: 'userprofile',
+          component: () => import('../views/admin/userprofilePage.vue'),
+          beforeEnter: requireAuth,
+        },
+        //會員資料
+        {
+          path: 'resetpw',
+          name: 'resetpw',
+          component: () => import('../views/admin/resetpwPage.vue'),
+        },
+        //收藏
+        {
+          path: 'collect',
+          name: 'collect',
+          component: () => import('../views/admin/collectPage.vue'),
+        },
+        //個人旅遊訂單
+        {
+          path: 'personalOrder',
+          name: 'personalOrder',
+          component: () => import('../views/admin/personalOrder.vue'),
+        },
+        //管理者中心(管理者功能)
+        {
+          path: 'manage',
+          children: [
+            //網站管理
+            {
+              path: 'website',
+              name: 'website',
+              component: () => import('../views/admin/manage/websiteSetting.vue'),
+            },
+            //儀表板分析
+            {
+              path: 'dashboard',
+              name: 'dashboard',
+              component: () => import('../views/admin/manage/dashboardPage.vue'),
+            },
+            //權限設定
+            {
+              path: 'role',
+              name: 'role',
+              component: () => import('../views/admin/manage/roleSetting.vue'),
+            },
+            //客服
+            {
+              path: 'service',
+              name: 'service',
+              component: () => import('../views/admin/manage/serviceSetting.vue'),
+            },
+            //自動化設定
+            {
+              path: 'automatic',
+              name: 'automatic',
+              component: () => import('../views/admin/manage/automaticSetting.vue'),
+            },
+          ],
+        },
+      ],
+    },
+    {
+      path: '/about',
+      name: 'about',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/AboutView.vue'),
+    },
+    //搜索頁面
+    {
+       path: '/search',
+       name: 'search',
+       component: () => import('../views/front/searchPage.vue'),
+     },
+  ],
+});
+
+
+/* const router = createRouter({
+  history: createWebHashHistory(import.meta.env.BASE_URL),
+  routes: [
+    {
+      path: '/',
+      component: HomeLayout,
       children: [
         //首頁
         {
@@ -182,7 +368,10 @@ const router = createRouter({
        component: () => import('../views/front/searchPage.vue'),
      },
   ],
-});
+}); */
+
+
+
 
 router.beforeEach(async (to, from, next) => {
   const authPages = ['/admin/login', '/admin/register', '/admin/forgotpw', '/admin/resetpw'];
