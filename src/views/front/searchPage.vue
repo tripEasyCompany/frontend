@@ -24,7 +24,7 @@
                 </p>
             </div>
         </div>
-    </div>
+      </div>
 
     <!-- 搜尋區+商品清單區+分頁器 -->
   <div class="main-content">
@@ -32,7 +32,7 @@
     <!-- 搜尋區 -->
     <div class="bg-white py-4">
       <div class="container">
-  
+
         <!-- 分類 -->
         <div class="row g-3 align-items-end mb-3">
           <div class="col-6 col-md-3">
@@ -59,7 +59,7 @@
               </select>
             </div>
           </div>
-          
+
           <!-- 偏好分類 -->
           <div class="col-6 col-md-3">
             <div class="d-flex align-items-center">
@@ -113,7 +113,7 @@
               </select>
             </div>
           </div>
-        </div>  
+        </div>
 
           <!-- 金額 -->
         <div class="row g-3 align-items-end mb-3">
@@ -125,7 +125,7 @@
               <input type="text" class="form-control" placeholder="最大金額"  style="width:180px;"/>
             </div>
           </div>
-        </div> 
+        </div>
 
           <!-- 日期區間 -->
         <div class="row g-3 align-items-end mb-3">
@@ -158,7 +158,7 @@
             </div>
           </div>
         </div>
-        
+
 
           <!-- 關鍵字 -->
           <div class="row g-3 align-items-end mb-3">
@@ -184,7 +184,7 @@
           </div>
         </div>
       </div>
-    
+
       <!-- 排序與每頁顯示數量控制列 -->
       <div class="container d-flex justify-content-between align-items-center my-3">
           <!-- 每頁顯示筆數選單 -->
@@ -216,7 +216,7 @@
 
             <!-- 內容 -->
             <div class="p-3 flex-grow-1">
-              
+
                 <!-- 標籤 -->
                 <div>
                   <span v-if="item.tag1" class="badge bg-warning text-dark me-1">{{ item.tag1 }}</span>
@@ -224,7 +224,7 @@
                   <span v-if="item.tag3" class="badge bg-danger text-white">{{ item.tag3 }}</span>
                 </div>
 
-              <!-- 主內容區塊：左側(title/desc) + 右側(日期/價格/按鈕) -->  
+              <!-- 主內容區塊：左側(title/desc) + 右側(日期/價格/按鈕) -->
               <div class="d-flex">
                 <!-- 左側：title + 收藏 + desc -->
                 <div class="flex-grow-1">
@@ -242,7 +242,7 @@
                   </div>
                   <p class="mb-2 small text-start">{{ item.desc }}</p>
                 </div>
-                
+
                 <!-- 右側：日期/價格/按鈕 -->
                 <div class="text-end ms-3" style="min-width: 210px;">
                   <div>{{ item.date }}</div>
@@ -252,25 +252,13 @@
                   <small class="text-muted text-decoration-line-through d-block mb-2">
                     NT${{ item.original.toLocaleString() }}
                   </small>
-                  <button class="btn btn-outline-dark btn-sm">查看詳情</button>
+                  <router-link to="/tourfakeUSA">
+                    <button class="btn btn-outline-dark btn-sm">查看詳情</button>
+                  </router-link>
                 </div>
 
               </div>
-              <h5 class="mt-2">{{ item.title }}</h5>
 
-              <!-- 收藏 -->
-              <span
-                class="fs-5 favorite-icon"
-                :class="{ active: item.isFavorite }"
-                @click="toggleFavorite(item)"
-                role="button"
-                title="收藏"
-              >
-                {{ item.isFavorite ? '♥' : '♡' }}
-              </span>
-
-              <p class="mb-2 small">{{ item.desc }}</p>
-              <button class="btn btn-outline-dark btn-sm">查看詳情</button>
 
 
             </div>
@@ -332,56 +320,21 @@ const sortOrder = ref(null) // null=沒排序, 'asc'=升序, 'desc'=降序
 const itemsPerPageOptions = [2, 4, 6]
 
 const allItems = ref([
+
   {
     id: 1,
-    title: '摩洛哥｜撒哈拉沙漠',
-    desc: '薩哈拉沙漠是全球最大的熱帶沙漠，面積達到約940萬平方公里，橫跨多個國家，擁有壯麗的沙丘和多樣的生態系統。這裡的氣候極端，白天的氣溫可達50攝氏度，而夜晚則驟降至接近零度。沙漠中的生物適應了這種極端環境，形成了獨特的生態平衡。每年，無數探險者和攝影愛好者被這片神秘的土地所吸引，來此探索其壯觀的自然景觀和豐富的文化遺產。',
+    title: '美國｜大峽谷',
+    desc: '美國大峽谷是世界上最壯觀的自然奇觀之一，深達1800米，長約446公里，寬度從6到29公里不等。這裡的岩石層顯示了地球數百萬年的地質歷史，色彩斑斕的岩壁在陽光下閃耀著迷人的光芒。遊客可以在觀景台欣賞壯麗的景色，或參加徒步旅行和漂流等冒險活動，體驗大峽谷的壯闊與神秘。每年吸引數百萬遊客前來探索這片壖麗的自然寶藏。',
     price: 18800,
     original: 20800,
     date: '2025.04.10 ~ 2025.04.12',
     tag1: '探索冒險',
     tag2: '自然療癒',
-    img: view1,
+    img: view6,
     isFavorite: false,
   },
   {
     id: 2,
-    title: '秘魯｜馬丘比丘',
-    desc: '馬丘比丘是秘魯最著名的古代遺址之一，坐落在安第斯山脈的高處，海拔約2430米。這座印加城市以其壯觀的石造建築和壯麗的自然景觀而聞名，周圍環繞著雲霧繚繞的山峰和翠綠的山谷。遊客可以在這裡欣賞到精美的梯田、神秘的神廟和壯觀的日出，感受印加文明的魅力。每年吸引著成千上萬的遊客前來探索這片歷史悠久的土地，體驗古代文化的獨特氛圍。',
-    price: 120000,
-    original: 140800,
-    date: '2025.04.10 ~ 2025.04.12',
-    tag1: '懶人輕鬆',
-    tag2: '自然療癒',
-    img: view2,
-    isFavorite: false,
-  },
-  {
-    id: 3,
-    title: '土耳其｜熱氣球之旅',
-    desc: '在土耳其，熱氣球飛行是一項令人驚嘆的體驗，尤其是在卡帕多奇亞地區。這裡的獨特地貌和壯麗的日出景色吸引了無數遊客。乘坐熱氣球，您可以俯瞰到奇特的岩石形成、古老的洞穴住宅和廣袤的葡萄園。飛行過程中，您會感受到微風拂面，並且能夠拍攝到壯觀的全景，這將成為您旅行中難忘的回憶。',
-    price: 18800,
-    original: 20800,
-    date: '2025.04.10 ~ 2025.04.12',
-    tag1: '文化體驗',
-    tag2: '自然療癒',
-    img: view3,
-    isFavorite: false,
-  },
-  {
-    id: 4,
-    title: '義大利｜文藝復興巡禮',
-    desc: '義大利的旅程充滿了迷人的景點和豐富的歷史。從羅馬的古老遺跡，如羅馬競技場和萬神殿，到威尼斯的浪漫運河，這裡每一個角落都散發著藝術的氣息。佛羅倫斯的烏菲茲美術館收藏了無數大師的作品，而比薩的斜塔則是建築奇蹟的象徵。無論是品嚐當地的美食，還是漫步在古老的街道上，義大利都會讓你流連忘返，感受到無與倫比的魅力。',
-    price: 18800,
-    original: 20800,
-    date: '2025.04.10 ~ 2025.04.12',
-    tag1: '都市感官',
-    tag2: '拍照打卡',
-    img: view4,
-    isFavorite: false,
-  },
-  {
-    id: 5,
     title: '加拿大｜洛磯山脈',
     desc: '加拿大洛磯山脈是自然愛好者的天堂，擁有壯觀的山脈、清澈的湖泊和茂密的森林。這裡的班夫國家公園以其壯麗的冰川湖泊和壯觀的山景而聞名，遊客可以在此進行徒步旅行、滑雪和野生動物觀賞。冰原大道則是通往洛磯山脈的絕佳路線，沿途可欣賞到壯觀的冰川和壯麗的山脈景色。無論是夏季的綠意盎然，還是冬季的白雪皚皚，洛磯山脈都展現出無與倫比的自然美。',
     price: 18800,
@@ -393,17 +346,58 @@ const allItems = ref([
     isFavorite: false,
   },
   {
+    id: 3,
+    title: '義大利｜文藝復興巡禮',
+    desc: '義大利的旅程充滿了迷人的景點和豐富的歷史。從羅馬的古老遺跡，如羅馬競技場和萬神殿，到威尼斯的浪漫運河，這裡每一個角落都散發著藝術的氣息。佛羅倫斯的烏菲茲美術館收藏了無數大師的作品，而比薩的斜塔則是建築奇蹟的象徵。無論是品嚐當地的美食，還是漫步在古老的街道上，義大利都會讓你流連忘返，感受到無與倫比的魅力。',
+    price: 18800,
+    original: 20800,
+    date: '2025.04.10 ~ 2025.04.12',
+    tag1: '都市感官',
+    tag2: '拍照打卡',
+    img: view4,
+    isFavorite: false,
+  },
+  {
+    id: 4,
+    title: '土耳其｜熱氣球之旅',
+    desc: '在土耳其，熱氣球飛行是一項令人驚嘆的體驗，尤其是在卡帕多奇亞地區。這裡的獨特地貌和壯麗的日出景色吸引了無數遊客。乘坐熱氣球，您可以俯瞰到奇特的岩石形成、古老的洞穴住宅和廣袤的葡萄園。飛行過程中，您會感受到微風拂面，並且能夠拍攝到壯觀的全景，這將成為您旅行中難忘的回憶。',
+    price: 18800,
+    original: 20800,
+    date: '2025.04.10 ~ 2025.04.12',
+    tag1: '文化體驗',
+    tag2: '自然療癒',
+    img: view3,
+    isFavorite: false,
+  },
+  {
+    id: 5,
+    title: '秘魯｜馬丘比丘',
+    desc: '馬丘比丘是秘魯最著名的古代遺址之一，坐落在安第斯山脈的高處，海拔約2430米。這座印加城市以其壯觀的石造建築和壯麗的自然景觀而聞名，周圍環繞著雲霧繚繞的山峰和翠綠的山谷。遊客可以在這裡欣賞到精美的梯田、神秘的神廟和壯觀的日出，感受印加文明的魅力。每年吸引著成千上萬的遊客前來探索這片歷史悠久的土地，體驗古代文化的獨特氛圍。',
+    price: 120000,
+    original: 140800,
+    date: '2025.04.10 ~ 2025.04.12',
+    tag1: '懶人輕鬆',
+    tag2: '自然療癒',
+    img: view2,
+    isFavorite: false,
+  },
+  {
     id: 6,
-    title: '美國｜大峽谷',
-    desc: '美國大峽谷是世界上最壯觀的自然奇觀之一，深達1800米，長約446公里，寬度從6到29公里不等。這裡的岩石層顯示了地球數百萬年的地質歷史，色彩斑斕的岩壁在陽光下閃耀著迷人的光芒。遊客可以在觀景台欣賞壯麗的景色，或參加徒步旅行和漂流等冒險活動，體驗大峽谷的壯闊與神秘。每年吸引數百萬遊客前來探索這片壖麗的自然寶藏。',
+    title: '摩洛哥｜撒哈拉沙漠',
+    desc: '薩哈拉沙漠是全球最大的熱帶沙漠，面積達到約940萬平方公里，橫跨多個國家，擁有壯麗的沙丘和多樣的生態系統。這裡的氣候極端，白天的氣溫可達50攝氏度，而夜晚則驟降至接近零度。沙漠中的生物適應了這種極端環境，形成了獨特的生態平衡。每年，無數探險者和攝影愛好者被這片神秘的土地所吸引，來此探索其壯觀的自然景觀和豐富的文化遺產。',
     price: 18800,
     original: 20800,
     date: '2025.04.10 ~ 2025.04.12',
     tag1: '探索冒險',
     tag2: '自然療癒',
-    img: view6,
+    img: view1,
     isFavorite: false,
   },
+
+
+
+
+
 ]);
 // 愛心收藏
 function toggleFavorite(item) {

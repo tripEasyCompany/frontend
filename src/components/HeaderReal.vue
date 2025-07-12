@@ -47,11 +47,11 @@
           <li><router-link to="/cart">購物車</router-link></li>
         </ul>
 
-        <!-- <router-link v-if="!userStore.isLoggedIn" to="/admin/login" class="login_btn"
+        <router-link v-if="!userStore.isLoggedIn" to="/admin/login" class="login_btn"
           >註冊/登入</router-link
-        > -->
+        >
 
-        <div class="user-dropdown">
+        <div class="user-dropdown" v-else>
           <div class="user-toggle" @click="dropdownOpen = !dropdownOpen">
             <img id="userPicture" :src="userStore.userPicture" alt="頭像" />
             <span>嗨！{{ userStore.userName }}</span>

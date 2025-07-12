@@ -3,7 +3,7 @@ import { reactive } from 'vue';
 
 export const userStore = reactive({
   isLoggedIn: !!localStorage.getItem('authToken'),
-  userName: localStorage.getItem('userName') || '使用者',
+  userName: localStorage.getItem('userName') || '阿蘇',//原本是'使用者'
   userPicture:
     localStorage.getItem('userPicture') ||
     new URL('@/assets/img/default_people.png', import.meta.url).href,
