@@ -18,7 +18,7 @@
           <!-- 左側：填寫付款資料 -->
           <div class="col-lg-6">
             <h3 class="mb-4 fw-bold">填寫付款資料</h3>
-            <form>
+            <form id="pay" method="post" action="">
               <!-- 訂購人資訊 -->
               <div class="mb-3">
                 <label for="name" class="form-label">全名</label>
@@ -59,11 +59,11 @@
                         同意接收促銷訊息與其他訊息通知
                     </label>
                 </div>
-                <RouterLink to="/cart">
+
                 <button type="submit" class="btn btn-dark mt-4 w-100">
                     確認付款
                 </button>
-                </RouterLink>
+
             </form>
           </div>
 
@@ -80,9 +80,9 @@
                                 </div>
                                 <div class="col-8">
                                     <div class="card-body">
-                                        <h6 class="card-title">日本 | 京都散策</h6>
+                                        <h6 class="card-title">美國大峽谷</h6>
                                         <p class="card-text mb-1">
-                                            <span class="fw-bold">NT$30,000</span>
+                                            <span class="fw-bold">NT$37,600</span>
                                         </p>
                                         <p class="card-text mb-1">
                                             <i class="bi bi-calendar-event"></i> 2025/10/15 ~ 2025/10/18
@@ -99,12 +99,12 @@
                         <hr>
 
                         <div class="d-flex justify-content-between mb-2">
-                            <span>已使用優惠</span>
-                            <span class="fw-bold">NT$1,200</span>
+                            <!-- <span>已使用優惠</span>
+                            <span class="fw-bold">NT$1,200</span> -->
                         </div>
                         <div class="d-flex justify-content-between">
                             <span class="fw-bold">總金額</span>
-                            <span class="fw-bold fs-5 text-danger">NT$11,0000</span>
+                            <span class="fw-bold fs-5 text-danger">NT$37,600</span>
                         </div>
                     </div>
                 </div>

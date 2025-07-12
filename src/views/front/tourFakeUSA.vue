@@ -115,7 +115,7 @@
               <!-- 表單 -->
               <div class="col-md-4">
                   <form action="add_cart" class="bg-white shadow rounded p-4">
-                      <div class="price fw-bold mb-3">NT$2500</div>
+                      <div class="price fw-bold mb-3">NT$18,800</div>
 
                       <div class="row mb-3">
                           <div class="col">

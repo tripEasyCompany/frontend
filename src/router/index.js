@@ -125,7 +125,7 @@ const router = createRouter({
           path: 'userprofile',
           name: 'userprofile',
           component: () => import('../views/admin/userprofilePage.vue'),
-          beforeEnter: requireAuth,
+          //beforeEnter: requireAuth,//用戶登入才可以進入此頁面
         },
         //會員資料
         {
