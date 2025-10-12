@@ -1,0 +1,1 @@
+import{_ as o,c as t,a as s,o as c}from"./index-CpaW021c.js";const a={},n={class:"about"};function r(l,e){return c(),t("div",n,e[0]||(e[0]=[s("h1",null,"這是個人收藏頁面",-1)]))}const d=o(a,[["render",r]]);export{d as default};
