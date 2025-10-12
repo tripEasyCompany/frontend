@@ -1,0 +1,1 @@
+import{_ as e,c as o,a as s,o as a}from"./index-BodBlcTG.js";const c={},n={class:"about"};function r(_,t){return a(),o("div",n,t[0]||(t[0]=[s("h1",null,"這是自動化服務設定頁面",-1)]))}const l=e(c,[["render",r]]);export{l as default};
