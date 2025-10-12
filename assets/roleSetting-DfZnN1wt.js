@@ -1,0 +1,1 @@
+import{_ as t,c as o,a as s,o as n}from"./index-CDMvk4jm.js";const r={},a={class:"about"};function c(_,e){return n(),o("div",a,e[0]||(e[0]=[s("h1",null,"這是權限設定(人員管理？)頁面",-1)]))}const d=t(r,[["render",c]]);export{d as default};
