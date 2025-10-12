@@ -293,6 +293,8 @@
 </template>
 
 <script>
+import { onMounted } from 'vue'
+
 import NavComponent from '@/components/HeaderComponent.vue';
 import FooterComponent from '@/components/FooterComponent.vue';
 
@@ -644,20 +646,21 @@ export default {
     this.stopAutoPlay();
     clearTimeout(this.resumeTimer);
   },
+
+  //composition api寫法
+  setup(){
+    onMounted(() => {
+      const url = import.meta.env.VITE_GAS_URL
+      const from = 'trip-easy'
+      const img = new Image()
+      img.referrerPolicy = 'no-referrer' // 可省略
+      img.src = `${url}?from=${encodeURIComponent(from)}&t=${Date.now()}`
+    })
+  }
 };
 </script>
 
-<script setup>
-import { onMounted } from 'vue'
-//觀看紀錄
-onMounted(() => {
-  const url = import.meta.env.VITE_GAS_URL
-  const from = 'trip-easy'
-  const img = new Image()
-  img.referrerPolicy = 'no-referrer' // 可省略
-  img.src = `${url}?from=${encodeURIComponent(from)}&t=${Date.now()}`
-})
-</script>
+
 
 
 <style scoped>
