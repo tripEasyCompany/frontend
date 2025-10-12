@@ -1,1 +1,0 @@
-import{_ as s,c as o,a as r,g as t}from"./index-ByNA5Hpd.js";const a={},n={class:"about"};function c(_,e){return t(),o("div",n,e[0]||(e[0]=[r("h1",null,"這是個人訂單頁面",-1)]))}const d=s(a,[["render",c]]);export{d as default};
