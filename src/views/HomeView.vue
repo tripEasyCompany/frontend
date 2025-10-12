@@ -647,6 +647,19 @@ export default {
 };
 </script>
 
+<script setup>
+import { onMounted } from 'vue'
+//觀看紀錄
+onMounted(() => {
+  const url = import.meta.env.VITE_GAS_URL
+  const from = 'trip-easy'
+  const img = new Image()
+  img.referrerPolicy = 'no-referrer' // 可省略
+  img.src = `${url}?from=${encodeURIComponent(from)}&t=${Date.now()}`
+})
+</script>
+
+
 <style scoped>
 @import '@/assets/css/reset.css';
 @import '@/assets/css/common.css';
