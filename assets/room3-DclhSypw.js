@@ -1,1 +1,0 @@
-const s="/assets/banner-BqDrpd0C.jpg",t="/assets/t1-ByWeCqJz.jpg",o="/assets/t2-DfbBavZM.jpg",p="/assets/t3-Co9jq7tL.jpg",a="/assets/t4-DVBfqFbw.jpg",_="/assets/t5-NVLKFclp.jpg",r="/assets/t6-BgvPjDWH.jpg",e="/assets/room1-BUVBBEnl.jpg",m="/assets/room2-Ey0p9Ykz.jpg",n="/assets/room3-BkUyV3Io.jpg";export{s as _,t as a,o as b,p as c,a as d,_ as e,r as f,e as g,m as h,n as i};
