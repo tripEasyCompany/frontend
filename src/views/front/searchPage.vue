@@ -298,12 +298,7 @@
 <script setup>
 import FooterComponent from '@/components/FooterComponent.vue';
 import HeaderComponent from '@/components/HeaderComponent.vue';
-import view1 from '@/assets/img/search/view1.png';
-import view2 from '@/assets/img/search/view2.jpg';
-import view3 from '@/assets/img/search/view3.jpg';
-import view4 from '@/assets/img/search/view4.jpg';
-import view5 from '@/assets/img/search/view5.jpg';
-import view6 from '@/assets/img/search/view6.jpg';
+
 
 import { reactive, computed, ref } from 'vue';
 
@@ -338,7 +333,7 @@ const allItems = ref([
     endDate: '2025-04-10',
     tag1: '海景小旅行',
     tag2: '自然療癒',
-    img: view6,
+    img: 'https://www.taiwan.net.tw/att/1/big_scenic_spots/pic_C100_164_22.jpg',
     isFavorite: false,
   },
   {
@@ -354,7 +349,7 @@ const allItems = ref([
     endDate: '2025-04-12',
     tag1: '拍照打卡',
     tag2: '文化體驗',
-    img: view5,
+    img: 'https://newtaipei.travel/content/images/attractions/27525/1024x768_attractions-image-fwfaxumoiegq42wwkiwkpg.jpg',
     isFavorite: false,
   },
   {
@@ -370,7 +365,7 @@ const allItems = ref([
     endDate: '2025-03-21',
     tag1: '放鬆療癒',
     tag2: '溫泉假期',
-    img: view4,
+    img: 'https://www.settour.com.tw/ss_img/poi/20220406/424ff8c7-b4e2-4685-8660-421c211f3e63.jpg',
     isFavorite: false,
   },
   {
@@ -386,7 +381,7 @@ const allItems = ref([
     endDate: '2025-05-02',
     tag1: '探索冒險',
     tag2: '自然步道',
-    img: view3,
+    img: 'https://travel.tycg.gov.tw/content/images/attractions/100594/1024x768_attractions-image-_b9jct2c-kstzrkluhayiq.jpg',
     isFavorite: false,
   },
   {
@@ -402,7 +397,7 @@ const allItems = ref([
     endDate: '2025-06-16',
     tag1: '親子家庭',
     tag2: '文化體驗',
-    img: view2,
+    img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Neiwan_Old_Theatre.jpg/250px-Neiwan_Old_Theatre.jpg',
     isFavorite: false,
   },
   {
@@ -418,7 +413,7 @@ const allItems = ref([
     endDate: '2025-07-05',
     tag1: '都市感官',
     tag2: '美食探索',
-    img: view1,
+    img: 'https://www.travel.taipei/image/337108/?r=1667871197126',
     isFavorite: false,
   },
   {
@@ -426,7 +421,7 @@ const allItems = ref([
     country: '台灣',
     area: '宜蘭縣',
     days: 3,
-    title: '台灣｜宜蘭山海祕境環島小旅行｜3日',
+    title: '台灣｜宜蘭山海祕境小旅行｜3日',
     desc: '結合蘇澳冷泉、南方澳漁港、太平山森林步道等景點，三日走訪宜蘭山海風景與在地小吃。',
     price: 8980,
     original: 9880,
@@ -434,7 +429,7 @@ const allItems = ref([
     endDate: '2025-08-12',
     tag1: '自然療癒',
     tag2: '懶人輕鬆',
-    img: view3,
+    img: 'https://kafu.tw/wp-content/uploads/pixnet/be2825d81f131f35e02a8880cc5266ac.jpg',
     isFavorite: false,
   },
   {
@@ -450,7 +445,7 @@ const allItems = ref([
     endDate: '2025-09-20',
     tag1: '拍照打卡',
     tag2: '海岸風景',
-    img: view5,
+    img: 'https://www.taiwan.net.tw/att/1/big_scenic_spots/pic_752_26.jpg',
     isFavorite: false,
   },
 ]);

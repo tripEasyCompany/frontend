@@ -164,7 +164,7 @@
             </div>
 
             <div class="more">
-              <span>查看更多</span>
+              <span><RouterLink to="/search">查看更多</RouterLink></span>
               <span><img src="@/assets/img/icon/arrow-right-long.svg" alt="" /></span>
             </div>
           </div>
