@@ -1,1 +1,0 @@
-import{_ as s,c as a,a as o,h as t}from"./index-gmg7jhbt.js";const r={},c={class:"about"};function n(_,e){return t(),a("div",c,e[0]||(e[0]=[o("h1",null,"這是儀表板分析頁面",-1)]))}const l=s(r,[["render",n]]);export{l as default};

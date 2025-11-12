@@ -1,1 +1,0 @@
-import{_ as t,c as o,a as s,h as c}from"./index-gmg7jhbt.js";const a={},n={class:"about"};function r(l,e){return c(),o("div",n,e[0]||(e[0]=[s("h1",null,"這是個人收藏頁面",-1)]))}const d=t(a,[["render",r]]);export{d as default};
