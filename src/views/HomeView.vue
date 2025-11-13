@@ -164,7 +164,7 @@
             </div>
 
             <div class="more">
-              <span>查看更多</span>
+              <span><RouterLink to="/search">查看更多</RouterLink></span>
               <span><img src="@/assets/img/icon/arrow-right-long.svg" alt="" /></span>
             </div>
           </div>
@@ -293,6 +293,8 @@
 </template>
 
 <script>
+import { onMounted } from 'vue'
+
 import NavComponent from '@/components/HeaderComponent.vue';
 import FooterComponent from '@/components/FooterComponent.vue';
 
@@ -644,8 +646,22 @@ export default {
     this.stopAutoPlay();
     clearTimeout(this.resumeTimer);
   },
+
+  //composition api寫法
+  setup(){
+    onMounted(() => {
+      const url = import.meta.env.VITE_GAS_URL
+      const from = 'trip-easy'
+      const img = new Image()
+      img.referrerPolicy = 'no-referrer' // 可省略
+      img.src = `${url}?from=${encodeURIComponent(from)}&t=${Date.now()}`
+    })
+  }
 };
 </script>
+
+
+
 
 <style scoped>
 @import '@/assets/css/reset.css';
