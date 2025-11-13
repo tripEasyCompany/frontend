@@ -315,8 +315,8 @@ const filters = reactive({
 });
 
 const sortOrder = ref(null) // null=沒排序, 'asc'=升序, 'desc'=降序
-const itemsPerPage = ref(6);
-const currentPage = ref(1);
+const itemsPerPage = ref(6); //預設每夜的顯示項目是6筆
+const currentPage = ref(1); //頁面顯示的初始值1，代表每次開啟都會是第1頁
 
 // 假資料項目
 const allItems = ref([
